@@ -2,7 +2,8 @@
 
 ## Installation
 
-npm install;
+npm install
+
 npm run dev
 
 c bon
