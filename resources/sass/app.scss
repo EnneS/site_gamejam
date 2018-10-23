@@ -8,6 +8,15 @@
 // Bootstrap
 @import '~bootstrap/scss/bootstrap';
 
+// Notre css
+
+main{
+  position:relative;
+  overflow: hidden;
+  display: block;
+}
+
+// Stripes
 #stripes, #stripes span {
     position: absolute
 }
@@ -17,7 +26,7 @@
     overflow: hidden;
     transform: skewY(-12deg);
     transform-origin: 0;
-    background: linear-gradient(150deg, #53f 15%, #05d5ff 70%, #a6ffcb 94%)
+    background: linear-gradient(150deg, rgba(255,51,101,1) 15%, rgba(255,196,5,1) 70%, rgba(252,252,177,1) 94%)
 }
 
 #stripes span {
@@ -28,91 +37,51 @@
     width: 50%;
     left: 50%;
     top: 40px;
-    background: #4c29ff
+    background: #ff3365
 }
 #stripes :nth-child(2) {
     width: 14%;
     right: 0;
     bottom: 40px;
-    background: #2be7ff
+    background: #ffc405
 }
 #stripes :nth-child(3) {
     width: 25%;
     bottom: 0;
     right: 0;
-    background: #a1ffc8
-}
-@media (min-width:670px) {
-    #stripes span {
-        height: 150px
-    }
-    #stripes :nth-child(1) {
-        top: 0;
-        background: #4750ff
-    }
-    #stripes :nth-child(2) {
-        width: 16.66667%;
-        top: 300px;
-        bottom: auto;
-        background: #0dcfff
-    }
-    #stripes :nth-child(3) {
-        width: 33.33333%;
-        right: auto;
-        background: #11bdff
-    }
-}
-@media (min-width:880px) {
-    #stripes span {
-        height: 190px
-    }
-    #stripes :nth-child(1) {
-        width: 33.33333%;
-        left: -16.66666%;
-        background: #53f
-    }
-    #stripes :nth-child(2) {
-        width: 33.33333%;
-        top: 0;
-        left: 16.66666%;
-        right: auto;
-        background: #4553ff
-    }
-    #stripes :nth-child(3) {
-        width: 33.33333%;
-        left: 49.99999%;
-        bottom: auto;
-        background: #4f40ff
-    }
-    #stripes :nth-child(4) {
-        width: 33.33333%;
-        top: 380px;
-        right: -16.66666%;
-        background: #25ddf5
-    }
-    #stripes :nth-child(5) {
-        width: 33.33333%;
-        bottom: 0;
-        background: #1fa2ff
-    }
+    background: #ffa01d
 }
 
-#nav{
+// Nav
+#navHome{
   position : absolute;
   z-index: 500;
   left:0;
-  top:10px;
   right:0;
   height:50px;
   perspective: 2000px;
 }
 
+.navbar-brand{
+  font-size: 1.5rem;
+}
+
+.nav-item{
+  font-size: 1.1rem;
+}
+
+.navbar{
+  padding-left : 0;
+  padding-right : 0;
+}
+
+// Header
 #stripes-header{
   position: relative;
 }
 
 #intro {
-  height:760px;
+  height:576px;
   display:flex;
   align-items: center;
   position: relative;
@@ -122,12 +91,105 @@
   margin-top: -14%;
 }
 
-body{
-  background-attachment: scroll;
-  overflow: auto;
+// Boutonss
+.btn-gamejam{
+  cursor:pointer;
+  border-radius: 0.25rem;
+  height:2.5em;
+  border:0;
+  box-shadow: rgba(50, 50, 93, 0.11) 0px 4px 6px, rgba(0, 0, 0, 0.08) 0px 1px 3px;
+  font-size: 16px;
+  font-weight:700;
+  font-variant: small-caps;
 }
-main{
-  position:relative;
-  overflow: hidden;
-  display: block;
+
+.btn-gamejam:hover{
+  background: #dddddd;
+}
+
+.btn-vert{
+  background: rgb(62, 207, 142);
+  font-family: "Nunito", sans-serif;
+  color:white;
+}
+
+.btn-vert:hover{
+  background: rgb(50, 171, 133)
+}
+
+
+// Hall of Fame
+
+
+
+
+
+
+
+
+
+
+// MEDIA
+
+@media (min-width:670px) {
+    #stripes span {
+        height: 150px
+    }
+    #stripes :nth-child(1) {
+        top: 0;
+        background: #ff5a4b
+    }
+    #stripes :nth-child(2) {
+        width: 16.66667%;
+        top: 300px;
+        bottom: auto;
+        background: #ffc405
+    }
+    #stripes :nth-child(3) {
+        width: 33.33333%;
+        right: auto;
+        background: #ffa01d
+    }
+
+    #intro{
+      height:576px;
+    }
+}
+@media (min-width:880px) {
+    #stripes span {
+        height: 190px
+    }
+    #stripes :nth-child(1) {
+        width: 33.33333%;
+        left: -16.66666%;
+        background: #ff3365
+    }
+    #stripes :nth-child(2) {
+        width: 33.33333%;
+        top: 0;
+        left: 16.66666%;
+        right: auto;
+        background: #ff4758
+    }
+    #stripes :nth-child(3) {
+        width: 33.33333%;
+        left: 49.99999%;
+        bottom: auto;
+        background: #ffc405
+    }
+    #stripes :nth-child(4) {
+        width: 33.33333%;
+        top: 380px;
+        right: -16.66666%;
+        background: #ffc405
+    }
+    #stripes :nth-child(5) {
+        width: 33.33333%;
+        bottom: 0;
+        background: #ffa01d
+    }
+
+    #intro{
+      height:760px;
+    }
 }
