@@ -1,7 +1,7 @@
 <template lang="html">
   <header id="nav">
       <div class="container">
-        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <nav class="navbar navbar-expand-lg navbar-light">
           <router-link to="/" class="navbar-brand mr-5" style="font-weight:700" exact>GameJam</router-link>
           <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>

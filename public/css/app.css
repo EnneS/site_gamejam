@@ -10481,11 +10481,11 @@ main {
   height: 100%;
   width: 100%;
   overflow: hidden;
-  -webkit-transform: skewY(-12deg);
-          transform: skewY(-12deg);
+  -webkit-transform: skewY(-9deg);
+          transform: skewY(-9deg);
   -webkit-transform-origin: 0;
           transform-origin: 0;
-  background: linear-gradient(150deg, #ff3365 15%, #ffc405 70%, #fcfcb1 94%);
+  background: linear-gradient(150deg, #7e0000 15%, #f15b0e 70%, #ffb776 94%);
 }
 
 #stripes span {
@@ -10496,21 +10496,21 @@ main {
   width: 50%;
   left: 50%;
   top: 40px;
-  background: #ff3365;
+  background: #880801;
 }
 
 #stripes :nth-child(2) {
   width: 14%;
   right: 0;
   bottom: 40px;
-  background: #ffc405;
+  background: #f36b20;
 }
 
 #stripes :nth-child(3) {
   width: 25%;
   bottom: 0;
   right: 0;
-  background: #ffa01d;
+  background: #de4c0c;
 }
 
 #navHome {
@@ -10568,17 +10568,17 @@ main {
 }
 
 .btn-gamejam:hover {
-  background: #dddddd;
+  background: #cccccc;
 }
 
 .btn-vert {
-  background: #3ecf8e;
+  background: #343a40;
   font-family: "Nunito", sans-serif;
   color: white;
 }
 
 .btn-vert:hover {
-  background: #32ab85;
+  background: #22262a;
 }
 
 @media (min-width: 670px) {
@@ -10588,20 +10588,20 @@ main {
 
   #stripes :nth-child(1) {
     top: 0;
-    background: #ff5a4b;
+    background: #880801;
   }
 
   #stripes :nth-child(2) {
     width: 16.66667%;
     top: 300px;
     bottom: auto;
-    background: #ffc405;
+    background: #f36b20;
   }
 
   #stripes :nth-child(3) {
     width: 33.33333%;
     right: auto;
-    background: #ffa01d;
+    background: #de4c0c;
   }
 
   #intro {
@@ -10617,7 +10617,7 @@ main {
   #stripes :nth-child(1) {
     width: 33.33333%;
     left: -16.66666%;
-    background: #ff3365;
+    background: #880801;
   }
 
   #stripes :nth-child(2) {
@@ -10625,27 +10625,27 @@ main {
     top: 0;
     left: 16.66666%;
     right: auto;
-    background: #ff4758;
+    background: #a21d04;
   }
 
   #stripes :nth-child(3) {
     width: 33.33333%;
     left: 49.99999%;
     bottom: auto;
-    background: #ffc405;
+    background: #ba3007;
   }
 
   #stripes :nth-child(4) {
     width: 33.33333%;
     top: 380px;
     right: -16.66666%;
-    background: #ffc405;
+    background: #f36b20;
   }
 
   #stripes :nth-child(5) {
     width: 33.33333%;
     bottom: 0;
-    background: #ffa01d;
+    background: #de4c0c;
   }
 
   #intro {

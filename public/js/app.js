@@ -29298,7 +29298,7 @@ exports = module.exports = __webpack_require__(1)(false);
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 // exports
 
@@ -29344,6 +29344,39 @@ module.exports = function listToStyles (parentId, list) {
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__components_nav_navLight_vue__ = __webpack_require__(47);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__components_nav_navLight_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__components_nav_navLight_vue__);
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -29758,7 +29791,9 @@ var render = function() {
             "div",
             { staticClass: "container intro-container text-white" },
             [
-              _c("h1", { staticClass: "mb-4" }, [_vm._v("GameJam 2019")]),
+              _c("h1", { staticClass: "display-4 mb-4" }, [
+                _vm._v("GameJam 2019")
+              ]),
               _vm._v(" "),
               _c("p", { staticClass: "h5 mb-4" }, [
                 _vm._v(
@@ -29815,19 +29850,95 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("section", { attrs: { id: "hall-of-fame" } }, [
-      _c("div", { staticClass: "row" }, [
-        _c("div", { staticClass: "container justify-content-center" }, [
-          _c("h1", { staticClass: "mb-4" }, [_vm._v("Hall of Fame")]),
-          _vm._v(" "),
-          _c("p", { staticClass: "h5" }, [
-            _vm._v(
-              "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
-            )
+    return _c(
+      "section",
+      { staticClass: "mb-5", attrs: { id: "hall-of-fame" } },
+      [
+        _c("div", { staticClass: "row" }, [
+          _c("div", { staticClass: "container justify-content-center" }, [
+            _c("h1", [_vm._v("Hall of Fame")]),
+            _vm._v(" "),
+            _c("div", [
+              _c("h4", { staticClass: "mt-5 mb-3" }, [_vm._v("Année")]),
+              _vm._v(" "),
+              _c("div", { staticClass: "row d-flex justify-content-between" }, [
+                _c("div", { staticClass: "col" }, [
+                  _c("img", {
+                    attrs: {
+                      src: "https://via.placeholder.com/300.png/09f/fff",
+                      alt: ""
+                    }
+                  }),
+                  _vm._v(" "),
+                  _c("p", [_vm._v("Nom du jeu")])
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "col" }, [
+                  _c("img", {
+                    attrs: {
+                      src: "https://via.placeholder.com/300.png/09f/fff",
+                      alt: ""
+                    }
+                  }),
+                  _vm._v(" "),
+                  _c("p", [_vm._v("Nom du jeu")])
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "col" }, [
+                  _c("img", {
+                    attrs: {
+                      src: "https://via.placeholder.com/300.png/09f/fff",
+                      alt: ""
+                    }
+                  }),
+                  _vm._v(" "),
+                  _c("p", [_vm._v("Nom du jeu")])
+                ])
+              ])
+            ]),
+            _vm._v(" "),
+            _c("div", [
+              _c("h4", { staticClass: "mt-5 mb-3" }, [_vm._v("Année")]),
+              _vm._v(" "),
+              _c("div", { staticClass: "row d-flex justify-content-between" }, [
+                _c("div", { staticClass: "col" }, [
+                  _c("img", {
+                    attrs: {
+                      src: "https://via.placeholder.com/300.png/09f/fff",
+                      alt: ""
+                    }
+                  }),
+                  _vm._v(" "),
+                  _c("p", [_vm._v("Nom du jeu")])
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "col" }, [
+                  _c("img", {
+                    attrs: {
+                      src: "https://via.placeholder.com/300.png/09f/fff",
+                      alt: ""
+                    }
+                  }),
+                  _vm._v(" "),
+                  _c("p", [_vm._v("Nom du jeu")])
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "col" }, [
+                  _c("img", {
+                    attrs: {
+                      src: "https://via.placeholder.com/300.png/09f/fff",
+                      alt: ""
+                    }
+                  }),
+                  _vm._v(" "),
+                  _c("p", [_vm._v("Nom du jeu")])
+                ])
+              ])
+            ])
           ])
         ])
-      ])
-    ])
+      ]
+    )
   }
 ]
 render._withStripped = true
@@ -29925,7 +30036,7 @@ exports = module.exports = __webpack_require__(1)(false);
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 // exports
 
@@ -29938,6 +30049,18 @@ exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__components_nav_navDark_vue__ = __webpack_require__(4);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__components_nav_navDark_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__components_nav_navDark_vue__);
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -30052,11 +30175,11 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("header", { attrs: { id: "nav" } }, [
+  return _c("header", { attrs: { id: "nav bg-primary" } }, [
     _c("div", { staticClass: "container" }, [
       _c(
         "nav",
-        { staticClass: "navbar navbar-expand-lg navbar-light bg-light" },
+        { staticClass: "navbar navbar-expand-lg navbar-light" },
         [
           _c(
             "router-link",
@@ -30253,14 +30376,40 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c(
-    "div",
-    {},
-    [_c("navDark"), _vm._v(" "), _c("h1", [_vm._v("Réglement")])],
-    1
-  )
+  return _c("div", {}, [_c("navDark"), _vm._v(" "), _vm._m(0)], 1)
 }
-var staticRenderFns = []
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "row bg-dark pt-5 pb-5 text-white" }, [
+      _c("div", { staticClass: "container" }, [
+        _c("h1", { staticClass: "mb-5" }, [_vm._v("Règlement")]),
+        _vm._v(" "),
+        _c("div", { staticClass: "container mt-4" }, [
+          _c("h2", [_vm._v("Titre")]),
+          _vm._v(" "),
+          _c("p", [
+            _vm._v(
+              "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
+            )
+          ])
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "container mt-4" }, [
+          _c("h2", [_vm._v("Titre")]),
+          _vm._v(" "),
+          _c("p", [
+            _vm._v(
+              "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
+            )
+          ])
+        ])
+      ])
+    ])
+  }
+]
 render._withStripped = true
 module.exports = { render: render, staticRenderFns: staticRenderFns }
 if (false) {
@@ -30356,7 +30505,7 @@ exports = module.exports = __webpack_require__(1)(false);
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 // exports
 
@@ -30369,6 +30518,55 @@ exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__components_nav_navDark_vue__ = __webpack_require__(4);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__components_nav_navDark_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__components_nav_navDark_vue__);
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -30394,14 +30592,118 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c(
-    "div",
-    {},
-    [_c("navDark"), _vm._v(" "), _c("h1", [_vm._v("Equipes")])],
-    1
-  )
+  return _c("div", [_c("navDark"), _vm._v(" "), _vm._m(0)], 1)
 }
-var staticRenderFns = []
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "row bg-dark pt-5 pb-5" }, [
+      _c("div", { staticClass: "container" }, [
+        _c("h1", { staticClass: "mb-5 text-white" }, [_vm._v("Equipes")]),
+        _vm._v(" "),
+        _c("div", { staticClass: "row d-flex justify-content-between" }, [
+          _c(
+            "div",
+            { staticClass: "card mb-5", staticStyle: { width: "18rem" } },
+            [
+              _c("div", { staticClass: "card-header" }, [
+                _vm._v("\n            Featured\n          ")
+              ]),
+              _vm._v(" "),
+              _c("ul", { staticClass: "list-group list-group-flush" }, [
+                _c("li", { staticClass: "list-group-item" }, [
+                  _vm._v("Cras justo odio")
+                ]),
+                _vm._v(" "),
+                _c("li", { staticClass: "list-group-item" }, [
+                  _vm._v("Dapibus ac facilisis in")
+                ]),
+                _vm._v(" "),
+                _c("li", { staticClass: "list-group-item" }, [
+                  _vm._v("Vestibulum at eros")
+                ])
+              ])
+            ]
+          ),
+          _vm._v(" "),
+          _c(
+            "div",
+            { staticClass: "card mb-5", staticStyle: { width: "18rem" } },
+            [
+              _c("div", { staticClass: "card-header" }, [
+                _vm._v("\n            Featured\n          ")
+              ]),
+              _vm._v(" "),
+              _c("ul", { staticClass: "list-group list-group-flush" }, [
+                _c("li", { staticClass: "list-group-item" }, [
+                  _vm._v("Cras justo odio")
+                ]),
+                _vm._v(" "),
+                _c("li", { staticClass: "list-group-item" }, [
+                  _vm._v("Dapibus ac facilisis in")
+                ]),
+                _vm._v(" "),
+                _c("li", { staticClass: "list-group-item" }, [
+                  _vm._v("Vestibulum at eros")
+                ])
+              ])
+            ]
+          ),
+          _vm._v(" "),
+          _c(
+            "div",
+            { staticClass: "card mb-5", staticStyle: { width: "18rem" } },
+            [
+              _c("div", { staticClass: "card-header" }, [
+                _vm._v("\n            Featured\n          ")
+              ]),
+              _vm._v(" "),
+              _c("ul", { staticClass: "list-group list-group-flush" }, [
+                _c("li", { staticClass: "list-group-item" }, [
+                  _vm._v("Cras justo odio")
+                ]),
+                _vm._v(" "),
+                _c("li", { staticClass: "list-group-item" }, [
+                  _vm._v("Dapibus ac facilisis in")
+                ]),
+                _vm._v(" "),
+                _c("li", { staticClass: "list-group-item" }, [
+                  _vm._v("Vestibulum at eros")
+                ])
+              ])
+            ]
+          ),
+          _vm._v(" "),
+          _c(
+            "div",
+            { staticClass: "card mb-5", staticStyle: { width: "18rem" } },
+            [
+              _c("div", { staticClass: "card-header" }, [
+                _vm._v("\n            Featured\n          ")
+              ]),
+              _vm._v(" "),
+              _c("ul", { staticClass: "list-group list-group-flush" }, [
+                _c("li", { staticClass: "list-group-item" }, [
+                  _vm._v("Cras justo odio")
+                ]),
+                _vm._v(" "),
+                _c("li", { staticClass: "list-group-item" }, [
+                  _vm._v("Dapibus ac facilisis in")
+                ]),
+                _vm._v(" "),
+                _c("li", { staticClass: "list-group-item" }, [
+                  _vm._v("Vestibulum at eros")
+                ])
+              ])
+            ]
+          )
+        ])
+      ])
+    ])
+  }
+]
 render._withStripped = true
 module.exports = { render: render, staticRenderFns: staticRenderFns }
 if (false) {
@@ -30638,7 +30940,7 @@ exports = module.exports = __webpack_require__(1)(false);
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 // exports
 
@@ -30651,6 +30953,18 @@ exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__components_nav_navDark_vue__ = __webpack_require__(4);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__components_nav_navDark_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__components_nav_navDark_vue__);
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -30676,14 +30990,40 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c(
-    "div",
-    {},
-    [_c("navDark"), _vm._v(" "), _c("h1", [_vm._v("Tutoriel")])],
-    1
-  )
+  return _c("div", {}, [_c("navDark"), _vm._v(" "), _vm._m(0)], 1)
 }
-var staticRenderFns = []
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "row bg-dark pt-5 pb-5 text-white" }, [
+      _c("div", { staticClass: "container" }, [
+        _c("h1", { staticClass: "mb-5" }, [_vm._v("Tutoriel")]),
+        _vm._v(" "),
+        _c("div", { staticClass: "container mt-4" }, [
+          _c("h2", [_vm._v("Titre")]),
+          _vm._v(" "),
+          _c("p", [
+            _vm._v(
+              "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
+            )
+          ])
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "container mt-4" }, [
+          _c("h2", [_vm._v("Titre")]),
+          _vm._v(" "),
+          _c("p", [
+            _vm._v(
+              "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
+            )
+          ])
+        ])
+      ])
+    ])
+  }
+]
 render._withStripped = true
 module.exports = { render: render, staticRenderFns: staticRenderFns }
 if (false) {
