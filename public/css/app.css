@@ -10466,7 +10466,149 @@ a.text-dark:focus {
   }
 }
 
+#stripes,
+#stripes span {
+  position: absolute;
+}
+
+#stripes {
+  height: 100%;
+  width: 100%;
+  overflow: hidden;
+  -webkit-transform: skewY(-12deg);
+          transform: skewY(-12deg);
+  -webkit-transform-origin: 0;
+          transform-origin: 0;
+  background: linear-gradient(150deg, #53f 15%, #05d5ff 70%, #a6ffcb 94%);
+}
+
+#stripes span {
+  height: 40px;
+}
+
+#stripes :nth-child(1) {
+  width: 50%;
+  left: 50%;
+  top: 40px;
+  background: #4c29ff;
+}
+
+#stripes :nth-child(2) {
+  width: 14%;
+  right: 0;
+  bottom: 40px;
+  background: #2be7ff;
+}
+
+#stripes :nth-child(3) {
+  width: 25%;
+  bottom: 0;
+  right: 0;
+  background: #a1ffc8;
+}
+
+@media (min-width: 670px) {
+  #stripes span {
+    height: 150px;
+  }
+
+  #stripes :nth-child(1) {
+    top: 0;
+    background: #4750ff;
+  }
+
+  #stripes :nth-child(2) {
+    width: 16.66667%;
+    top: 300px;
+    bottom: auto;
+    background: #0dcfff;
+  }
+
+  #stripes :nth-child(3) {
+    width: 33.33333%;
+    right: auto;
+    background: #11bdff;
+  }
+}
+
+@media (min-width: 880px) {
+  #stripes span {
+    height: 190px;
+  }
+
+  #stripes :nth-child(1) {
+    width: 33.33333%;
+    left: -16.66666%;
+    background: #53f;
+  }
+
+  #stripes :nth-child(2) {
+    width: 33.33333%;
+    top: 0;
+    left: 16.66666%;
+    right: auto;
+    background: #4553ff;
+  }
+
+  #stripes :nth-child(3) {
+    width: 33.33333%;
+    left: 49.99999%;
+    bottom: auto;
+    background: #4f40ff;
+  }
+
+  #stripes :nth-child(4) {
+    width: 33.33333%;
+    top: 380px;
+    right: -16.66666%;
+    background: #25ddf5;
+  }
+
+  #stripes :nth-child(5) {
+    width: 33.33333%;
+    bottom: 0;
+    background: #1fa2ff;
+  }
+}
+
+#nav {
+  position: absolute;
+  z-index: 500;
+  left: 0;
+  top: 10px;
+  right: 0;
+  height: 50px;
+  -webkit-perspective: 2000px;
+          perspective: 2000px;
+}
+
+#stripes-header {
+  position: relative;
+}
+
+#intro {
+  height: 760px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  position: relative;
+}
+
+.intro-container {
+  margin-top: -14%;
+}
+
 body {
-  padding-top: 40px;
+  background-attachment: scroll;
+  overflow: auto;
+}
+
+main {
+  position: relative;
+  overflow: hidden;
+  display: block;
 }
 
