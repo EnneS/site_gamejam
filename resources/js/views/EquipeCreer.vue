@@ -39,15 +39,32 @@ export default {
     }
   },
 
-  mounted() {
+  created() {
+    this.checkIfTeam();
   },
 
   methods:{
     onSubmit(){
-      console.log(this.form.teamName);
-      console.log(this.form.gameName);
+      let formData = new FormData();
 
-      // Création de l'équipe à faire ici
+      formData.append('teamName', this.form.teamName);
+      formData.append('gameName', this.form.gameName);
+
+      axios.post('/api/team.create', formData)
+        .then(function(response){
+          console.log(reponse);
+        });
+    },
+
+    checkIfTeam(){
+      var _this = this;
+      axios.get('/api/student.team')
+      .then(function(response){
+        if(response.data != ""){
+          console.log("du vent");
+          _this.$router.push('/mon-equipe');
+        }
+      });
     }
   }
 }

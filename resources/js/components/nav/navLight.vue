@@ -27,7 +27,11 @@
                 <router-link to="/archives" class="nav-link" active-class="active" exact>Archives</router-link>
               </li>
               <li class="nav-item ml-5">
-                <span style="cursor:pointer" v-on:click="loginCAS()" class="nav-link">Se connecter</span>
+                <span v-if="!getUser" style="cursor:pointer" v-on:click="loginCAS()" class="nav-link">Se connecter</span>
+                <div v-else style="display:flex">
+                  <router-link to="/mon-equipe" class="nav-link" active-class="active" exact>Mon équipe</router-link>
+                  <span style="cursor:pointer" v-on:click="loginCAS()" class="nav-link">Se déconnecter</span>
+                </div>
               </li>
             </ul>
           </div>
@@ -40,12 +44,27 @@
 export default {
   name: 'navLight',
 
+  data(){
+    return{
+    }
+  },
+
+  computed:{
+    getUser(){
+      return this.$store.state.user;
+    }
+  },
+
   methods:{
     loginCAS(){
       console.log("ATTEMPT TO LOGIN WITH CAS");
+
+      var _this = this;
       axios.post('/api/cas.login')
       .then(function(response){
-        console.log(response);
+        if(response.status == 200){
+          _this.$store.commit('setUser', response.data.userAuthentified);
+        }
       });
     }
   }

@@ -28,6 +28,11 @@ let routes = [
   },
 
   {
+    path: '/archives',
+    component: require('./views/Archives.vue')
+  },
+
+  {
     path: '/mon-equipe',
     component: require('./views/MonEquipe.vue')
   },

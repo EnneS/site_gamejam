@@ -17,6 +17,8 @@ class CreateRulesTable extends Migration
             $table->increments('id');
             $table->string('name')->comment('The rule name');
             $table->text('description')->comment('The rule content');
+
+            $table->timestamps();
         });
     }
 

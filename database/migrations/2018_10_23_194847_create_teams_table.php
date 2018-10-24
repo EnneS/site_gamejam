@@ -18,6 +18,8 @@ class CreateTeamsTable extends Migration
             $table->string('name')->comment('The team name');
             $table->integer('game_id')->unsigned()->nullable();
             $table->integer('group_id')->unsigned()->nullable();
+
+            $table->timestamps();
         });
 
         Schema::table('teams', function($table) {

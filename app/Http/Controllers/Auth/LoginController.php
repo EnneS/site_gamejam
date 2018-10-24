@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers\Auth;
 
+use Illuminate\Support\Facades\Hash;
 use App\Http\Controllers\Controller;
-use Illuminate\Foundation\Auth\AuthenticatesUsers;
+use Illuminate\Auth\EloquentUserProvider;
+use App\Student;
 
 class LoginController extends Controller
 {
@@ -18,7 +20,7 @@ class LoginController extends Controller
     |
     */
 
-    use AuthenticatesUsers;
+
 
     /**
      * Where to redirect users after login.
@@ -38,8 +40,10 @@ class LoginController extends Controller
     }
 
     public function loginCAS(){
-      include(app_path() . '/CAS/CAS_controller.php');
-      redirect('/');
-      return $login;
+      //include(app_path() . '/CAS/CAS_controller.php');
+
+      $u = Student::first();
+      auth()->login($u, true);
+      return response()->json(['userAuthentified' => auth()->user()], 200);
     }
 }

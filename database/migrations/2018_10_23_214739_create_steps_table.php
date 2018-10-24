@@ -17,6 +17,8 @@ class CreateStepsTable extends Migration
             $table->increments('id');
             $table->string('name')->comment('The step name');
             $table->text('description')->comment('The step content');
+
+            $table->timestamps();
         });
     }
 

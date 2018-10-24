@@ -1,4 +1,5 @@
 import Vue from 'vue';
+import Vuex from 'vuex'
 import axios from 'axios';
 import router from './routes'
 import VueRouter from 'vue-router';
@@ -8,7 +9,8 @@ window.axios = axios;
 
 Vue.use(VueRouter);
 
-
+// Store
+Vue.use(Vuex);
 
 window.Popper = require('popper.js').default;
 

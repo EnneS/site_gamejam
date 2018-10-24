@@ -18,6 +18,7 @@ class CreateGamesTable extends Migration
             $table->string('name')->comment('The game name');
             $table->text('description')->comment('The game description');
 
+            $table->timestamps();
         });
     }
 
