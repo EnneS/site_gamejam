@@ -36,4 +36,10 @@ class LoginController extends Controller
     {
         $this->middleware('guest')->except('logout');
     }
+
+    public function loginCAS(){
+      include(app_path() . '/CAS/CAS_controller.php');
+      redirect('/');
+      return $login;
+    }
 }

@@ -1456,8 +1456,11 @@ var routes = [{
   path: '/tutoriel',
   component: __webpack_require__(72)
 }, {
-  path: '/archives',
+  path: '/mon-equipe',
   component: __webpack_require__(77)
+}, {
+  path: '/mon-equipe/creer',
+  component: __webpack_require__(82)
 },
 
 // 404
@@ -6638,7 +6641,6 @@ Popper.placements = placements;
 Popper.Defaults = Defaults;
 
 /* harmony default export */ __webpack_exports__["default"] = (Popper);
-//# sourceMappingURL=popper.js.map
 
 /* WEBPACK VAR INJECTION */}.call(__webpack_exports__, __webpack_require__(5)))
 
@@ -17018,7 +17020,7 @@ return jQuery;
 /***/ (function(module, exports, __webpack_require__) {
 
 __webpack_require__(18);
-module.exports = __webpack_require__(83);
+module.exports = __webpack_require__(88);
 
 
 /***/ }),
@@ -17070,7 +17072,7 @@ window.Popper = __webpack_require__(15).default;
 try {
   window.$ = window.jQuery = __webpack_require__(16);
 
-  __webpack_require__(82);
+  __webpack_require__(87);
 } catch (e) {}
 
 /**
@@ -29512,7 +29514,7 @@ exports = module.exports = __webpack_require__(1)(false);
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 // exports
 
@@ -29563,7 +29565,16 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 
 /* harmony default export */ __webpack_exports__["default"] = ({
-  name: 'navLight'
+  name: 'navLight',
+
+  methods: {
+    loginCAS: function loginCAS() {
+      console.log("ATTEMPT TO LOGIN WITH CAS");
+      axios.post('/api/cas.login').then(function (response) {
+        console.log(response);
+      });
+    }
+  }
 });
 
 /***/ }),
@@ -29719,7 +29730,21 @@ var render = function() {
                   1
                 ),
                 _vm._v(" "),
-                _vm._m(1)
+                _c("li", { staticClass: "nav-item ml-5" }, [
+                  _c(
+                    "span",
+                    {
+                      staticClass: "nav-link",
+                      staticStyle: { cursor: "pointer" },
+                      on: {
+                        click: function($event) {
+                          _vm.loginCAS()
+                        }
+                      }
+                    },
+                    [_vm._v("Se connecter")]
+                  )
+                ])
               ])
             ]
           )
@@ -29749,16 +29774,6 @@ var staticRenderFns = [
       },
       [_c("span", { staticClass: "navbar-toggler-icon" })]
     )
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("li", { staticClass: "nav-item ml-5" }, [
-      _c("a", { staticClass: "nav-link", attrs: { href: "#" } }, [
-        _vm._v("Se connecter")
-      ])
-    ])
   }
 ]
 render._withStripped = true
@@ -29805,7 +29820,7 @@ var render = function() {
                 "router-link",
                 {
                   staticClass: "btn-gamejam btn-vert mr-4",
-                  attrs: { to: "/", tag: "button", exact: "" }
+                  attrs: { to: "/mon-equipe/creer", tag: "button", exact: "" }
                 },
                 [_vm._v("créer votre équipe")]
               ),
@@ -30113,7 +30128,7 @@ exports = module.exports = __webpack_require__(1)(false);
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 // exports
 
@@ -30164,7 +30179,16 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 
 /* harmony default export */ __webpack_exports__["default"] = ({
-  name: 'navDark'
+  name: 'navDark',
+
+  methods: {
+    loginCAS: function loginCAS() {
+      console.log("ATTEMPT TO LOGIN WITH CAS");
+      axios.post('/api/cas.login').then(function (response) {
+        console.log(response);
+      });
+    }
+  }
 });
 
 /***/ }),
@@ -30317,7 +30341,21 @@ var render = function() {
                   1
                 ),
                 _vm._v(" "),
-                _vm._m(1)
+                _c("li", { staticClass: "nav-item ml-5" }, [
+                  _c(
+                    "span",
+                    {
+                      staticClass: "nav-link",
+                      staticStyle: { cursor: "pointer" },
+                      on: {
+                        click: function($event) {
+                          _vm.loginCAS()
+                        }
+                      }
+                    },
+                    [_vm._v("Se connecter")]
+                  )
+                ])
               ])
             ]
           )
@@ -30347,16 +30385,6 @@ var staticRenderFns = [
       },
       [_c("span", { staticClass: "navbar-toggler-icon" })]
     )
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("li", { staticClass: "nav-item ml-5" }, [
-      _c("a", { staticClass: "nav-link", attrs: { href: "#" } }, [
-        _vm._v("Se connecter")
-      ])
-    ])
   }
 ]
 render._withStripped = true
@@ -30799,7 +30827,7 @@ exports = module.exports = __webpack_require__(1)(false);
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 // exports
 
@@ -30812,6 +30840,18 @@ exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__components_nav_navDark_vue__ = __webpack_require__(4);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__components_nav_navDark_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__components_nav_navDark_vue__);
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -30837,14 +30877,40 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c(
-    "div",
-    {},
-    [_c("navDark"), _vm._v(" "), _c("h1", [_vm._v("Poules")])],
-    1
-  )
+  return _c("div", {}, [_c("navDark"), _vm._v(" "), _vm._m(0)], 1)
 }
-var staticRenderFns = []
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "row bg-dark pt-5 pb-5 text-white" }, [
+      _c("div", { staticClass: "container" }, [
+        _c("h1", { staticClass: "mb-5" }, [_vm._v("Poules")]),
+        _vm._v(" "),
+        _c("div", { staticClass: "container mt-4" }, [
+          _c("h2", [_vm._v("Titre")]),
+          _vm._v(" "),
+          _c("p", [
+            _vm._v(
+              "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
+            )
+          ])
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "container mt-4" }, [
+          _c("h2", [_vm._v("Titre")]),
+          _vm._v(" "),
+          _c("p", [
+            _vm._v(
+              "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
+            )
+          ])
+        ])
+      ])
+    ])
+  }
+]
 render._withStripped = true
 module.exports = { render: render, staticRenderFns: staticRenderFns }
 if (false) {
@@ -30940,7 +31006,7 @@ exports = module.exports = __webpack_require__(1)(false);
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 // exports
 
@@ -30979,6 +31045,9 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony default export */ __webpack_exports__["default"] = ({
   components: { navDark: __WEBPACK_IMPORTED_MODULE_0__components_nav_navDark_vue___default.a },
 
+  metaInfo: function metaInfo() {
+    return { title: 'Tutoriel' };
+  },
   mounted: function mounted() {}
 });
 
@@ -31063,7 +31132,7 @@ var Component = normalizeComponent(
   __vue_scopeId__,
   __vue_module_identifier__
 )
-Component.options.__file = "resources/js/views/Archives.vue"
+Component.options.__file = "resources/js/views/MonEquipe.vue"
 
 /* hot reload */
 if (false) {(function () {
@@ -31072,9 +31141,9 @@ if (false) {(function () {
   if (!hotAPI.compatible) return
   module.hot.accept()
   if (!module.hot.data) {
-    hotAPI.createRecord("data-v-307848e0", Component.options)
+    hotAPI.createRecord("data-v-333331d2", Component.options)
   } else {
-    hotAPI.reload("data-v-307848e0", Component.options)
+    hotAPI.reload("data-v-333331d2", Component.options)
   }
   module.hot.dispose(function (data) {
     disposed = true
@@ -31095,13 +31164,13 @@ var content = __webpack_require__(79);
 if(typeof content === 'string') content = [[module.i, content, '']];
 if(content.locals) module.exports = content.locals;
 // add the styles to the DOM
-var update = __webpack_require__(2)("59a2587a", content, false, {});
+var update = __webpack_require__(2)("266ecac8", content, false, {});
 // Hot Module Replacement
 if(false) {
  // When the styles change, update the <style> tags
  if(!content.locals) {
-   module.hot.accept("!!../../../node_modules/css-loader/index.js!../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-307848e0\",\"scoped\":false,\"hasInlineConfig\":true}!../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./Archives.vue", function() {
-     var newContent = require("!!../../../node_modules/css-loader/index.js!../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-307848e0\",\"scoped\":false,\"hasInlineConfig\":true}!../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./Archives.vue");
+   module.hot.accept("!!../../../node_modules/css-loader/index.js!../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-333331d2\",\"scoped\":false,\"hasInlineConfig\":true}!../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./MonEquipe.vue", function() {
+     var newContent = require("!!../../../node_modules/css-loader/index.js!../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-333331d2\",\"scoped\":false,\"hasInlineConfig\":true}!../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./MonEquipe.vue");
      if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
      update(newContent);
    });
@@ -31160,7 +31229,7 @@ var render = function() {
   return _c(
     "div",
     {},
-    [_c("navDark"), _vm._v(" "), _c("h1", [_vm._v("Archives")])],
+    [_c("navDark"), _vm._v(" "), _c("h1", [_vm._v("Mon équipe")])],
     1
   )
 }
@@ -31170,12 +31239,296 @@ module.exports = { render: render, staticRenderFns: staticRenderFns }
 if (false) {
   module.hot.accept()
   if (module.hot.data) {
-    require("vue-hot-reload-api")      .rerender("data-v-307848e0", module.exports)
+    require("vue-hot-reload-api")      .rerender("data-v-333331d2", module.exports)
   }
 }
 
 /***/ }),
 /* 82 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var disposed = false
+function injectStyle (ssrContext) {
+  if (disposed) return
+  __webpack_require__(83)
+}
+var normalizeComponent = __webpack_require__(3)
+/* script */
+var __vue_script__ = __webpack_require__(85)
+/* template */
+var __vue_template__ = __webpack_require__(86)
+/* template functional */
+var __vue_template_functional__ = false
+/* styles */
+var __vue_styles__ = injectStyle
+/* scopeId */
+var __vue_scopeId__ = null
+/* moduleIdentifier (server only) */
+var __vue_module_identifier__ = null
+var Component = normalizeComponent(
+  __vue_script__,
+  __vue_template__,
+  __vue_template_functional__,
+  __vue_styles__,
+  __vue_scopeId__,
+  __vue_module_identifier__
+)
+Component.options.__file = "resources/js/views/EquipeCreer.vue"
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-143f047f", Component.options)
+  } else {
+    hotAPI.reload("data-v-143f047f", Component.options)
+  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+/* 83 */
+/***/ (function(module, exports, __webpack_require__) {
+
+// style-loader: Adds some css to the DOM by adding a <style> tag
+
+// load the styles
+var content = __webpack_require__(84);
+if(typeof content === 'string') content = [[module.i, content, '']];
+if(content.locals) module.exports = content.locals;
+// add the styles to the DOM
+var update = __webpack_require__(2)("51ead682", content, false, {});
+// Hot Module Replacement
+if(false) {
+ // When the styles change, update the <style> tags
+ if(!content.locals) {
+   module.hot.accept("!!../../../node_modules/css-loader/index.js!../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-143f047f\",\"scoped\":false,\"hasInlineConfig\":true}!../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./EquipeCreer.vue", function() {
+     var newContent = require("!!../../../node_modules/css-loader/index.js!../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-143f047f\",\"scoped\":false,\"hasInlineConfig\":true}!../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./EquipeCreer.vue");
+     if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
+     update(newContent);
+   });
+ }
+ // When the module is disposed, remove the <style> tags
+ module.hot.dispose(function() { update(); });
+}
+
+/***/ }),
+/* 84 */
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__(1)(false);
+// imports
+
+
+// module
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+
+// exports
+
+
+/***/ }),
+/* 85 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__components_nav_navDark_vue__ = __webpack_require__(4);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__components_nav_navDark_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__components_nav_navDark_vue__);
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+  components: { navDark: __WEBPACK_IMPORTED_MODULE_0__components_nav_navDark_vue___default.a },
+
+  data: function data() {
+    return {
+      form: {
+        teamName: "",
+        gameName: ""
+      }
+    };
+  },
+  mounted: function mounted() {},
+
+
+  methods: {
+    onSubmit: function onSubmit() {
+      console.log(this.form.teamName);
+      console.log(this.form.gameName);
+
+      // Création de l'équipe à faire ici
+    }
+  }
+});
+
+/***/ }),
+/* 86 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c(
+    "div",
+    {},
+    [
+      _c("navDark"),
+      _vm._v(" "),
+      _c(
+        "div",
+        {
+          staticClass: "row bg-dark pt-5 pb-5 text-white",
+          staticStyle: { height: "100%" }
+        },
+        [
+          _c("div", { staticClass: "container" }, [
+            _c("h1", [_vm._v("Créer mon équipe")]),
+            _vm._v(" "),
+            _c("div", { staticClass: "container mt-4" }, [
+              _c(
+                "form",
+                {
+                  on: {
+                    submit: function($event) {
+                      $event.preventDefault()
+                      return _vm.onSubmit($event)
+                    }
+                  }
+                },
+                [
+                  _c("div", { staticClass: "form-group" }, [
+                    _c("label", { attrs: { for: "exampleInputEmail1" } }, [
+                      _vm._v("Nom de l'équipe")
+                    ]),
+                    _vm._v(" "),
+                    _c("input", {
+                      directives: [
+                        {
+                          name: "model",
+                          rawName: "v-model",
+                          value: _vm.form.teamName,
+                          expression: "form.teamName"
+                        }
+                      ],
+                      staticClass: "form-control",
+                      attrs: {
+                        type: "text",
+                        placeholder: "Comment votre équipe s'appellera..."
+                      },
+                      domProps: { value: _vm.form.teamName },
+                      on: {
+                        input: function($event) {
+                          if ($event.target.composing) {
+                            return
+                          }
+                          _vm.$set(_vm.form, "teamName", $event.target.value)
+                        }
+                      }
+                    }),
+                    _vm._v(" "),
+                    _c("small", { staticClass: "form-text text-white" }, [
+                      _vm._v("Vous pourrez le modifier par la suite.")
+                    ])
+                  ]),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "form-group" }, [
+                    _c("label", { attrs: { for: "exampleInputPassword1" } }, [
+                      _vm._v("Nom du jeu")
+                    ]),
+                    _vm._v(" "),
+                    _c("input", {
+                      directives: [
+                        {
+                          name: "model",
+                          rawName: "v-model",
+                          value: _vm.form.gameName,
+                          expression: "form.gameName"
+                        }
+                      ],
+                      staticClass: "form-control",
+                      attrs: {
+                        type: "text",
+                        placeholder:
+                          "Le nom que vous avez choisi pour votre jeu..."
+                      },
+                      domProps: { value: _vm.form.gameName },
+                      on: {
+                        input: function($event) {
+                          if ($event.target.composing) {
+                            return
+                          }
+                          _vm.$set(_vm.form, "gameName", $event.target.value)
+                        }
+                      }
+                    }),
+                    _vm._v(" "),
+                    _c("small", { staticClass: "form-text text-white" }, [
+                      _vm._v("Vous pourrez le modifier par la suite.")
+                    ])
+                  ]),
+                  _vm._v(" "),
+                  _c(
+                    "button",
+                    { staticClass: "btn-gamejam", attrs: { type: "submit" } },
+                    [_vm._v("Créer votre équipe")]
+                  )
+                ]
+              )
+            ])
+          ])
+        ]
+      )
+    ],
+    1
+  )
+}
+var staticRenderFns = []
+render._withStripped = true
+module.exports = { render: render, staticRenderFns: staticRenderFns }
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+    require("vue-hot-reload-api")      .rerender("data-v-143f047f", module.exports)
+  }
+}
+
+/***/ }),
+/* 87 */
 /***/ (function(module, exports, __webpack_require__) {
 
 /*!
@@ -35121,11 +35474,10 @@ if (false) {
   Object.defineProperty(exports, '__esModule', { value: true });
 
 })));
-//# sourceMappingURL=bootstrap.js.map
 
 
 /***/ }),
-/* 83 */
+/* 88 */
 /***/ (function(module, exports) {
 
 // removed by extract-text-webpack-plugin

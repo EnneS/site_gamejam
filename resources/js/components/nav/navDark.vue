@@ -27,7 +27,7 @@
                 <router-link to="/archives" class="nav-link" active-class="active" exact>Archives</router-link>
               </li>
               <li class="nav-item ml-5">
-                <a class="nav-link" href="#">Se connecter</a>
+                <span style="cursor:pointer" v-on:click="loginCAS()" class="nav-link">Se connecter</span>
               </li>
             </ul>
           </div>
@@ -38,7 +38,17 @@
 
 <script>
 export default {
-  name: 'navDark'
+  name: 'navDark',
+
+  methods:{
+    loginCAS(){
+      console.log("ATTEMPT TO LOGIN WITH CAS");
+      axios.post('/api/cas.login')
+      .then(function(response){
+        console.log(response);
+      });
+    }
+  }
 }
 </script>
 

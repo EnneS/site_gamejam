@@ -24,6 +24,10 @@ import navDark from '../components/nav/navDark.vue'
 export default {
   components: {navDark},
 
+  metaInfo () {
+      return { title: 'Tutoriel' }
+  },
+
   mounted() {
   }
 }
