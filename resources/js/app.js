@@ -1,6 +1,7 @@
 import './bootstrap'
 import router from './routes'
 import store from './store'
+import App from './views/App.vue';
 
 router.beforeEach(async (to, from, next) => {
     if (to.meta.requiresAuth) {
@@ -21,7 +22,7 @@ router.beforeEach(async (to, from, next) => {
 });
 
 new Vue({
-    el: '#app',
     store,
-    router
+    router,
+    ...App,
 });

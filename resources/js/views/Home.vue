@@ -1,7 +1,6 @@
 <template lang="html">
   <main>
     <!-- Nav -->
-    <navLight/>
 
     <!-- Stripes -->
     <header id="stripes-header">
@@ -72,10 +71,8 @@
 </template>
 
 <script>
-import navLight from '../components/nav/navLight.vue'
 
 export default {
-  components: {navLight},
 
   mounted() {
   }

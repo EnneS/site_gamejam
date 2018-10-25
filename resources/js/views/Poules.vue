@@ -1,6 +1,5 @@
 <template lang="html">
   <div class="">
-    <navDark/>
     <div class="row bg-dark pt-5 pb-5">
       <div class="container">
         <div v-if="groups != []" class="row d-flex justify-content-between">
@@ -19,10 +18,8 @@
 </template>
 
 <script>
-import navDark from '../components/nav/navDark.vue'
 
 export default {
-  components: {navDark},
 
   data(){
     return{

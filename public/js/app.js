@@ -17986,11 +17986,16 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__bootstrap__ = __webpack_require__(23);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__routes__ = __webpack_require__(14);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__store__ = __webpack_require__(97);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__views_App_vue__ = __webpack_require__(106);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__views_App_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_4__views_App_vue__);
 
+
+var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
 var _this = this;
 
 function _asyncToGenerator(fn) { return function () { var gen = fn.apply(this, arguments); return new Promise(function (resolve, reject) { function step(key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { return Promise.resolve(value).then(function (value) { step("next", value); }, function (err) { step("throw", err); }); } } return step("next"); }); }; }
+
 
 
 
@@ -18049,11 +18054,10 @@ __WEBPACK_IMPORTED_MODULE_2__routes__["a" /* default */].beforeEach(function () 
     };
 }());
 
-new Vue({
-    el: '#app',
+new Vue(_extends({
     store: __WEBPACK_IMPORTED_MODULE_3__store__["a" /* default */],
     router: __WEBPACK_IMPORTED_MODULE_2__routes__["a" /* default */]
-});
+}, __WEBPACK_IMPORTED_MODULE_4__views_App_vue___default.a));
 
 /***/ }),
 /* 20 */
@@ -31101,7 +31105,7 @@ exports = module.exports = __webpack_require__(1)(false);
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 // exports
 
@@ -31145,8 +31149,6 @@ module.exports = function listToStyles (parentId, list) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__components_nav_navLight_vue__ = __webpack_require__(51);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__components_nav_navLight_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__components_nav_navLight_vue__);
 //
 //
 //
@@ -31219,13 +31221,9 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
-//
-
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
-  components: { navLight: __WEBPACK_IMPORTED_MODULE_0__components_nav_navLight_vue___default.a },
-
   mounted: function mounted() {}
 });
 
@@ -31657,56 +31655,50 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c(
-    "main",
-    [
-      _c("navLight"),
+  return _c("main", [
+    _c("header", { attrs: { id: "stripes-header" } }, [
+      _vm._m(0),
       _vm._v(" "),
-      _c("header", { attrs: { id: "stripes-header" } }, [
-        _vm._m(0),
-        _vm._v(" "),
-        _c("section", { attrs: { id: "intro" } }, [
-          _c(
-            "div",
-            { staticClass: "container intro-container text-white" },
-            [
-              _c("h1", { staticClass: "display-4 mb-4" }, [
-                _vm._v("GameJam 2019")
-              ]),
-              _vm._v(" "),
-              _c("p", { staticClass: "h5 mb-4" }, [
-                _vm._v(
-                  "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
-                )
-              ]),
-              _vm._v(" "),
-              _c(
-                "router-link",
-                {
-                  staticClass: "btn-gamejam btn-vert mr-4",
-                  attrs: { to: "/mon-equipe/creer", tag: "button", exact: "" }
-                },
-                [_vm._v("créer votre équipe")]
-              ),
-              _vm._v(" "),
-              _c(
-                "router-link",
-                {
-                  staticClass: "btn-gamejam",
-                  attrs: { to: "/equipes", tag: "button", exact: "" }
-                },
-                [_vm._v("rejoindre une équipe")]
+      _c("section", { attrs: { id: "intro" } }, [
+        _c(
+          "div",
+          { staticClass: "container intro-container text-white" },
+          [
+            _c("h1", { staticClass: "display-4 mb-4" }, [
+              _vm._v("GameJam 2019")
+            ]),
+            _vm._v(" "),
+            _c("p", { staticClass: "h5 mb-4" }, [
+              _vm._v(
+                "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
               )
-            ],
-            1
-          )
-        ])
-      ]),
-      _vm._v(" "),
-      _vm._m(1)
-    ],
-    1
-  )
+            ]),
+            _vm._v(" "),
+            _c(
+              "router-link",
+              {
+                staticClass: "btn-gamejam btn-vert mr-4",
+                attrs: { to: "/mon-equipe/creer", tag: "button", exact: "" }
+              },
+              [_vm._v("créer votre équipe")]
+            ),
+            _vm._v(" "),
+            _c(
+              "router-link",
+              {
+                staticClass: "btn-gamejam",
+                attrs: { to: "/equipes", tag: "button", exact: "" }
+              },
+              [_vm._v("rejoindre une équipe")]
+            )
+          ],
+          1
+        )
+      ])
+    ]),
+    _vm._v(" "),
+    _vm._m(1)
+  ])
 }
 var staticRenderFns = [
   function() {
@@ -31915,7 +31907,7 @@ exports = module.exports = __webpack_require__(1)(false);
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 // exports
 
@@ -31926,8 +31918,6 @@ exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__components_nav_navDark_vue__ = __webpack_require__(4);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__components_nav_navDark_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__components_nav_navDark_vue__);
 //
 //
 //
@@ -31942,13 +31932,9 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
-//
-
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
-  components: { navDark: __WEBPACK_IMPORTED_MODULE_0__components_nav_navDark_vue___default.a },
-
   data: function data() {
     return {
       rules: []
@@ -32336,35 +32322,26 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c(
-    "div",
-    {},
-    [
-      _c("navDark"),
-      _vm._v(" "),
-      _c("div", { staticClass: "row bg-dark pt-5 pb-5 text-white" }, [
-        _c(
-          "div",
-          { staticClass: "container" },
-          [
-            _c("h1", { staticClass: "mb-5" }, [_vm._v("Règlement")]),
-            _vm._v(" "),
-            _vm._l(_vm.rules, function(rule) {
-              return _c("div", { staticClass: "container mt-4" }, [
-                _c("h2", [_vm._v(_vm._s(rule.name))]),
-                _vm._v(" "),
-                _c("span", {
-                  domProps: { innerHTML: _vm._s(rule.description) }
-                })
-              ])
-            })
-          ],
-          2
-        )
-      ])
-    ],
-    1
-  )
+  return _c("div", {}, [
+    _c("div", { staticClass: "row bg-dark pt-5 pb-5 text-white" }, [
+      _c(
+        "div",
+        { staticClass: "container" },
+        [
+          _c("h1", { staticClass: "mb-5" }, [_vm._v("Règlement")]),
+          _vm._v(" "),
+          _vm._l(_vm.rules, function(rule) {
+            return _c("div", { staticClass: "container mt-4" }, [
+              _c("h2", [_vm._v(_vm._s(rule.name))]),
+              _vm._v(" "),
+              _c("span", { domProps: { innerHTML: _vm._s(rule.description) } })
+            ])
+          })
+        ],
+        2
+      )
+    ])
+  ])
 }
 var staticRenderFns = []
 render._withStripped = true
@@ -32462,7 +32439,7 @@ exports = module.exports = __webpack_require__(1)(false);
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 // exports
 
@@ -32473,8 +32450,6 @@ exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__components_nav_navDark_vue__ = __webpack_require__(4);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__components_nav_navDark_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__components_nav_navDark_vue__);
 //
 //
 //
@@ -32499,12 +32474,9 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
-
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
-  components: { navDark: __WEBPACK_IMPORTED_MODULE_0__components_nav_navDark_vue___default.a },
-
   data: function data() {
     return {
       teams: []
@@ -32741,7 +32713,7 @@ exports = module.exports = __webpack_require__(1)(false);
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 // exports
 
@@ -32752,8 +32724,6 @@ exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__components_nav_navDark_vue__ = __webpack_require__(4);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__components_nav_navDark_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__components_nav_navDark_vue__);
 //
 //
 //
@@ -32773,13 +32743,9 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
-//
-
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
-  components: { navDark: __WEBPACK_IMPORTED_MODULE_0__components_nav_navDark_vue___default.a },
-
   data: function data() {
     return {
       groups: []
@@ -32801,53 +32767,43 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c(
-    "div",
-    {},
-    [
-      _c("navDark"),
-      _vm._v(" "),
-      _c("div", { staticClass: "row bg-dark pt-5 pb-5" }, [
-        _c("div", { staticClass: "container" }, [
-          _vm.groups != []
-            ? _c(
-                "div",
-                { staticClass: "row d-flex justify-content-between" },
-                _vm._l(_vm.groups, function(group) {
-                  return _c(
-                    "div",
-                    {
-                      staticClass: "card mb-5",
-                      staticStyle: { width: "18rem" }
-                    },
-                    [
-                      _c("div", { staticClass: "card-header" }, [
-                        _vm._v(
-                          "\n            Salle " +
-                            _vm._s(group.name) +
-                            "\n          "
-                        )
-                      ]),
-                      _vm._v(" "),
-                      _c(
-                        "ul",
-                        { staticClass: "list-group list-group-flush" },
-                        _vm._l(group.teams, function(team) {
-                          return _c("li", { staticClass: "list-group-item" }, [
-                            _vm._v(_vm._s(team.name))
-                          ])
-                        })
+  return _c("div", {}, [
+    _c("div", { staticClass: "row bg-dark pt-5 pb-5" }, [
+      _c("div", { staticClass: "container" }, [
+        _vm.groups != []
+          ? _c(
+              "div",
+              { staticClass: "row d-flex justify-content-between" },
+              _vm._l(_vm.groups, function(group) {
+                return _c(
+                  "div",
+                  { staticClass: "card mb-5", staticStyle: { width: "18rem" } },
+                  [
+                    _c("div", { staticClass: "card-header" }, [
+                      _vm._v(
+                        "\n            Salle " +
+                          _vm._s(group.name) +
+                          "\n          "
                       )
-                    ]
-                  )
-                })
-              )
-            : _vm._e()
-        ])
+                    ]),
+                    _vm._v(" "),
+                    _c(
+                      "ul",
+                      { staticClass: "list-group list-group-flush" },
+                      _vm._l(group.teams, function(team) {
+                        return _c("li", { staticClass: "list-group-item" }, [
+                          _vm._v(_vm._s(team.name))
+                        ])
+                      })
+                    )
+                  ]
+                )
+              })
+            )
+          : _vm._e()
       ])
-    ],
-    1
-  )
+    ])
+  ])
 }
 var staticRenderFns = []
 render._withStripped = true
@@ -32945,7 +32901,7 @@ exports = module.exports = __webpack_require__(1)(false);
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 // exports
 
@@ -32956,8 +32912,6 @@ exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__components_nav_navDark_vue__ = __webpack_require__(4);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__components_nav_navDark_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__components_nav_navDark_vue__);
 //
 //
 //
@@ -32972,13 +32926,9 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
-//
-
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
-  components: { navDark: __WEBPACK_IMPORTED_MODULE_0__components_nav_navDark_vue___default.a },
-
   metaInfo: function metaInfo() {
     return { title: 'Tutoriel' };
   },
@@ -33003,33 +32953,26 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c(
-    "div",
-    {},
-    [
-      _c("navDark"),
-      _vm._v(" "),
-      _c("div", { staticClass: "row bg-dark pt-5 pb-5 text-white" }, [
-        _c(
-          "div",
-          { staticClass: "container" },
-          [
-            _c("h1", { staticClass: "mb-5" }, [_vm._v("Tutoriel")]),
-            _vm._v(" "),
-            _vm._l(_vm.steps, function(step) {
-              return _c("div", { staticClass: "container mt-4" }, [
-                _c("h2", [_vm._v(_vm._s(step.name))]),
-                _vm._v(" "),
-                _c("div", { domProps: { innerHTML: _vm._s(step.description) } })
-              ])
-            })
-          ],
-          2
-        )
-      ])
-    ],
-    1
-  )
+  return _c("div", {}, [
+    _c("div", { staticClass: "row bg-dark pt-5 pb-5 text-white" }, [
+      _c(
+        "div",
+        { staticClass: "container" },
+        [
+          _c("h1", { staticClass: "mb-5" }, [_vm._v("Tutoriel")]),
+          _vm._v(" "),
+          _vm._l(_vm.steps, function(step) {
+            return _c("div", { staticClass: "container mt-4" }, [
+              _c("h2", [_vm._v(_vm._s(step.name))]),
+              _vm._v(" "),
+              _c("div", { domProps: { innerHTML: _vm._s(step.description) } })
+            ])
+          })
+        ],
+        2
+      )
+    ])
+  ])
 }
 var staticRenderFns = []
 render._withStripped = true
@@ -33127,7 +33070,7 @@ exports = module.exports = __webpack_require__(1)(false);
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 // exports
 
@@ -33138,8 +33081,6 @@ exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__components_nav_navDark_vue__ = __webpack_require__(4);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__components_nav_navDark_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__components_nav_navDark_vue__);
 //
 //
 //
@@ -33159,13 +33100,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
-//
-
-
 
 /* harmony default export */ __webpack_exports__["default"] = ({
-  components: { navDark: __WEBPACK_IMPORTED_MODULE_0__components_nav_navDark_vue___default.a },
-
   mounted: function mounted() {}
 });
 
@@ -33177,34 +33113,36 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", {}, [_c("navDark"), _vm._v(" "), _vm._m(0)], 1)
+  return _vm._m(0)
 }
 var staticRenderFns = [
   function() {
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "row bg-dark pt-5 pb-5 text-white" }, [
-      _c("div", { staticClass: "container" }, [
-        _c("h1", { staticClass: "mb-5" }, [_vm._v("Archives")]),
-        _vm._v(" "),
-        _c("div", { staticClass: "container mt-4" }, [
-          _c("h2", [_vm._v("Titre")]),
+    return _c("div", {}, [
+      _c("div", { staticClass: "row bg-dark pt-5 pb-5 text-white" }, [
+        _c("div", { staticClass: "container" }, [
+          _c("h1", { staticClass: "mb-5" }, [_vm._v("Archives")]),
           _vm._v(" "),
-          _c("p", [
-            _vm._v(
-              "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
-            )
-          ])
-        ]),
-        _vm._v(" "),
-        _c("div", { staticClass: "container mt-4" }, [
-          _c("h2", [_vm._v("Titre")]),
+          _c("div", { staticClass: "container mt-4" }, [
+            _c("h2", [_vm._v("Titre")]),
+            _vm._v(" "),
+            _c("p", [
+              _vm._v(
+                "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
+              )
+            ])
+          ]),
           _vm._v(" "),
-          _c("p", [
-            _vm._v(
-              "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
-            )
+          _c("div", { staticClass: "container mt-4" }, [
+            _c("h2", [_vm._v("Titre")]),
+            _vm._v(" "),
+            _c("p", [
+              _vm._v(
+                "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
+              )
+            ])
           ])
         ])
       ])
@@ -33306,7 +33244,7 @@ exports = module.exports = __webpack_require__(1)(false);
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 // exports
 
@@ -33317,8 +33255,6 @@ exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__components_nav_navDark_vue__ = __webpack_require__(4);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__components_nav_navDark_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__components_nav_navDark_vue__);
 //
 //
 //
@@ -33352,13 +33288,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
-//
-
-
 
 /* harmony default export */ __webpack_exports__["default"] = ({
-  components: { navDark: __WEBPACK_IMPORTED_MODULE_0__components_nav_navDark_vue___default.a },
-
   data: function data() {
     return {
       team: null
@@ -33393,94 +33324,83 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c(
-    "div",
-    {},
-    [
-      _c("navDark"),
-      _vm._v(" "),
-      _c("div", { staticClass: "row bg-dark pt-5 pb-5 text-white" }, [
-        _c("div", { staticClass: "container" }, [
-          _c("h1", { staticClass: "mb-3" }, [_vm._v("Mon équipe")]),
-          _vm._v(" "),
-          this.team != null
-            ? _c("div", [
-                _c("div", { staticClass: "row mb-4" }, [
-                  _c("div", { staticClass: "col" }, [
-                    _c("h2", [_vm._v(" " + _vm._s(_vm.team.name))]),
-                    _vm._v(" "),
-                    _c("h5", [_vm._v("Membres")]),
-                    _vm._v(" "),
-                    _c(
-                      "ul",
-                      { staticClass: "list-group text-dark" },
-                      _vm._l(_vm.team.students, function(student) {
-                        return _c("li", { staticClass: "list-group-item" }, [
-                          _vm._v(
-                            _vm._s(student.first_name) +
-                              " " +
-                              _vm._s(student.last_name)
-                          )
-                        ])
-                      })
-                    )
-                  ]),
+  return _c("div", {}, [
+    _c("div", { staticClass: "row bg-dark pt-5 pb-5 text-white" }, [
+      _c("div", { staticClass: "container" }, [
+        _c("h1", { staticClass: "mb-3" }, [_vm._v("Mon équipe")]),
+        _vm._v(" "),
+        this.team != null
+          ? _c("div", [
+              _c("div", { staticClass: "row mb-4" }, [
+                _c("div", { staticClass: "col" }, [
+                  _c("h2", [_vm._v(" " + _vm._s(_vm.team.name))]),
                   _vm._v(" "),
-                  _c("div", { staticClass: "col" }, [
-                    _c("h2", [_vm._v(" " + _vm._s(_vm.team.game.name))]),
-                    _vm._v(" "),
-                    _c("h4", [_vm._v(" " + _vm._s(_vm.team.game.description))])
-                  ])
+                  _c("h5", [_vm._v("Membres")]),
+                  _vm._v(" "),
+                  _c(
+                    "ul",
+                    { staticClass: "list-group text-dark" },
+                    _vm._l(_vm.team.students, function(student) {
+                      return _c("li", { staticClass: "list-group-item" }, [
+                        _vm._v(
+                          _vm._s(student.first_name) +
+                            " " +
+                            _vm._s(student.last_name)
+                        )
+                      ])
+                    })
+                  )
                 ]),
                 _vm._v(" "),
+                _c("div", { staticClass: "col" }, [
+                  _c("h2", [_vm._v(" " + _vm._s(_vm.team.game.name))]),
+                  _vm._v(" "),
+                  _c("h4", [_vm._v(" " + _vm._s(_vm.team.game.description))])
+                ])
+              ]),
+              _vm._v(" "),
+              _c(
+                "button",
+                {
+                  staticClass: "btn-gamejam",
+                  attrs: { type: "button", name: "button" },
+                  on: {
+                    click: function($event) {
+                      _vm.leaveTeam()
+                    }
+                  }
+                },
+                [_vm._v("Quitter l'équipe")]
+              )
+            ])
+          : _c(
+              "div",
+              [
+                _c("h2", [_vm._v("Vous n'avez pas encore d'équipe !")]),
+                _vm._v(" "),
                 _c(
-                  "button",
+                  "router-link",
+                  {
+                    staticClass: "btn-gamejam mr-4",
+                    attrs: { to: "/mon-equipe/creer", tag: "button", exact: "" }
+                  },
+                  [_vm._v("créer votre équipe")]
+                ),
+                _vm._v(" "),
+                _c(
+                  "router-link",
                   {
                     staticClass: "btn-gamejam",
-                    attrs: { type: "button", name: "button" },
-                    on: {
-                      click: function($event) {
-                        _vm.leaveTeam()
-                      }
-                    }
+                    attrs: { to: "/equipes", tag: "button", exact: "" }
                   },
-                  [_vm._v("Quitter l'équipe")]
+                  [_vm._v("rejoindre une équipe")]
                 )
-              ])
-            : _c(
-                "div",
-                [
-                  _c("h2", [_vm._v("Vous n'avez pas encore d'équipe !")]),
-                  _vm._v(" "),
-                  _c(
-                    "router-link",
-                    {
-                      staticClass: "btn-gamejam mr-4",
-                      attrs: {
-                        to: "/mon-equipe/creer",
-                        tag: "button",
-                        exact: ""
-                      }
-                    },
-                    [_vm._v("créer votre équipe")]
-                  ),
-                  _vm._v(" "),
-                  _c(
-                    "router-link",
-                    {
-                      staticClass: "btn-gamejam",
-                      attrs: { to: "/equipes", tag: "button", exact: "" }
-                    },
-                    [_vm._v("rejoindre une équipe")]
-                  )
-                ],
-                1
-              )
-        ])
+              ],
+              1
+            )
       ])
-    ],
-    1
-  )
+    ])
+  ])
 }
 var staticRenderFns = []
 render._withStripped = true
@@ -33578,7 +33498,7 @@ exports = module.exports = __webpack_require__(1)(false);
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 // exports
 
@@ -33589,8 +33509,6 @@ exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__components_nav_navDark_vue__ = __webpack_require__(4);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__components_nav_navDark_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__components_nav_navDark_vue__);
 //
 //
 //
@@ -33621,13 +33539,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
-//
-
-
 
 /* harmony default export */ __webpack_exports__["default"] = ({
-  components: { navDark: __WEBPACK_IMPORTED_MODULE_0__components_nav_navDark_vue___default.a },
-
   data: function data() {
     return {
       form: {
@@ -33666,157 +33579,150 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c(
-    "div",
-    {},
-    [
-      _c("navDark"),
-      _vm._v(" "),
-      _c(
-        "div",
-        {
-          staticClass: "row bg-dark pt-5 pb-5 text-white",
-          staticStyle: { height: "100%" }
-        },
-        [
-          _c("div", { staticClass: "container" }, [
-            _c("h1", [_vm._v("Créer mon équipe")]),
-            _vm._v(" "),
-            _c("div", { staticClass: "container mt-4" }, [
-              _c(
-                "form",
-                {
-                  on: {
-                    submit: function($event) {
-                      $event.preventDefault()
-                      return _vm.onSubmit($event)
-                    }
+  return _c("div", {}, [
+    _c(
+      "div",
+      {
+        staticClass: "row bg-dark pt-5 pb-5 text-white",
+        staticStyle: { height: "100%" }
+      },
+      [
+        _c("div", { staticClass: "container" }, [
+          _c("h1", [_vm._v("Créer mon équipe")]),
+          _vm._v(" "),
+          _c("div", { staticClass: "container mt-4" }, [
+            _c(
+              "form",
+              {
+                on: {
+                  submit: function($event) {
+                    $event.preventDefault()
+                    return _vm.onSubmit($event)
                   }
-                },
-                [
-                  _c("div", { staticClass: "form-group" }, [
-                    _c("label", { attrs: { for: "exampleInputEmail1" } }, [
-                      _vm._v("Nom de l'équipe")
-                    ]),
-                    _vm._v(" "),
-                    _c("input", {
-                      directives: [
-                        {
-                          name: "model",
-                          rawName: "v-model",
-                          value: _vm.form.teamName,
-                          expression: "form.teamName"
-                        }
-                      ],
-                      staticClass: "form-control",
-                      attrs: {
-                        type: "text",
-                        placeholder: "Comment votre équipe s'appellera...",
-                        required: ""
-                      },
-                      domProps: { value: _vm.form.teamName },
-                      on: {
-                        input: function($event) {
-                          if ($event.target.composing) {
-                            return
-                          }
-                          _vm.$set(_vm.form, "teamName", $event.target.value)
-                        }
-                      }
-                    }),
-                    _vm._v(" "),
-                    _c("small", { staticClass: "form-text text-white" }, [
-                      _vm._v("Vous pourrez le modifier par la suite.")
-                    ])
+                }
+              },
+              [
+                _c("div", { staticClass: "form-group" }, [
+                  _c("label", { attrs: { for: "exampleInputEmail1" } }, [
+                    _vm._v("Nom de l'équipe")
                   ]),
                   _vm._v(" "),
-                  _c("div", { staticClass: "form-group" }, [
-                    _c("label", { attrs: { for: "exampleInputPassword1" } }, [
-                      _vm._v("Nom du jeu")
-                    ]),
-                    _vm._v(" "),
-                    _c("input", {
-                      directives: [
-                        {
-                          name: "model",
-                          rawName: "v-model",
-                          value: _vm.form.gameName,
-                          expression: "form.gameName"
-                        }
-                      ],
-                      staticClass: "form-control",
-                      attrs: {
-                        type: "text",
-                        placeholder:
-                          "Le nom que vous avez choisi pour votre jeu...",
-                        required: ""
-                      },
-                      domProps: { value: _vm.form.gameName },
-                      on: {
-                        input: function($event) {
-                          if ($event.target.composing) {
-                            return
-                          }
-                          _vm.$set(_vm.form, "gameName", $event.target.value)
-                        }
+                  _c("input", {
+                    directives: [
+                      {
+                        name: "model",
+                        rawName: "v-model",
+                        value: _vm.form.teamName,
+                        expression: "form.teamName"
                       }
-                    }),
-                    _vm._v(" "),
-                    _c("small", { staticClass: "form-text text-white" }, [
-                      _vm._v("Vous pourrez le modifier par la suite.")
-                    ])
+                    ],
+                    staticClass: "form-control",
+                    attrs: {
+                      type: "text",
+                      placeholder: "Comment votre équipe s'appellera...",
+                      required: ""
+                    },
+                    domProps: { value: _vm.form.teamName },
+                    on: {
+                      input: function($event) {
+                        if ($event.target.composing) {
+                          return
+                        }
+                        _vm.$set(_vm.form, "teamName", $event.target.value)
+                      }
+                    }
+                  }),
+                  _vm._v(" "),
+                  _c("small", { staticClass: "form-text text-white" }, [
+                    _vm._v("Vous pourrez le modifier par la suite.")
+                  ])
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "form-group" }, [
+                  _c("label", { attrs: { for: "exampleInputPassword1" } }, [
+                    _vm._v("Nom du jeu")
                   ]),
                   _vm._v(" "),
-                  _c("div", { staticClass: "form-group" }, [
-                    _c("label", { attrs: { for: "exampleInputPassword1" } }, [
-                      _vm._v("Description du jeu")
-                    ]),
-                    _vm._v(" "),
-                    _c("input", {
-                      directives: [
-                        {
-                          name: "model",
-                          rawName: "v-model",
-                          value: _vm.form.gameDesc,
-                          expression: "form.gameDesc"
-                        }
-                      ],
-                      staticClass: "form-control",
-                      attrs: {
-                        type: "text",
-                        placeholder: "Une courte description de votre jeu...",
-                        required: ""
-                      },
-                      domProps: { value: _vm.form.gameDesc },
-                      on: {
-                        input: function($event) {
-                          if ($event.target.composing) {
-                            return
-                          }
-                          _vm.$set(_vm.form, "gameDesc", $event.target.value)
-                        }
+                  _c("input", {
+                    directives: [
+                      {
+                        name: "model",
+                        rawName: "v-model",
+                        value: _vm.form.gameName,
+                        expression: "form.gameName"
                       }
-                    }),
-                    _vm._v(" "),
-                    _c("small", { staticClass: "form-text text-white" }, [
-                      _vm._v("Vous pourrez la modifier par la suite.")
-                    ])
+                    ],
+                    staticClass: "form-control",
+                    attrs: {
+                      type: "text",
+                      placeholder:
+                        "Le nom que vous avez choisi pour votre jeu...",
+                      required: ""
+                    },
+                    domProps: { value: _vm.form.gameName },
+                    on: {
+                      input: function($event) {
+                        if ($event.target.composing) {
+                          return
+                        }
+                        _vm.$set(_vm.form, "gameName", $event.target.value)
+                      }
+                    }
+                  }),
+                  _vm._v(" "),
+                  _c("small", { staticClass: "form-text text-white" }, [
+                    _vm._v("Vous pourrez le modifier par la suite.")
+                  ])
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "form-group" }, [
+                  _c("label", { attrs: { for: "exampleInputPassword1" } }, [
+                    _vm._v("Description du jeu")
                   ]),
                   _vm._v(" "),
-                  _c(
-                    "button",
-                    { staticClass: "btn-gamejam", attrs: { type: "submit" } },
-                    [_vm._v("Créer votre équipe")]
-                  )
-                ]
-              )
-            ])
+                  _c("input", {
+                    directives: [
+                      {
+                        name: "model",
+                        rawName: "v-model",
+                        value: _vm.form.gameDesc,
+                        expression: "form.gameDesc"
+                      }
+                    ],
+                    staticClass: "form-control",
+                    attrs: {
+                      type: "text",
+                      placeholder: "Une courte description de votre jeu...",
+                      required: ""
+                    },
+                    domProps: { value: _vm.form.gameDesc },
+                    on: {
+                      input: function($event) {
+                        if ($event.target.composing) {
+                          return
+                        }
+                        _vm.$set(_vm.form, "gameDesc", $event.target.value)
+                      }
+                    }
+                  }),
+                  _vm._v(" "),
+                  _c("small", { staticClass: "form-text text-white" }, [
+                    _vm._v("Vous pourrez la modifier par la suite.")
+                  ])
+                ]),
+                _vm._v(" "),
+                _c(
+                  "button",
+                  { staticClass: "btn-gamejam", attrs: { type: "submit" } },
+                  [_vm._v("Créer votre équipe")]
+                )
+              ]
+            )
           ])
-        ]
-      )
-    ],
-    1
-  )
+        ])
+      ]
+    )
+  ])
 }
 var staticRenderFns = []
 render._withStripped = true
@@ -38122,6 +38028,168 @@ var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_RESULT__;/*!
 /***/ (function(module, exports) {
 
 // removed by extract-text-webpack-plugin
+
+/***/ }),
+/* 103 */,
+/* 104 */,
+/* 105 */,
+/* 106 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var disposed = false
+function injectStyle (ssrContext) {
+  if (disposed) return
+  __webpack_require__(107)
+}
+var normalizeComponent = __webpack_require__(3)
+/* script */
+var __vue_script__ = __webpack_require__(109)
+/* template */
+var __vue_template__ = __webpack_require__(110)
+/* template functional */
+var __vue_template_functional__ = false
+/* styles */
+var __vue_styles__ = injectStyle
+/* scopeId */
+var __vue_scopeId__ = null
+/* moduleIdentifier (server only) */
+var __vue_module_identifier__ = null
+var Component = normalizeComponent(
+  __vue_script__,
+  __vue_template__,
+  __vue_template_functional__,
+  __vue_styles__,
+  __vue_scopeId__,
+  __vue_module_identifier__
+)
+Component.options.__file = "resources/js/views/App.vue"
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-91ac6b5c", Component.options)
+  } else {
+    hotAPI.reload("data-v-91ac6b5c", Component.options)
+  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+/* 107 */
+/***/ (function(module, exports, __webpack_require__) {
+
+// style-loader: Adds some css to the DOM by adding a <style> tag
+
+// load the styles
+var content = __webpack_require__(108);
+if(typeof content === 'string') content = [[module.i, content, '']];
+if(content.locals) module.exports = content.locals;
+// add the styles to the DOM
+var update = __webpack_require__(2)("bb4b0fd8", content, false, {});
+// Hot Module Replacement
+if(false) {
+ // When the styles change, update the <style> tags
+ if(!content.locals) {
+   module.hot.accept("!!../../../node_modules/css-loader/index.js!../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-91ac6b5c\",\"scoped\":false,\"hasInlineConfig\":true}!../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./App.vue", function() {
+     var newContent = require("!!../../../node_modules/css-loader/index.js!../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-91ac6b5c\",\"scoped\":false,\"hasInlineConfig\":true}!../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./App.vue");
+     if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
+     update(newContent);
+   });
+ }
+ // When the module is disposed, remove the <style> tags
+ module.hot.dispose(function() { update(); });
+}
+
+/***/ }),
+/* 108 */
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__(1)(false);
+// imports
+
+
+// module
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+
+// exports
+
+
+/***/ }),
+/* 109 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__components_nav_navDark_vue__ = __webpack_require__(4);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__components_nav_navDark_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__components_nav_navDark_vue__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__components_nav_navLight_vue__ = __webpack_require__(51);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__components_nav_navLight_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1__components_nav_navLight_vue__);
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+
+
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+  components: { navDark: __WEBPACK_IMPORTED_MODULE_0__components_nav_navDark_vue___default.a, navLight: __WEBPACK_IMPORTED_MODULE_1__components_nav_navLight_vue___default.a },
+
+  el: '#app',
+
+  mounted: function mounted() {
+    console.log(this.$route.name);
+  }
+});
+
+/***/ }),
+/* 110 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c(
+    "div",
+    { attrs: { id: "app" } },
+    [
+      _vm.$route.name == "Home" ? _c("navLight") : _c("navDark"),
+      _vm._v(" "),
+      _c(
+        "transition",
+        { attrs: { name: "fade", mode: "out-in" } },
+        [_c("router-view")],
+        1
+      )
+    ],
+    1
+  )
+}
+var staticRenderFns = []
+render._withStripped = true
+module.exports = { render: render, staticRenderFns: staticRenderFns }
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+    require("vue-hot-reload-api")      .rerender("data-v-91ac6b5c", module.exports)
+  }
+}
 
 /***/ })
 /******/ ]);

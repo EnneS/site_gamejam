@@ -23,10 +23,8 @@
 </template>
 
 <script>
-import navDark from '../components/nav/navDark.vue'
 
 export default {
-  components: {navDark},
 
   data(){
     return{
