@@ -37727,7 +37727,7 @@ var state = {
       return __WEBPACK_IMPORTED_MODULE_2_js_cookie___default.a.getJSON(key);
     },
     setState: function setState(key, state) {
-      return __WEBPACK_IMPORTED_MODULE_2_js_cookie___default.a.set(key, state, { expires: 3, secure: false });
+      return __WEBPACK_IMPORTED_MODULE_2_js_cookie___default.a.set(key, state, { expires: 0.08, secure: false });
     }
   })]
 }));
