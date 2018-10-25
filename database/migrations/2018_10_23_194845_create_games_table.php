@@ -17,6 +17,7 @@ class CreateGamesTable extends Migration
             $table->increments('id')->comment('The game id');
             $table->string('name')->comment('The game name');
             $table->text('description')->comment('The game description');
+            $table->integer('team_id')->unsigned()->nullable();
 
             $table->timestamps();
         });

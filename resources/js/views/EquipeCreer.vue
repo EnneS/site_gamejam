@@ -8,13 +8,18 @@
           <form v-on:submit.prevent="onSubmit">
             <div class="form-group">
               <label for="exampleInputEmail1">Nom de l'équipe</label>
-              <input v-model="form.teamName" type="text" class="form-control" placeholder="Comment votre équipe s'appellera...">
+              <input v-model="form.teamName" type="text" class="form-control" placeholder="Comment votre équipe s'appellera..." required>
               <small class="form-text text-white">Vous pourrez le modifier par la suite.</small>
             </div>
             <div class="form-group">
               <label for="exampleInputPassword1">Nom du jeu</label>
-              <input v-model="form.gameName" type="text" class="form-control" placeholder="Le nom que vous avez choisi pour votre jeu...">
+              <input v-model="form.gameName" type="text" class="form-control" placeholder="Le nom que vous avez choisi pour votre jeu..." required>
               <small class="form-text text-white">Vous pourrez le modifier par la suite.</small>
+            </div>
+            <div class="form-group">
+              <label for="exampleInputPassword1">Description du jeu</label>
+              <input v-model="form.gameDesc" type="text" class="form-control" placeholder="Une courte description de votre jeu..." required>
+              <small class="form-text text-white">Vous pourrez la modifier par la suite.</small>
             </div>
             <button type="submit" class="btn-gamejam">Créer votre équipe</button>
           </form>
@@ -35,12 +40,12 @@ export default {
       form:{
         teamName : "",
         gameName : "",
+        gameDesc : "",
       }
     }
   },
 
   created() {
-    this.checkIfTeam();
   },
 
   methods:{
@@ -49,23 +54,16 @@ export default {
 
       formData.append('teamName', this.form.teamName);
       formData.append('gameName', this.form.gameName);
-
-      axios.post('/api/team.create', formData)
+      formData.append('gameDesc', this.form.gameDesc);
+      var _this = this;
+      axios.patch('/api/team.create', formData)
         .then(function(response){
-          console.log(reponse);
+          if(response.status == 201){
+            _this.$router.push('/mon-equipe');
+            _this.$store.commit('setTeam', response.data.id);
+          }
         });
     },
-
-    checkIfTeam(){
-      var _this = this;
-      axios.get('/api/student.team')
-      .then(function(response){
-        if(response.data != ""){
-          console.log("du vent");
-          _this.$router.push('/mon-equipe');
-        }
-      });
-    }
   }
 }
 </script>

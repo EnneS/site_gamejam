@@ -3,9 +3,24 @@
     <navDark/>
     <div class="row bg-dark pt-5 pb-5 text-white">
       <div class="container">
-        <h1 class="mb-5">Mon équipe</h1>
-        <div v-if="team != ''">
-          <h4> {{ team.name }}</h4>
+        <h1 class="mb-3">Mon équipe</h1>
+        <div v-if="this.team != null">
+          <!-- l'équipe, ses membres -->
+          <div class="row mb-4">
+            <div class="col">
+              <h2> {{ team.name }}</h2>
+              <h5>Membres</h5>
+              <ul class="list-group text-dark">
+                <li class="list-group-item" v-for="student in team.students">{{ student.first_name }} {{ student.last_name}}</li>
+              </ul>
+            </div>
+            <!-- le jeu -->
+            <div class="col">
+              <h2> {{ team.game.name }}</h2>
+              <h4> {{ team.game.description }}</h4>
+            </div>
+          </div>
+          <button v-on:click="leaveTeam()" type="button" class="btn-gamejam" name="button">Quitter l'équipe</button>
         </div>
         <div v-else>
           <h2>Vous n'avez pas encore d'équipe !</h2>
@@ -29,16 +44,23 @@ export default {
     }
   },
 
-  mounted() {
-    this.getTeam();
+  created() {
+    var _this = this;
+    axios.get('/api/student.team')
+    .then(function(response){
+      _this.team = response.data[0];
+    });
   },
 
   methods:{
-    getTeam(){
+    leaveTeam(){
       var _this = this;
-      axios.get('/api/student.team')
+      axios.patch('/api/student.team.leave')
       .then(function(response){
-        _this.team = response.data;
+        if(response.status == 200){
+          _this.team = null;
+          _this.$store.commit('setTeam', null);
+        }
       });
     }
   }

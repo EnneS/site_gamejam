@@ -1,17 +1,17 @@
 <template lang="html">
   <div class="">
     <navDark/>
-    <div class="row bg-dark pt-5 pb-5 text-white">
+    <div class="row bg-dark pt-5 pb-5">
       <div class="container">
-        <h1 class="mb-5">Poules</h1>
-        <div class="container mt-4">
-          <h2>Titre</h2>
-          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-        </div>
-
-        <div class="container mt-4">
-          <h2>Titre</h2>
-          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+        <div v-if="groups != []" class="row d-flex justify-content-between">
+          <div class="card mb-5" style="width: 18rem;" v-for="group in groups">
+            <div class="card-header">
+              Salle {{ group.name }}
+            </div>
+            <ul class="list-group list-group-flush">
+              <li class="list-group-item" v-for="team in group.teams">{{ team.name }}</li>
+            </ul>
+          </div>
         </div>
       </div>
     </div>
@@ -24,7 +24,18 @@ import navDark from '../components/nav/navDark.vue'
 export default {
   components: {navDark},
 
+  data(){
+    return{
+        groups : [],
+    }
+  },
+
   mounted() {
+    var _this = this;
+    axios.get('/api/groups')
+    .then(function(response){
+      _this.groups = response.data;
+    });
   }
 }
 </script>

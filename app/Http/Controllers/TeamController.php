@@ -10,7 +10,7 @@ use Illuminate\Support\Facades\Auth;
 
 class TeamController extends Controller
 {
-    function createTeam(Request $request){
+    public function createTeam(Request $request){
       $user = \App\Student::where('id', Auth::user()['id'])->first();
 
       // On vérifie si jamais que l'utilisateur n'a pas déjà une équipe.
@@ -22,18 +22,27 @@ class TeamController extends Controller
 
         $game = new Game;
         $game->name = $request['gameName'];
-        $game->description = "Description";
+        $game->description = $request['gameDesc'];
         $game->save();
 
         $team->game_id = $game->id;
         $team->save();
+
+        $game->team_id = $team->id;
+        $game->save();
+
         // Ajout de l'équipe à l'utilisateur connecté
         $user = \App\Student::where('id', Auth::user()['id'])->first();
         $user->team_id = $team->id;
         $user->save();
 
+        return $team;
       } else {
         return response()->json(['error' => 'Cet utilisateur a déjà une équipe'], 402);
       }
+    }
+
+  public function allTeam(){
+      return Team::with('students')->get();
     }
 }

@@ -6,6 +6,7 @@ use Illuminate\Support\Facades\Hash;
 use App\Http\Controllers\Controller;
 use Illuminate\Auth\EloquentUserProvider;
 use App\Student;
+use Cookie;
 
 class LoginController extends Controller
 {
@@ -27,7 +28,7 @@ class LoginController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = '/home';
+    protected $redirectTo = '/';
 
     /**
      * Create a new controller instance.
@@ -44,6 +45,11 @@ class LoginController extends Controller
 
       $u = Student::first();
       auth()->login($u, true);
+      
       return response()->json(['userAuthentified' => auth()->user()], 200);
+    }
+
+    public function logout(){
+      return auth()->logout();
     }
 }

@@ -5,49 +5,16 @@
       <div class="container">
         <h1 class="mb-5 text-white">Equipes</h1>
 
-        <div class="row d-flex justify-content-between">
-          <div class="card mb-5" style="width: 18rem;">
+        <div v-if="teams != []" class="row d-flex justify-content-between">
+          <div class="card mb-5" style="width: 18rem;" v-for="team in teams">
             <div class="card-header">
-              Featured
+              {{ team.name }}
             </div>
             <ul class="list-group list-group-flush">
-              <li class="list-group-item">Cras justo odio</li>
-              <li class="list-group-item">Dapibus ac facilisis in</li>
-              <li class="list-group-item">Vestibulum at eros</li>
+              <li class="list-group-item" v-for="student in team.students">{{ student.first_name }} {{ student.last_name}}</li>
             </ul>
-          </div>
-
-          <div class="card mb-5" style="width: 18rem;">
-            <div class="card-header">
-              Featured
-            </div>
-            <ul class="list-group list-group-flush">
-              <li class="list-group-item">Cras justo odio</li>
-              <li class="list-group-item">Dapibus ac facilisis in</li>
-              <li class="list-group-item">Vestibulum at eros</li>
-            </ul>
-          </div>
-
-          <div class="card mb-5" style="width: 18rem;">
-            <div class="card-header">
-              Featured
-            </div>
-            <ul class="list-group list-group-flush">
-              <li class="list-group-item">Cras justo odio</li>
-              <li class="list-group-item">Dapibus ac facilisis in</li>
-              <li class="list-group-item">Vestibulum at eros</li>
-            </ul>
-          </div>
-
-          <div class="card mb-5" style="width: 18rem;">
-            <div class="card-header">
-              Featured
-            </div>
-            <ul class="list-group list-group-flush">
-              <li class="list-group-item">Cras justo odio</li>
-              <li class="list-group-item">Dapibus ac facilisis in</li>
-              <li class="list-group-item">Vestibulum at eros</li>
-            </ul>
+            <button v-if="isJoinable(team.id)" v-on:click="joinTeam(team.id)" class="btn-gamejam btn-vert" type="button" name="button">Rejoindre</button>
+            <button v-if="isLeavable(team.id)" v-on:click="leaveTeam(team.id)" class="btn-gamejam btn-vert" type="button" name="button">Quitter</button>
           </div>
         </div>
       </div>
@@ -61,7 +28,60 @@ import navDark from '../components/nav/navDark.vue'
 export default {
   components: {navDark},
 
+  data(){
+    return{
+      teams: [],
+    }
+  },
+
   mounted() {
+    var _this = this;
+    axios.get('/api/teams')
+    .then(function(response){
+      _this.teams = response.data;
+    });
+  },
+
+  methods:{
+    getTeams(){
+      var _this = this;
+      axios.get('/api/teams')
+      .then(function(response){
+        _this.teams = response.data;
+      });
+    },
+
+    joinTeam(id){
+      var _this = this;
+      axios.post('/api/student.team.join', {
+        teamId : id
+      })
+        .then(function(response){
+          if(response.status == 200){
+            _this.getTeams();
+            _this.$store.commit('setTeam', response.data);
+          }
+      });
+    },
+
+    leaveTeam(){
+      var _this = this;
+      axios.patch('/api/student.team.leave')
+      .then(function(response){
+        if(response.status == 200){
+          _this.getTeams();
+          _this.$store.commit('setTeam', null);
+        }
+      });
+    },
+
+    isJoinable(){
+      return this.$store.getters.check && !this.$store.getters.team;
+    },
+
+    isLeavable(id){
+      return this.$store.getters.team_id == id;
+    }
   }
 }
 </script>

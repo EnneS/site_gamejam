@@ -15,11 +15,40 @@ class StudentController extends Controller
    */
 
   public function getTeam(){
-    $team = Auth::user()->team;
-    if($team != null){
-      return $team;
+    $user = Auth::user();
+    if($user != null){
+      $team = $user->team;
+      if($team != null){
+        $payload = array();
+        array_push($payload, $team); // On récupère l'équipe
+        array_push($payload, $team->students); // Ses membres
+        array_push($payload, $team->game); // Son jeu
+        return $payload;
+      } else {
+        return null;
+      }
     } else {
-      return null;
+      return response()->json(['error' => 'not connected'], 402);
     }
+  }
+
+  public function leaveTeam(){
+    $user = Auth::user();
+    $team = \App\Team::with(['students', 'game'])->where('id', $user->team_id)->first(); // Avant d'enlever l'équipe on la récupère
+    $user->team_id = null; // On enlève l'équipe à l'utilisateur
+    $user->save();
+    if($team->students->count() == 1){ // Il s'agit du dernier membre de l'équipe
+      // On supprime l'équipe et son jeu.
+      $team->game->delete();
+      $team->delete();
+    }
+    return response()->json(['success' => true], 200);
+  }
+
+  public function joinTeam(Request $request){
+    $user = Auth::user();
+    $user->team_id = $request['teamId'];
+    $user->save();
+    return $user->team_id;
   }
 }

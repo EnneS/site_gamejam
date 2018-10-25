@@ -15,6 +15,6 @@ class Team extends Model
     }
 
     public function game(){
-        return $this->hasOne('App\Group');
+        return $this->hasOne('App\Game');
     }
 }

@@ -30,7 +30,7 @@
                 <span v-if="!getUser" style="cursor:pointer" v-on:click="loginCAS()" class="nav-link">Se connecter</span>
                 <div v-else style="display:flex">
                   <router-link to="/mon-equipe" class="nav-link" active-class="active" exact>Mon équipe</router-link>
-                  <span style="cursor:pointer" v-on:click="loginCAS()" class="nav-link">Se déconnecter</span>
+                  <span style="cursor:pointer" v-on:click="logout()" class="nav-link">Se déconnecter</span>
                 </div>
               </li>
             </ul>
@@ -64,6 +64,18 @@ export default {
       .then(function(response){
         if(response.status == 200){
           _this.$store.commit('setUser', response.data.userAuthentified);
+          _this.$router.push('/');
+        }
+      });
+    },
+
+    logout(){
+      var _this = this;
+      axios.post('/api/cas.logout')
+      .then(function(response){
+        if(response.status == 200){
+          _this.$store.commit('setUser', null);
+          _this.$router.push('/');
         }
       });
     }

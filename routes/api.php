@@ -15,10 +15,20 @@ use Illuminate\Http\Request;
 Route::group(['middleware' => 'web'], function() {
   // LOGIN
   Route::post('cas.login', 'Auth\LoginController@loginCAS');
+  Route::post('cas.logout', 'Auth\LoginController@logout');
 
   // GETTERS
   Route::get('student.team', 'StudentController@getTeam');
+  Route::get('teams', 'TeamController@allTeam');
+  Route::get('rules', 'RuleController@allRules');
+  Route::get('steps', 'StepController@allSteps');
+  Route::get('groups', 'GroupController@allGroups');
 
   // POST
   Route::post('team.create', 'TeamController@createTeam');
+
+  // PATCH
+  Route::patch('student.team.leave', 'StudentController@leaveTeam');
+  Route::post('student.team.join', 'StudentController@joinTeam');
+
 });

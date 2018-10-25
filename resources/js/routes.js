@@ -4,7 +4,8 @@ let routes = [
 
   {
     path: '/',
-    component: require('./views/Home.vue')
+    component: require('./views/Home.vue'),
+    name: 'Home'
   },
 
   {
@@ -34,12 +35,15 @@ let routes = [
 
   {
     path: '/mon-equipe',
-    component: require('./views/MonEquipe.vue')
+    component: require('./views/MonEquipe.vue'),
+    name: 'MonEquipe',
+    meta: {requiresAuth: true}
   },
 
   {
     path: '/mon-equipe/creer',
-    component: require('./views/EquipeCreer.vue')
+    component: require('./views/EquipeCreer.vue'),
+    meta: {requiresNoTeam: true}
   },
 
 
