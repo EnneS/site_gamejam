@@ -6,17 +6,17 @@
         <div class="container mt-4">
           <form v-on:submit.prevent="onSubmit">
             <div class="form-group">
-              <label for="exampleInputEmail1">Nom de l'équipe</label>
+              <label>Nom de l'équipe</label>
               <input v-model="form.teamName" type="text" class="form-control" placeholder="Comment votre équipe s'appellera..." required>
               <small class="form-text text-white">Vous pourrez le modifier par la suite.</small>
             </div>
             <div class="form-group">
-              <label for="exampleInputPassword1">Nom du jeu</label>
+              <label>Nom du jeu</label>
               <input v-model="form.gameName" type="text" class="form-control" placeholder="Le nom que vous avez choisi pour votre jeu..." required>
               <small class="form-text text-white">Vous pourrez le modifier par la suite.</small>
             </div>
             <div class="form-group">
-              <label for="exampleInputPassword1">Description du jeu</label>
+              <label>Description du jeu</label>
               <input v-model="form.gameDesc" type="text" class="form-control" placeholder="Une courte description de votre jeu..." required>
               <small class="form-text text-white">Vous pourrez la modifier par la suite.</small>
             </div>
@@ -52,7 +52,7 @@ export default {
       formData.append('gameName', this.form.gameName);
       formData.append('gameDesc', this.form.gameDesc);
       var _this = this;
-      axios.patch('/api/team.create', formData)
+      axios.post('/api/team.create', formData)
         .then(function(response){
             _this.$router.push('/mon-equipe');
             _this.$store.commit('setTeam', response.data.id);

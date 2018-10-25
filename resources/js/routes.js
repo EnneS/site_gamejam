@@ -46,6 +46,12 @@ let routes = [
     meta: {requiresNoTeam: true}
   },
 
+  {
+    path: '/mon-equipe/edit',
+    component: require('./views/EquipeEdit.vue'),
+    meta: {requiresTeam: true}
+  },
+
 
   // 404
   {

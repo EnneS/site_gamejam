@@ -19,6 +19,7 @@
               <h4> {{ team.game.description }}</h4>
             </div>
           </div>
+          <router-link to="/mon-equipe/edit" tag="button" class="btn-gamejam mr-4" exact>Modifier votre équipe</router-link>
           <button v-on:click="leaveTeam()" type="button" class="btn-gamejam" name="button">Quitter l'équipe</button>
         </div>
         <div v-else>

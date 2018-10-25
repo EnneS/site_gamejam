@@ -30,5 +30,6 @@ Route::group(['middleware' => 'web'], function() {
   // PATCH
   Route::patch('student.team.leave', 'StudentController@leaveTeam');
   Route::post('student.team.join', 'StudentController@joinTeam');
+  Route::post('team.edit', 'TeamController@editTeam');
 
 });

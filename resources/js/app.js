@@ -18,6 +18,15 @@ router.beforeEach(async (to, from, next) => {
         return next({name: 'MonEquipe'});
       }
     }
+
+    if(to.meta.requiresTeam){
+      if(store.getters.team){
+        return next();
+      } else {
+        return next({name: 'MonEquipe'});
+      }
+    }
+    
     next();
 });
 

@@ -42,6 +42,24 @@ class TeamController extends Controller
       }
     }
 
+    public function editTeam(Request $request){
+      $user = Auth::user();
+
+      // On vérifie qu'il a déjà une équipe
+      if($user->team_id != null){
+        $team = $user->team;
+        $game = $team->game;
+        $team->name = $request['teamName'];
+        $game->name = $request['gameName'];
+        $game->description = $request['gameDesc'];
+        $team->save();
+        $game->save();
+        return response()->json(['success' => true], 200);
+      } else {
+        return response()->json(['error' => 'Cet utilisateur n\'a pas d\'équipe'], 402);
+      }
+    }
+
   public function allTeam(){
       return Team::with('students')->get();
     }
