@@ -1,6 +1,5 @@
 <template lang="html">
   <div>
-    <navDark/>
     <div class="row bg-dark pt-5 pb-5">
       <div class="container">
         <h1 class="mb-5 text-white">Equipes</h1>
@@ -59,6 +58,11 @@ export default {
             _this.getTeams();
             _this.$store.commit('setTeam', response.data);
           }
+      })
+      .catch(function(error){
+        if(error.response.status == 402){
+          location.reload();
+        }
       });
     },
 
@@ -70,6 +74,11 @@ export default {
           _this.getTeams();
           _this.$store.commit('setTeam', null);
         }
+      })
+      .catch(function(error){
+        if(error.response.status == 402){
+          location.reload();
+        }
       });
     },
 
@@ -78,7 +87,7 @@ export default {
     },
 
     isLeavable(id){
-      return this.$store.getters.team_id == id;
+      return this.$store.getters.check && this.$store.getters.team_id == id;
     }
   }
 }

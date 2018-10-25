@@ -44,7 +44,12 @@ export default {
     var _this = this;
     axios.get('/api/student.team')
     .then(function(response){
-      _this.team = response.data[0];
+        _this.team = response.data[0];
+    })
+    .catch(function(error){
+      if(error.response.status == 402){
+        location.reload();
+      }
     });
   },
 
@@ -53,9 +58,12 @@ export default {
       var _this = this;
       axios.patch('/api/student.team.leave')
       .then(function(response){
-        if(response.status == 200){
           _this.team = null;
           _this.$store.commit('setTeam', null);
+      })
+      .catch(function(error){
+        if(error.response.status == 402){
+          location.reload();
         }
       });
     }

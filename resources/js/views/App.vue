@@ -16,10 +16,6 @@ export default {
   components: {navDark, navLight},
 
   el: '#app',
-
-  mounted(){
-    console.log(this.$route.name);
-  }
 }
 </script>
 

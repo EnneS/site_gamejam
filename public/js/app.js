@@ -32439,7 +32439,7 @@ exports = module.exports = __webpack_require__(1)(false);
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 // exports
 
@@ -32450,7 +32450,6 @@ exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-//
 //
 //
 //
@@ -32506,6 +32505,10 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
           _this.getTeams();
           _this.$store.commit('setTeam', response.data);
         }
+      }).catch(function (error) {
+        if (error.response.status == 402) {
+          location.reload();
+        }
       });
     },
     leaveTeam: function leaveTeam() {
@@ -32515,13 +32518,17 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
           _this.getTeams();
           _this.$store.commit('setTeam', null);
         }
+      }).catch(function (error) {
+        if (error.response.status == 402) {
+          location.reload();
+        }
       });
     },
     isJoinable: function isJoinable() {
       return this.$store.getters.check && !this.$store.getters.team;
     },
     isLeavable: function isLeavable(id) {
-      return this.$store.getters.team_id == id;
+      return this.$store.getters.check && this.$store.getters.team_id == id;
     }
   }
 });
@@ -32534,88 +32541,79 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c(
-    "div",
-    [
-      _c("navDark"),
-      _vm._v(" "),
-      _c("div", { staticClass: "row bg-dark pt-5 pb-5" }, [
-        _c("div", { staticClass: "container" }, [
-          _c("h1", { staticClass: "mb-5 text-white" }, [_vm._v("Equipes")]),
-          _vm._v(" "),
-          _vm.teams != []
-            ? _c(
-                "div",
-                { staticClass: "row d-flex justify-content-between" },
-                _vm._l(_vm.teams, function(team) {
-                  return _c(
-                    "div",
-                    {
-                      staticClass: "card mb-5",
-                      staticStyle: { width: "18rem" }
-                    },
-                    [
-                      _c("div", { staticClass: "card-header" }, [
-                        _vm._v(
-                          "\n            " + _vm._s(team.name) + "\n          "
+  return _c("div", [
+    _c("div", { staticClass: "row bg-dark pt-5 pb-5" }, [
+      _c("div", { staticClass: "container" }, [
+        _c("h1", { staticClass: "mb-5 text-white" }, [_vm._v("Equipes")]),
+        _vm._v(" "),
+        _vm.teams != []
+          ? _c(
+              "div",
+              { staticClass: "row d-flex justify-content-between" },
+              _vm._l(_vm.teams, function(team) {
+                return _c(
+                  "div",
+                  { staticClass: "card mb-5", staticStyle: { width: "18rem" } },
+                  [
+                    _c("div", { staticClass: "card-header" }, [
+                      _vm._v(
+                        "\n            " + _vm._s(team.name) + "\n          "
+                      )
+                    ]),
+                    _vm._v(" "),
+                    _c(
+                      "ul",
+                      { staticClass: "list-group list-group-flush" },
+                      _vm._l(team.students, function(student) {
+                        return _c("li", { staticClass: "list-group-item" }, [
+                          _vm._v(
+                            _vm._s(student.first_name) +
+                              " " +
+                              _vm._s(student.last_name)
+                          )
+                        ])
+                      })
+                    ),
+                    _vm._v(" "),
+                    _vm.isJoinable(team.id)
+                      ? _c(
+                          "button",
+                          {
+                            staticClass: "btn-gamejam btn-vert",
+                            attrs: { type: "button", name: "button" },
+                            on: {
+                              click: function($event) {
+                                _vm.joinTeam(team.id)
+                              }
+                            }
+                          },
+                          [_vm._v("Rejoindre")]
                         )
-                      ]),
-                      _vm._v(" "),
-                      _c(
-                        "ul",
-                        { staticClass: "list-group list-group-flush" },
-                        _vm._l(team.students, function(student) {
-                          return _c("li", { staticClass: "list-group-item" }, [
-                            _vm._v(
-                              _vm._s(student.first_name) +
-                                " " +
-                                _vm._s(student.last_name)
-                            )
-                          ])
-                        })
-                      ),
-                      _vm._v(" "),
-                      _vm.isJoinable(team.id)
-                        ? _c(
-                            "button",
-                            {
-                              staticClass: "btn-gamejam btn-vert",
-                              attrs: { type: "button", name: "button" },
-                              on: {
-                                click: function($event) {
-                                  _vm.joinTeam(team.id)
-                                }
+                      : _vm._e(),
+                    _vm._v(" "),
+                    _vm.isLeavable(team.id)
+                      ? _c(
+                          "button",
+                          {
+                            staticClass: "btn-gamejam btn-vert",
+                            attrs: { type: "button", name: "button" },
+                            on: {
+                              click: function($event) {
+                                _vm.leaveTeam(team.id)
                               }
-                            },
-                            [_vm._v("Rejoindre")]
-                          )
-                        : _vm._e(),
-                      _vm._v(" "),
-                      _vm.isLeavable(team.id)
-                        ? _c(
-                            "button",
-                            {
-                              staticClass: "btn-gamejam btn-vert",
-                              attrs: { type: "button", name: "button" },
-                              on: {
-                                click: function($event) {
-                                  _vm.leaveTeam(team.id)
-                                }
-                              }
-                            },
-                            [_vm._v("Quitter")]
-                          )
-                        : _vm._e()
-                    ]
-                  )
-                })
-              )
-            : _vm._e()
-        ])
+                            }
+                          },
+                          [_vm._v("Quitter")]
+                        )
+                      : _vm._e()
+                  ]
+                )
+              })
+            )
+          : _vm._e()
       ])
-    ],
-    1
-  )
+    ])
+  ])
 }
 var staticRenderFns = []
 render._withStripped = true
@@ -33244,7 +33242,7 @@ exports = module.exports = __webpack_require__(1)(false);
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 // exports
 
@@ -33299,6 +33297,10 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     var _this = this;
     axios.get('/api/student.team').then(function (response) {
       _this.team = response.data[0];
+    }).catch(function (error) {
+      if (error.response.status == 402) {
+        location.reload();
+      }
     });
   },
 
@@ -33307,9 +33309,11 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     leaveTeam: function leaveTeam() {
       var _this = this;
       axios.patch('/api/student.team.leave').then(function (response) {
-        if (response.status == 200) {
-          _this.team = null;
-          _this.$store.commit('setTeam', null);
+        _this.team = null;
+        _this.$store.commit('setTeam', null);
+      }).catch(function (error) {
+        if (error.response.status == 402) {
+          location.reload();
         }
       });
     }
@@ -33498,7 +33502,7 @@ exports = module.exports = __webpack_require__(1)(false);
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 // exports
 
@@ -33562,9 +33566,11 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
       formData.append('gameDesc', this.form.gameDesc);
       var _this = this;
       axios.patch('/api/team.create', formData).then(function (response) {
-        if (response.status == 201) {
-          _this.$router.push('/mon-equipe');
-          _this.$store.commit('setTeam', response.data.id);
+        _this.$router.push('/mon-equipe');
+        _this.$store.commit('setTeam', response.data.id);
+      }).catch(function (error) {
+        if (error.response.status == 402) {
+          location.reload();
         }
       });
     }
@@ -38118,7 +38124,7 @@ exports = module.exports = __webpack_require__(1)(false);
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 // exports
 
@@ -38150,11 +38156,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony default export */ __webpack_exports__["default"] = ({
   components: { navDark: __WEBPACK_IMPORTED_MODULE_0__components_nav_navDark_vue___default.a, navLight: __WEBPACK_IMPORTED_MODULE_1__components_nav_navLight_vue___default.a },
 
-  el: '#app',
-
-  mounted: function mounted() {
-    console.log(this.$route.name);
-  }
+  el: '#app'
 });
 
 /***/ }),
