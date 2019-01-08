@@ -53,7 +53,7 @@ class TeamController extends Controller
         // Save jaquette / zip
         if($request['jaquette'] != "null"){
           $isValid = $this->validate($request, [
-            'jaquette' => 'mimes:jpeg,png|max:6144|dimensions:min_width=300,min_height=300',
+            'jaquette' => 'mimes:jpeg,png|max:6144|dimensions:min_width=300,min_height=300,max_width=300,max_height=300',
           ]);
 
           // On upload

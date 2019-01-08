@@ -4,7 +4,12 @@
       <div class="container">
         <h1>Modifier mon équipe</h1>
         <div class="alert alert-danger" v-if="error != null">
-          {{ error }}
+          <div v-for="error in error['jaquette']">
+            {{error}}
+          </div>
+          <div v-for="error in error['zip']">
+            {{error}}
+          </div>
         </div>
         <div class="container mt-4" v-if="team != null">
           <form v-on:submit.prevent="onSubmit">
@@ -22,7 +27,7 @@
             </div>
             <div class="form-row form-group">
               <div class="col">
-                <label for="file-upload">Jaquette du jeu</label>
+                <label for="file-upload">Jaquette du jeu (jpeg, png | 300px * 300px)</label>
                 <div class="custom-file" id="file-upload">
                   <input v-on:change="handleFileUpload('jaquette')" ref='jaquette' type="file" class="custom-file-input" id="inputGroupFile04">
                   <label class="custom-file-label" for="inputGroupFile04" style="line-height:2;">{{ files['jaquette'].name }}</label>
@@ -99,8 +104,8 @@ export default {
             _this.$router.push('/mon-equipe');
         })
         .catch(function(error){
-            _this.error = error.responseJSON;
-            console.log(_this.error);
+          _this.error = error.response.data.errors
+          console.log(_this.error);
           if(error.response.status == 402){
             location.reload();
           }
