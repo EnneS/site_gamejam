@@ -34,4 +34,10 @@
       0 => 'NunoMaduro\\Collision\\Adapters\\Laravel\\CollisionServiceProvider',
     ),
   ),
+  'spatie/laravel-cors' => 
+  array (
+    'providers' => 
+    array (
+    ),
+  ),
 );

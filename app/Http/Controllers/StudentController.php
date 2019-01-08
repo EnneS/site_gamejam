@@ -1,19 +1,22 @@
 <?php
 
 namespace App\Http\Controllers;
-
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use App\Student;
 
 class StudentController extends Controller
 {
+
+  public function getUser(){
+    return response()->json(['user' => auth()->user()]);
+  }
 
   /**
    * Get all missions from the authentified user.
    *
    * @return \App\Team
    */
-
   public function getTeam(){
     $user = Auth::user();
     if($user != null){

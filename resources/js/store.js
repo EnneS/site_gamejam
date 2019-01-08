@@ -9,8 +9,8 @@ let state = {
 // getters
 const getters = {
   check: state => state.user !== null,
-  team: state => state.user.team_id !== null,
-  team_id: state => state.user.team_id,
+  team: state => state.user != null && state.user.team_id !== null,
+  team_id: state => state.user != null && state.user.team_id,
 }
 
 export default new Vuex.Store({

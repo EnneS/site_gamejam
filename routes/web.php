@@ -11,6 +11,7 @@
 |
 */
 
+
 Route::get('/', function () {
     return view('welcome');
 });
@@ -18,3 +19,4 @@ Route::get('/', function () {
 Route::get('{path}', function () {
     return view('welcome');
 })->where('path', '(.*)');
+

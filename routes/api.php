@@ -14,10 +14,11 @@ use Illuminate\Http\Request;
 */
 Route::group(['middleware' => 'web'], function() {
   // LOGIN
-  Route::post('cas.login', 'Auth\LoginController@loginCAS');
-  Route::post('cas.logout', 'Auth\LoginController@logout');
+  Route::get('cas.login', 'Auth\LoginController@login');
+  Route::get('cas.logout', 'Auth\LoginController@logout');
 
   // GETTERS
+  Route::get('user', 'StudentController@getUser');
   Route::get('student.team', 'StudentController@getTeam');
   Route::get('teams', 'TeamController@allTeam');
   Route::get('rules', 'RuleController@allRules');
