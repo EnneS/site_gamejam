@@ -16,6 +16,8 @@ class Student extends Authenticatable
       'remember_token',
   ];
 
+  protected $guarded = [];
+
     public function team(){
         return $this->belongsTo('App\Team');
     }
