@@ -45,7 +45,7 @@ class LoginController extends Controller
 
       $u = Student::first();
       auth()->login($u, true);
-      
+
       return response()->json(['userAuthentified' => auth()->user()], 200);
     }
 
@@ -53,3 +53,4 @@ class LoginController extends Controller
       return auth()->logout();
     }
 }
+

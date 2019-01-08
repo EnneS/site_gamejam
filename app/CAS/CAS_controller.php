@@ -1,6 +1,6 @@
 <?php
 // Load the CAS lib
-require_once('CAS.php');
+//	include('CAS.php');
 
 // Parameters of the CAS server
 $cas_host = 'cas-uga.grenet.fr';
@@ -28,10 +28,9 @@ if (isset($_REQUEST['logout'])) {
 $login = $_SESSION["phpCAS"];
 
 // Reform the structure of $_SESSION
-$_SESSION["currentUser"]["login"] = $login;
+//$_SESSION["currentUser"]["login"] = $login;
 
 // remove the structure of phpCAS in $_SESSION
-unset($_SESSION["phpCAS"]);
 
 /*
 array(1) {
@@ -44,5 +43,4 @@ array(1) {
   }
 }
 */
-
 ?>

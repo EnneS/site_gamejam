@@ -14,7 +14,7 @@ use Illuminate\Http\Request;
 */
 Route::group(['middleware' => 'web'], function() {
   // LOGIN
-  Route::post('cas.login', 'Auth\LoginController@loginCAS');
+  Route::get('cas.login', 'StudentController@login');
   Route::post('cas.logout', 'Auth\LoginController@logout');
 
   // GETTERS

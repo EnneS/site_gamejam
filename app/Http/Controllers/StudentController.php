@@ -1,12 +1,29 @@
 <?php
 
 namespace App\Http\Controllers;
-
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use App\Student;
 
 class StudentController extends Controller
 {
+
+  public function login(Request $request){
+        include(app_path() . '/CAS/CAS_controller.php');
+
+	$login = $_SESSION['phpCAS']['user'];
+	$student = Student::where('login', $login)->first();
+	if($student == null){
+		$student = Student::create([
+			'login' => $login
+		]);
+	}
+ 	auth()->login($student, true);
+	session_destroy();
+	unset($_SESSION['phpCAS']);
+      	return response()->json(['userAuthentified' => auth()->user()], 200);
+	return redirect('/');
+  }
 
   /**
    * Get all missions from the authentified user.
