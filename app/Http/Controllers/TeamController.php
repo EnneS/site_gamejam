@@ -49,6 +49,30 @@ class TeamController extends Controller
       if($user->team_id != null){
         $team = $user->team;
         $game = $team->game;
+
+        // Save jaquette / zip
+        if($request['jaquette'] != "null"){
+          $isValid = $this->validate($request, [
+            'jaquette' => 'mimes:jpeg,png|max:6144|dimensions:min_width=300,min_height=300',
+          ]);
+
+          // On upload
+          $extension = $request->jaquette->guessExtension();
+          $fileName = 'jaquette.' . $extension;
+          $request->jaquette->storeAs('public/games/' . $user->team_id . '/', $fileName);
+          $game->jaquette_uploaded = true;
+        }
+
+        if($request['zip'] != "null"){
+          $isValid = $this->validate($request, [
+            'zip' => 'mimes:zip|max:51200', // 50 Mo
+          ]);
+
+          // On upload
+          $request->zip->storeAs('public/games/' . $user_team_id . '/', 'zip.zip');
+          $game->zip_uploaded = true;
+        }
+
         $team->name = $request['teamName'];
         $game->name = $request['gameName'];
         $game->description = $request['gameDesc'];

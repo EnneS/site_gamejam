@@ -7546,6 +7546,7 @@ Popper.placements = placements;
 Popper.Defaults = Defaults;
 
 /* harmony default export */ __webpack_exports__["default"] = (Popper);
+//# sourceMappingURL=popper.js.map
 
 /* WEBPACK VAR INJECTION */}.call(__webpack_exports__, __webpack_require__(4)))
 
@@ -32426,7 +32427,7 @@ exports = module.exports = __webpack_require__(1)(false);
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n.upload-zip{\n  cursor: pointer;\n  -webkit-user-select: none;\n     -moz-user-select: none;\n      -ms-user-select: none;\n          user-select: none;\n  -webkit-transition: all 0.5s ease-in-out;\n  transition: all 0.5s ease-in-out;\n  height:300px;\n  width:300px;\n  padding:auto;\n  text-align: center;\n  vertical-align: middle;\n  line-height: 300px;\n  background:#686868;\n  color:white;\n  margin-bottom: 0.5rem;\n}\n.upload-zip:hover{\n  -webkit-transition: all 0.5s ease-in-out;\n  transition: all 0.5s ease-in-out;\n  background:#535353;\n  color:white;\n}\n.game-jaquette{\n  height:300px;\n  width:300px;\n  margin-bottom: 0.5rem;\n}\n", ""]);
 
 // exports
 
@@ -32471,6 +32472,14 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
@@ -32545,6 +32554,25 @@ var render = function() {
                   _vm._v(" "),
                   _c("div", { staticClass: "col" }, [
                     _c("h2", [_vm._v(" " + _vm._s(_vm.team.game.name))]),
+                    _vm._v(" "),
+                    !_vm.team.game.jaquette_uploaded
+                      ? _c("div", { staticClass: "upload-zip" }, [
+                          _vm._v(
+                            "\n              Ajouter une jaquette\n            "
+                          )
+                        ])
+                      : _c("div", [
+                          _c("img", {
+                            staticClass: "game-jaquette",
+                            attrs: {
+                              src:
+                                "storage/games/" +
+                                _vm.team.game.id +
+                                "/jaquette.png",
+                              alt: ""
+                            }
+                          })
+                        ]),
                     _vm._v(" "),
                     _c("h4", [_vm._v(" " + _vm._s(_vm.team.game.description))])
                   ])
@@ -33018,7 +33046,7 @@ exports = module.exports = __webpack_require__(1)(false);
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 // exports
 
@@ -33056,11 +33084,41 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
-      team: null
+      team: null,
+      files: {
+        'jaquette': {
+          name: 'Sélectionner une jaquette..',
+          file: null
+        },
+        'zip': {
+          name: 'Sélectionner un .zip..',
+          file: null
+        }
+      },
+      error: null
     };
   },
   created: function created() {
@@ -33076,16 +33134,25 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 
   methods: {
+    // Retrieve the file (when selected with <input>)
+    handleFileUpload: function handleFileUpload(type) {
+      this.files[type].file = this.$refs[type].files[0];
+      this.files[type].name = this.$refs[type].files[0].name;
+    },
     onSubmit: function onSubmit() {
       var formData = new FormData();
       formData.append('teamName', this.team.name);
       formData.append('gameName', this.team.game.name);
       formData.append('gameDesc', this.team.game.description);
+      formData.append('jaquette', this.files['jaquette'].file);
+      formData.append('zip', this.files['zip'].file);
 
       var _this = this;
       axios.post('/api/team.edit', formData).then(function (response) {
         _this.$router.push('/mon-equipe');
       }).catch(function (error) {
+        _this.error = error.responseJSON;
+        console.log(_this.error);
         if (error.response.status == 402) {
           location.reload();
         }
@@ -33112,6 +33179,12 @@ var render = function() {
       [
         _c("div", { staticClass: "container" }, [
           _c("h1", [_vm._v("Modifier mon équipe")]),
+          _vm._v(" "),
+          _vm.error != null
+            ? _c("div", { staticClass: "alert alert-danger" }, [
+                _vm._v("\n        " + _vm._s(_vm.error) + "\n      ")
+              ])
+            : _vm._e(),
           _vm._v(" "),
           _vm.team != null
             ? _c("div", { staticClass: "container mt-4" }, [
@@ -33225,6 +33298,80 @@ var render = function() {
                           }
                         }
                       })
+                    ]),
+                    _vm._v(" "),
+                    _c("div", { staticClass: "form-row form-group" }, [
+                      _c("div", { staticClass: "col" }, [
+                        _c("label", { attrs: { for: "file-upload" } }, [
+                          _vm._v("Jaquette du jeu")
+                        ]),
+                        _vm._v(" "),
+                        _c(
+                          "div",
+                          {
+                            staticClass: "custom-file",
+                            attrs: { id: "file-upload" }
+                          },
+                          [
+                            _c("input", {
+                              ref: "jaquette",
+                              staticClass: "custom-file-input",
+                              attrs: { type: "file", id: "inputGroupFile04" },
+                              on: {
+                                change: function($event) {
+                                  _vm.handleFileUpload("jaquette")
+                                }
+                              }
+                            }),
+                            _vm._v(" "),
+                            _c(
+                              "label",
+                              {
+                                staticClass: "custom-file-label",
+                                staticStyle: { "line-height": "2" },
+                                attrs: { for: "inputGroupFile04" }
+                              },
+                              [_vm._v(_vm._s(_vm.files["jaquette"].name))]
+                            )
+                          ]
+                        )
+                      ]),
+                      _vm._v(" "),
+                      _c("div", { staticClass: "col" }, [
+                        _c("label", { attrs: { for: "file-upload" } }, [
+                          _vm._v("ZIP du jeu")
+                        ]),
+                        _vm._v(" "),
+                        _c(
+                          "div",
+                          {
+                            staticClass: "custom-file",
+                            attrs: { id: "file-upload" }
+                          },
+                          [
+                            _c("input", {
+                              ref: "zip",
+                              staticClass: "custom-file-input",
+                              attrs: { type: "file", id: "inputGroupFile04" },
+                              on: {
+                                change: function($event) {
+                                  _vm.handleFileUpload("zip")
+                                }
+                              }
+                            }),
+                            _vm._v(" "),
+                            _c(
+                              "label",
+                              {
+                                staticClass: "custom-file-label",
+                                staticStyle: { "line-height": "2" },
+                                attrs: { for: "inputGroupFile04" }
+                              },
+                              [_vm._v(_vm._s(_vm.files["zip"].name))]
+                            )
+                          ]
+                        )
+                      ])
                     ]),
                     _vm._v(" "),
                     _c(
@@ -37198,6 +37345,7 @@ if (false) {
   Object.defineProperty(exports, '__esModule', { value: true });
 
 })));
+//# sourceMappingURL=bootstrap.js.map
 
 
 /***/ }),
@@ -37257,6 +37405,7 @@ var state = {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_deepmerge__ = __webpack_require__(94);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_shvl__ = __webpack_require__(95);
 /* harmony default export */ __webpack_exports__["a"] = (function(n,o,u){function i(t,e,r){try{return(r=e.getItem(t))&&void 0!==r?JSON.parse(r):void 0}catch(t){}}if(o=(n=n||{}).storage||window&&window.localStorage,u=n.key||"vuex",!function(t){try{return t.setItem("@@",1),t.removeItem("@@"),!0}catch(t){}return!1}(o))throw new Error("Invalid storage instance given");return function(c){var a=Object(__WEBPACK_IMPORTED_MODULE_1_shvl__["a" /* get */])(n,"getState",i)(u,o);"object"==typeof a&&null!==a&&c.replaceState(Object(__WEBPACK_IMPORTED_MODULE_0_deepmerge__["a" /* default */])(c.state,a,{arrayMerge:n.arrayMerger||function(t,e){return e},clone:!1})),(n.subscriber||function(t){return function(e){return t.subscribe(e)}})(c)(function(t,i){(n.filter||function(){return!0})(t)&&(n.setState||function(t,e,r){return r.setItem(t,JSON.stringify(e))})(u,(n.reducer||function(t,n){return 0===n.length?t:n.reduce(function(n,o){return Object(__WEBPACK_IMPORTED_MODULE_1_shvl__["b" /* set */])(n,o,Object(__WEBPACK_IMPORTED_MODULE_1_shvl__["a" /* get */])(t,o))},{})})(i,n.paths||[]),o)})}});;
+//# sourceMappingURL=vuex-persistedstate.es.js.map
 
 
 /***/ }),
@@ -37363,6 +37512,7 @@ var deepmerge_1 = deepmerge;
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return t; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "b", function() { return n; });
 function t(t,n,r){return void 0===(t=(n.split?n.split("."):n).reduce(function(t,n){return t&&t[n]},t))?r:t}function n(t,n,r,e){return(n=n.split?n.split("."):n).slice(0,-1).reduce(function(t,n){return t[n]=t[n]||{}},t)[n.pop()]=r,t}
+//# sourceMappingURL=shvl.es.js.map
 
 
 /***/ }),

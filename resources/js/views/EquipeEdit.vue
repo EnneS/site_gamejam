@@ -3,6 +3,9 @@
     <div class="row bg-dark pt-5 pb-5 text-white" style="height:100%">
       <div class="container">
         <h1>Modifier mon équipe</h1>
+        <div class="alert alert-danger" v-if="error != null">
+          {{ error }}
+        </div>
         <div class="container mt-4" v-if="team != null">
           <form v-on:submit.prevent="onSubmit">
             <div class="form-group">
@@ -16,6 +19,22 @@
             <div class="form-group">
               <label for="exampleInputPassword1">Description du jeu</label>
               <input v-model="team.game.description" type="text" class="form-control" placeholder="Une courte description de votre jeu..." required>
+            </div>
+            <div class="form-row form-group">
+              <div class="col">
+                <label for="file-upload">Jaquette du jeu</label>
+                <div class="custom-file" id="file-upload">
+                  <input v-on:change="handleFileUpload('jaquette')" ref='jaquette' type="file" class="custom-file-input" id="inputGroupFile04">
+                  <label class="custom-file-label" for="inputGroupFile04" style="line-height:2;">{{ files['jaquette'].name }}</label>
+                </div>
+              </div>
+              <div class="col">
+                <label for="file-upload">ZIP du jeu</label>
+                <div class="custom-file" id="file-upload">
+                  <input v-on:change="handleFileUpload('zip')" ref='zip' type="file" class="custom-file-input" id="inputGroupFile04">
+                  <label class="custom-file-label" for="inputGroupFile04" style="line-height:2;">{{ files['zip'].name }}</label>
+                </div>
+              </div>
             </div>
             <button type="submit" class="btn-gamejam">Valider</button>
           </form>
@@ -31,6 +50,17 @@ export default {
   data(){
     return{
       team: null,
+      files:{
+        'jaquette': {
+          name: 'Sélectionner une jaquette..',
+          file: null,
+        },
+        'zip': {
+          name: 'Sélectionner un .zip..',
+          file: null,
+        }
+      },
+      error : null,
     }
   },
 
@@ -48,11 +78,20 @@ export default {
   },
 
   methods:{
+    // Retrieve the file (when selected with <input>)
+    handleFileUpload(type){
+      this.files[type].file = this.$refs[type].files[0];
+      this.files[type].name = this.$refs[type].files[0].name;
+    },
+
     onSubmit(){
       let formData = new FormData();
       formData.append('teamName', this.team.name);
       formData.append('gameName', this.team.game.name);
       formData.append('gameDesc', this.team.game.description);
+      formData.append('jaquette', this.files['jaquette'].file);
+      formData.append('zip', this.files['zip'].file);
+
 
       var _this = this;
       axios.post('/api/team.edit', formData)
@@ -60,6 +99,8 @@ export default {
             _this.$router.push('/mon-equipe');
         })
         .catch(function(error){
+            _this.error = error.responseJSON;
+            console.log(_this.error);
           if(error.response.status == 402){
             location.reload();
           }

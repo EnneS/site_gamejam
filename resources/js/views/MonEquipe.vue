@@ -16,6 +16,13 @@
             <!-- le jeu -->
             <div class="col">
               <h2> {{ team.game.name }}</h2>
+              <!-- jaquette du jeu -->
+              <div v-if="!team.game.jaquette_uploaded" class="upload-zip">
+                Ajouter une jaquette
+              </div>
+              <div v-else>
+                <img :src="'storage/games/' + team.game.id + '/jaquette.png'" alt="" class="game-jaquette">
+              </div>
               <h4> {{ team.game.description }}</h4>
             </div>
           </div>
@@ -33,6 +40,7 @@
 </template>
 
 <script>
+
 export default {
 
   data(){
@@ -73,4 +81,28 @@ export default {
 </script>
 
 <style lang="css">
+  .upload-zip{
+    cursor: pointer;
+    user-select: none;
+    transition: all 0.5s ease-in-out;
+    height:300px;
+    width:300px;
+    padding:auto;
+    text-align: center;
+    vertical-align: middle;
+    line-height: 300px;
+    background:#686868;
+    color:white;
+    margin-bottom: 0.5rem;
+  }
+  .upload-zip:hover{
+    transition: all 0.5s ease-in-out;
+    background:#535353;
+    color:white;
+  }
+  .game-jaquette{
+    height:300px;
+    width:300px;
+    margin-bottom: 0.5rem;
+  }
 </style>
