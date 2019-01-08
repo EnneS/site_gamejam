@@ -40,17 +40,29 @@ class LoginController extends Controller
         $this->middleware('guest')->except('logout');
     }
 
-    public function loginCAS(){
-      //include(app_path() . '/CAS/CAS_controller.php');
+    public function login(){
+      include(app_path() . '/CAS/CAS_controller.php');
 
-      $u = Student::first();
-      auth()->login($u, true);
-
-      return response()->json(['userAuthentified' => auth()->user()], 200);
+    	$login = $_SESSION['phpCAS']['user'];
+    	$student = Student::where('login', $login)->first();
+    	if($student == null){
+    		$student = Student::create([
+    			'login' => $login,
+          'first_name' => 'null',
+          'last_name' => 'null',
+          'email' => 'null',
+    		]);
+    	}
+     	auth()->login($student, true);
+    	session_destroy();
+    	unset($_SESSION['phpCAS']);
+      return redirect('/');
     }
 
     public function logout(){
-      return auth()->logout();
+      auth()->logout();
+      include(app_path() . '/CAS/CAS_logout.php');
     }
 }
 
+?>

@@ -1357,9 +1357,7 @@
             "type": "library",
             "extra": {
                 "laravel": {
-                    "providers": [
-                        "Spatie\\Cors\\CorsServiceProvider"
-                    ]
+                    "providers": []
                 }
             },
             "autoload": {

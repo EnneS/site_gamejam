@@ -38,7 +38,6 @@
   array (
     'providers' => 
     array (
-      0 => 'Spatie\\Cors\\CorsServiceProvider',
     ),
   ),
 );

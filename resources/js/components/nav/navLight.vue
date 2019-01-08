@@ -27,10 +27,10 @@
                 <router-link to="/archives" class="nav-link" active-class="active" exact>Archives</router-link>
               </li>
               <li class="nav-item ml-5">
-		<div v-if="!getUser">
+	              <div v-if="getUser == null">
                   <a href="/api/cas.login" style="cursor:pointer" class="nav-link" >Se connecter</a>
                 </div>
-		<div v-else style="display:flex">
+	              <div v-else style="display:flex">
                   <router-link to="/mon-equipe" class="nav-link" active-class="active" exact>Mon équipe</router-link>
                   <span style="cursor:pointer" v-on:click="logout()" class="nav-link">Se déconnecter</span>
                 </div>
@@ -58,28 +58,9 @@ export default {
   },
 
   methods:{
-    loginCAS(){
-      console.log("ATTEMPT TO LOGIN WITH CAS");
-
-      var _this = this;
-      axios.get('/api/cas.login')
-      .then(function(response){
-        if(response.status == 200){
-          _this.$store.commit('setUser', response.data.userAuthentified);
-          _this.$router.push('/');
-        }
-      });
-    },
-
     logout(){
-      var _this = this;
-      axios.post('/api/cas.logout')
-      .then(function(response){
-        if(response.status == 200){
-          _this.$store.commit('setUser', null);
-          _this.$router.push('/');
-        }
-      });
+      this.$store.commit('setUser', null);
+      window.location.href = '/api/cas.logout';
     }
   }
 }

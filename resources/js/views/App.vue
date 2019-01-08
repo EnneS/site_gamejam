@@ -16,6 +16,16 @@ export default {
   components: {navDark, navLight},
 
   el: '#app',
+
+  mounted(){
+    if (this.$store.state.user == null){
+      axios.get('/api/user')
+      .then( response => {
+        this.$store.commit('setUser', response.data.user);
+      }).catch( error => {
+      })
+    }
+  }
 }
 </script>
 
