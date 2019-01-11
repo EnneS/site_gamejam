@@ -56,11 +56,6 @@ export default {
     axios.get('/api/student.team')
     .then(function(response){
         _this.team = response.data[0];
-    })
-    .catch(function(error){
-      if(error.response.status == 402){
-        location.reload();
-      }
     });
   },
 

@@ -56,11 +56,6 @@ export default {
         .then(function(response){
             _this.$router.push('/mon-equipe');
             _this.$store.commit('setTeam', response.data.id);
-        })
-        .catch(function(error){
-          if(error.response.status == 402){
-            location.reload();
-          }
         });
     },
   }

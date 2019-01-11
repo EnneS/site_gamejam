@@ -43,13 +43,13 @@ let routes = [
   {
     path: '/mon-equipe/creer',
     component: require('./views/EquipeCreer.vue'),
-    meta: {requiresNoTeam: true}
+    meta: {requiresAuth: true, requiresNoTeam: true}
   },
 
   {
     path: '/mon-equipe/edit',
     component: require('./views/EquipeEdit.vue'),
-    meta: {requiresTeam: true}
+    meta: {requiresAuth: true, requiresTeam: true}
   },
 
 
@@ -62,7 +62,10 @@ let routes = [
 ]
 
 
-export default new VueRouter({
+const router = new VueRouter({
   mode: 'history',
   routes
 });
+
+
+export default router;
