@@ -1,27 +1,27 @@
 <template lang="html">
   <div class="container">
     <button type="button" class="btn btn-primary mb-3" @click="goBack">Retour</button>
-    <div v-if="rule">
+    <div v-if="step">
       <div class="alert alert-danger" v-if="errors.length > 0">
         <ul class="mb-0">
           <li v-for="error in errors">{{ error[0] }}</li>
         </ul>
       </div>
-      <h3>Modifier la règle</h3>
+      <h3>Modifier l'étape du tutoriel</h3>
       <form @submit.prevent="submit">
         <div class="form-group">
-          <label for="rulename">Nom de la règle</label>
-          <input type="text" v-model="rule.name" class="form-control" id="rulename" placeholder="Entrer un nom...">
+          <label for="stepname">Nom de l'étape</label>
+          <input type="text" v-model="step.name" class="form-control" id="stepname" placeholder="Entrer un nom...">
         </div>
         <div class="form-group">
-          <label for="ruledescription">Description de la règle</label>
-          <textarea type="text" v-model="rule.description" class="form-control" id="ruledescription" placeholder="Entrer une description" style="min-height:200px"/>
+          <label for="stepdescription">Description de l'étape</label>
+          <textarea type="text" v-model="step.description" class="form-control" id="stepdescription" placeholder="Entrer une description" style="min-height:200px"/>
         </div>
         <button type="submit" class="btn btn-success">Sauvegarder</button>
       </form>
     </div>
     <div v-else class="alert alert-danger">
-      Cette règle n'existe pas.
+      Cette étape n'existe pas.
     </div>
   </div>
 </template>
@@ -31,15 +31,15 @@ export default {
 
   data(){
     return {
-      rule : null,
+      step : null,
       errors : [],
     }
   },
 
   mounted() {
-    axios.get('/api/admin.getRule', {params : { id: this.$route.params.id } })
+    axios.get('/api/admin.getStep', {params : { id: this.$route.params.id } })
     .then((response) => {
-      this.rule = response.data;
+      this.step = response.data;
     });
   },
 
@@ -49,7 +49,7 @@ export default {
     },
     submit(){
       this.errors = [];
-      axios.post('/api/admin.rule.update', this.rule)
+      axios.post('/api/admin.step.update', this.step)
       .then((response) => {
       })
       .catch((error) => {

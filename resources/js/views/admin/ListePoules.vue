@@ -8,12 +8,14 @@
           <tr>
             <th scope="col">#</th>
             <th scope="col">Salle</th>
+            <th scope="col">Nombre d'équipes</th>
           </tr>
         </thead>
         <tbody>
           <tr v-for="group in groups">
             <th scope="row">{{ group.id }}</th>
             <td>{{ group.name }}</td>
+            <td>{{ group.teams_count }}</td>
           </tr>
         </tbody>
       </table>
@@ -43,7 +45,4 @@ export default {
 </script>
 
 <style lang="css">
-  tbody tr:hover {
-    background: #e9e9e9;
-  }
 </style>

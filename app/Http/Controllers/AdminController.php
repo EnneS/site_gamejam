@@ -19,23 +19,69 @@ class AdminController extends Controller
 
   // GETTERS
   public function getStudents(){
-    return Student::where('admin', 0)->get();
+    return Student::where('admin', 0)->orderBy('team_id')->get();
   }
 
+  public function getGroups(){
+    return Group::withCount('teams')->get();
+  }
+
+  // ==================
+  // TEAMS
   public function getTeams(){
     return Team::with('game')->get();
   }
 
-  public function getGroups(){
-    return Group::all();
+  public function getTeam(Request $request){
+    $team = Team::with(['game', 'group', 'students'])->find($request->id);
+    return $team;
   }
 
+  // ==================
+  // STEPS
+  public function getSteps(){
+    return Step::all();
+  }
+
+  public function getStep(Request $request){
+    $step = Step::find($request->id);
+    return $step;
+  }
+
+  public function deleteStep(Request $request){
+    $step = Step::find($request->id);
+    $step->delete();
+    return response()->json(['success' => true, 'message' => 'Tutoriel supprimé'], 200);
+  }
+
+  public function updateStep(Request $request){
+    $request->validate([
+        'name' => 'required',
+        'description' => 'required',
+    ]);
+
+    $step = Step::find($request->id);
+    $step->fill($request->all());
+    $step->save();
+    return response()->json(['success' => true, 'message' => 'Etape mise à jour'], 200);
+  }
+
+  public function createStep(Request $request){
+    $request->validate([
+        'name' => 'required',
+        'description' => 'required',
+    ]);
+
+    $step = new Step;
+    $step->fill($request->all());
+    $step->save();
+    return response()->json(['success' => true, 'message' => 'Etape créée'], 200);
+  }
+
+  // ==================
+  // RULES
   public function getRules(){
     return Rule::all();
-  }
-
-  public function getSteps(){
-    return Steps::all();
   }
 
   public function deleteRule(Request $request){
@@ -48,6 +94,7 @@ class AdminController extends Controller
     $rule = Rule::find($request->id);
     return $rule;
   }
+
 
   public function updateRule(Request $request){
     $request->validate([

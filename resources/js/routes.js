@@ -68,11 +68,15 @@ let routes = [
       { path: '/admin/dashboard', name:'AdminDashboard', component : require('./views/admin/Dashboard.vue'), meta: {requiresAdmin : true}},
       { path: '/admin/etudiants', name:'AdminListeEtudiants', component : require('./views/admin/ListeEtudiants.vue'), meta: {requiresAdmin : true}},
       { path: '/admin/equipes', name:'AdminListeEquipes', component : require('./views/admin/ListeEquipes.vue'), meta: {requiresAdmin : true}},
+      { path: '/admin/equipes/:id', name:'AdminEquipeDetail', component : require('./views/admin/EquipeDetail.vue'), meta: {requiresAdmin : true}},
       { path: '/admin/poules', name:'AdminListePoules', component : require('./views/admin/ListePoules.vue'), meta: {requiresAdmin : true}},
       { path: '/admin/reglement', name:'AdminReglement', component : require('./views/admin/Reglement.vue'), meta: {requiresAdmin : true}},
       { path: '/admin/reglement/:id', name:'AdminReglementDetail', component : require('./views/admin/ReglementDetail.vue'), meta: {requiresAdmin : true}},
       { path: '/admin/new/reglement', name:'AdminReglementCreer', component : require('./views/admin/ReglementCreer.vue'), meta: {requiresAdmin : true}},
       { path: '/admin/tutoriel', name:'AdminTutoriel', component : require('./views/admin/Tutoriel.vue'), meta: {requiresAdmin : true}},
+      { path: '/admin/tutoriel/:id', name:'AdminTutorielDetail', component : require('./views/admin/TutorielDetail.vue'), meta: {requiresAdmin : true}},
+      { path: '/admin/new/tutoriel', name:'AdminTutorielCreer', component : require('./views/admin/TutorielCreer.vue'), meta: {requiresAdmin : true}},
+
 
     ]
   },

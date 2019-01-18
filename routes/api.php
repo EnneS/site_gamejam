@@ -47,9 +47,17 @@ Route::group(['middleware' => 'web'], function() {
 
   // Admin
   Route::get('admin.students', 'AdminController@getStudents');
+
   Route::get('admin.teams', 'AdminController@getTeams');
+  Route::get('admin.getTeam', 'AdminController@getTeam');
+
   Route::get('admin.groups', 'AdminController@getGroups');
+
   Route::get('admin.steps', 'AdminController@getSteps');
+  Route::get('admin.getStep', 'AdminController@getStep');
+  Route::post('admin.step.create', 'AdminController@createStep');
+  Route::post('admin.step.delete', 'AdminController@deleteStep');
+  Route::post('admin.step.update', 'AdminController@updateStep');
 
   Route::get('admin.rules', 'AdminController@getRules');
   Route::get('admin.getRule', 'AdminController@getRule');
