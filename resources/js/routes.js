@@ -52,6 +52,25 @@ let routes = [
     meta: {requiresAuth: true, requiresTeam: true}
   },
 
+  // ADMIN
+  {
+    path: '/admin/login',
+    component: require('./views/admin/Login.vue'),
+    name: 'AdminLogin',
+    meta: {requiresGuest : true}
+  },
+
+  {
+    path: '/admin/',
+    component: require('./views/admin/Home.vue'),
+    children: [
+      { path: '', name:'AdminHome', redirect: {name: 'AdminDashboard'}},
+      { path: '/admin/dashboard', name:'AdminDashboard', component : require('./views/admin/Dashboard.vue'), meta: {requiresAdmin : true}},
+      { path: '/admin/students', name:'AdminStudentsList', component : require('./views/admin/StudentsList.vue'), meta: {requiresAdmin : true}}
+
+    ]
+  },
+
 
   // 404
   {

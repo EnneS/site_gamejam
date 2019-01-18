@@ -9,6 +9,11 @@ use Illuminate\Support\Facades\File;
 class StudentController extends Controller
 {
 
+  /**
+   * Return the authentified user (or null if he is not authentified)
+   *
+   * @return \App\User
+   */
   public function getUser(){
     return response()->json(['user' => auth()->user()]);
   }

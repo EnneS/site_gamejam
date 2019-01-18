@@ -14,19 +14,19 @@ class StudentSeeder extends Seeder
       DB::table('students')->insert([
         [
           'id' => 1,
-          'login' => 'souliern',
-          'first_name' => 'Nathan',
-          'last_name' => 'Soulier',
-          'email' => 'nathansoulier@email.email',
+          'login' => 'admin',
+          'first_name' => 'admin',
+          'last_name' => 'admin',
           'team_id' => null,
+          'admin' => 1,
         ],
         [
           'id' => 2,
           'login' => 'gilett',
           'first_name' => 'Théophile',
           'last_name' => 'Gilet',
-          'email' => 'theophilegilet@email.email',
           'team_id' => 1,
+          'admin' => 0,
         ],
       ]);
     }

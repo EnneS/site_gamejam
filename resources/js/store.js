@@ -11,6 +11,7 @@ const getters = {
   check: state => state.user !== null,
   team: state => state.user !== null && state.user.team_id !== null,
   team_id: state => state.user.team_id,
+  admin: state => state.user !== null && state.user.admin === 1,
 }
 
 export default new Vuex.Store({

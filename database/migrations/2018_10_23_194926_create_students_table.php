@@ -18,8 +18,8 @@ class CreateStudentsTable extends Migration
             $table->string('login')->unique()->comment('The student login');
             $table->string('first_name')->comment('The student first name');
             $table->string('last_name')->comment('The student last name');
-            $table->string('email')->unique()->comment('The student email');
             $table->integer('team_id')->unsigned()->nullable();
+            $table->integer('admin')->unsigned()->nullable()->default(0);
 
             $table->string('remember_token', 256)->nullable()->comment('The remember token to keep logged');
 

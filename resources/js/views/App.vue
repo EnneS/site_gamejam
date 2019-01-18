@@ -1,7 +1,9 @@
 <template>
     <div id="app">
-      <navLight v-if="$route.name == 'Home'"/>
-      <navDark v-else/>
+      <div v-if="!$route.meta.requiresAdmin">
+        <navLight v-if="$route.name == 'Home'"/>
+        <navDark v-else/>
+      </div>
       <transition name="fade" mode="out-in">
         <router-view/>
       </transition>

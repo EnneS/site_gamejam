@@ -59,8 +59,8 @@ export default {
 
   methods:{
     logout(){
-      this.$store.commit('setUser', null);
       window.location.href = '/api/cas.logout';
+      this.$store.commit('setUser', null);
     }
   }
 }

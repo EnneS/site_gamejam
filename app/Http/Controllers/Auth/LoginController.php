@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Auth;
 
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use App\Http\Controllers\Controller;
 use Illuminate\Auth\EloquentUserProvider;
@@ -50,7 +51,6 @@ class LoginController extends Controller
     			'login' => $login,
           'first_name' => 'null',
           'last_name' => 'null',
-          'email' => 'null',
     		]);
     	}
      	auth()->login($student, true);
@@ -62,6 +62,17 @@ class LoginController extends Controller
     public function logout(){
       auth()->logout();
       include(app_path() . '/CAS/CAS_logout.php');
+    }
+
+    public function AdminLogin(Request $request){
+      if ($request->password == config('app.admin_password')){
+        $user = Student::where('admin', 1)->first();
+        return $user;
+        // auth()->login($user, true);
+        // return auth()->user();
+      } else {
+        return response()->json(['success' => false, 'message' => 'Mot de passe erroné'], 403);
+      }
     }
 }
 

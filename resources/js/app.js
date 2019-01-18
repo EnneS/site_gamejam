@@ -11,6 +11,18 @@ router.beforeEach(async (to, from, next) => {
         }
     }
 
+    if (to.meta.requiresGuest) {
+        if (store.getters.check) {
+          return next({name: 'Home'});
+        }
+    }
+
+    if (to.meta.requiresAdmin) {
+        if (!store.getters.admin) {
+          return next({name: 'AdminLogin'});
+        }
+    }
+
     if(to.meta.requiresNoTeam){
       if(store.getters.team){
         return next({name: 'MonEquipe'});

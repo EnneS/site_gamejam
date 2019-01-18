@@ -13,24 +13,35 @@ use Illuminate\Http\Request;
 |
 */
 Route::group(['middleware' => 'web'], function() {
-  // LOGIN
+  // =======================
+  // ======= GUEST =========
+  // =======================
+  // Student Login
   Route::get('cas.login', 'Auth\LoginController@login');
   Route::get('cas.logout', 'Auth\LoginController@logout');
 
-  // GETTERS
+  // Admin Login
+  Route::post('admin.login', 'Auth\LoginController@AdminLogin');
+
+  // Get the authentified user if there is one
   Route::get('user', 'StudentController@getUser');
-  Route::get('student.team', 'StudentController@getTeam');
+
+  // Guest Views Data
   Route::get('teams', 'TeamController@allTeam');
   Route::get('rules', 'RuleController@allRules');
   Route::get('steps', 'StepController@allSteps');
   Route::get('groups', 'GroupController@allGroups');
 
-  // POST
-  Route::post('team.create', 'TeamController@createTeam');
+  // ======================
+  // ======= STUDENT ======
+  // ======================
+  // Teams
+  Route::get('student.team', 'StudentController@getTeam')->middleware('auth');
+  Route::post('team.create', 'TeamController@createTeam')->middleware('auth');
+  Route::post('team.edit', 'TeamController@editTeam')->middleware('auth');
 
-  // PATCH
-  Route::patch('student.team.leave', 'StudentController@leaveTeam');
-  Route::post('student.team.join', 'StudentController@joinTeam');
-  Route::post('team.edit', 'TeamController@editTeam');
+  // Join / Leave a team
+  Route::patch('student.team.leave', 'StudentController@leaveTeam')->middleware('auth');
+  Route::post('student.team.join', 'StudentController@joinTeam')->middleware('auth');
 
 });
