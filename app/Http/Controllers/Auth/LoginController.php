@@ -74,6 +74,11 @@ class LoginController extends Controller
         return response()->json(['success' => false, 'message' => 'Mot de passe erroné'], 403);
       }
     }
+
+    public function AdminLogout(){
+      auth()->logout();
+      return redirect('/');
+    }
 }
 
 ?>

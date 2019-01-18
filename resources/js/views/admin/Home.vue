@@ -29,7 +29,12 @@
                 {{ tab.name }}
               </router-link>
             </li>
+
+            <li class="footer-nav" @click="logout">
+              <a>Déconnexion</a>
+            </li>
         </ul>
+
     </nav>
 
     <!-- Page Content -->
@@ -64,10 +69,24 @@ export default {
   methods: {
     isTabActive(route){
       return route == this.$router.currentRoute.name;
+    },
+    logout(){
+      axios.post('/api/admin.logout')
+      .then((response) => {
+        this.$store.commit('setUser', null);
+        this.$router.push({ path: '/' })
+      });
     }
+
   }
 }
 </script>
 
 <style lang="css">
+  .footer-nav{
+    position: absolute;
+    width:100%;
+    bottom:0;
+    cursor:pointer;
+  }
 </style>
