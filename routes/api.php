@@ -37,13 +37,13 @@ Route::group(['middleware' => 'web'], function() {
   // ======= STUDENT ======
   // ======================
   // Teams
-  Route::get('student.team', 'StudentController@getTeam')->middleware('auth');
-  Route::post('team.create', 'TeamController@createTeam')->middleware('auth');
-  Route::post('team.edit', 'TeamController@editTeam')->middleware('auth');
+  Route::get('student.team', 'StudentController@getTeam')->middleware('student');
+  Route::post('team.create', 'TeamController@createTeam')->middleware('student');
+  Route::post('team.edit', 'TeamController@editTeam')->middleware('student');
 
   // Join / Leave a team
-  Route::patch('student.team.leave', 'StudentController@leaveTeam')->middleware('auth');
-  Route::post('student.team.join', 'StudentController@joinTeam')->middleware('auth');
+  Route::patch('student.team.leave', 'StudentController@leaveTeam')->middleware('student');
+  Route::post('student.team.join', 'StudentController@joinTeam')->middleware('student');
 
   // Admin
   Route::get('admin.students', 'AdminController@getStudents');

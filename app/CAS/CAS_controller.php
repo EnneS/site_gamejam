@@ -8,7 +8,7 @@ $cas_context = '';
 $cas_port = 443;
 
 // Initialize phpCAS
-phpCAS::client(SAML_VERSION_1_1, $cas_host, $cas_port, $cas_context);
+phpCAS::client(CAS_VERSION_2_0, $cas_host, $cas_port, $cas_context);
 
 
 // For quick testing you can disable SSL validation of the CAS server.
@@ -26,7 +26,7 @@ if (isset($_REQUEST['logout'])) {
 
 // get the user login
 $login = $_SESSION["phpCAS"];
-
+dd(phpCAS::getUser());
 // Reform the structure of $_SESSION
 //$_SESSION["currentUser"]["login"] = $login;
 

@@ -18,26 +18,14 @@ class StudentController extends Controller
   }
 
   /**
-   * Get all missions from the authentified user.
+   * Get the authentified user's team.
    *
    * @return \App\Team
    */
   public function getTeam(){
     $user = Auth::user();
-    if($user != null){
-      $team = $user->team;
-      if($team != null){
-        $payload = array();
-        array_push($payload, $team); // On récupère l'équipe
-        array_push($payload, $team->students); // Ses membres
-        array_push($payload, $team->game); // Son jeu
-        return $payload;
-      } else {
-        return null;
-      }
-    } else {
-      return response()->json(['error' => 'not connected'], 402);
-    }
+    $team = \App\Team::with(['students', 'game'])->where('id', $user->team_id)->first();
+    return response()->json(['success' => true, 'team' => $team], 200);
   }
 
   public function leaveTeam(){
@@ -60,8 +48,14 @@ class StudentController extends Controller
 
   public function joinTeam(Request $request){
     $user = Auth::user();
-    $user->team_id = $request['teamId'];
-    $user->save();
-    return $user->team_id;
+    $team = \App\Team::find($request['teamId']);
+    // On vérifie que la team peut encore accepter des membres
+    if(count($team->students) <= config('app.max_students')){
+      $user->team_id = $request['teamId'];
+      $user->save();
+      return $user->team_id;
+    } else {
+      return response()->json(['error' => "Cette équipe a atteint le nombre maximum d'élèves"], 423);
+    }
   }
 }

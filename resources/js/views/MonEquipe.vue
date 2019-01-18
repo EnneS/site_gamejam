@@ -55,7 +55,7 @@ export default {
     var _this = this;
     axios.get('/api/student.team')
     .then(function(response){
-        _this.team = response.data[0];
+        _this.team = response.data.team;
     });
   },
 

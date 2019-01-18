@@ -15,30 +15,36 @@ class TeamController extends Controller
 
       // On vérifie si jamais que l'utilisateur n'a pas déjà une équipe.
       if($user->team_id == null){
-        // Création de l'équipe et du jeu
-        $team = new Team;
-        $team->name = $request['teamName'];
-        $team->save();
+        $countTeam = count(Team::all());
+        // Vérifier que le nombre maximale d'équipe déjà créées n'est pas atteint
+        if($countTeam+1 <= config('app.max_teams')){
+          // Création de l'équipe et du jeu
+          $team = new Team;
+          $team->name = $request['teamName'];
+          $team->save();
 
-        $game = new Game;
-        $game->name = $request['gameName'];
-        $game->description = $request['gameDesc'];
-        $game->save();
+          $game = new Game;
+          $game->name = $request['gameName'];
+          $game->description = $request['gameDesc'];
+          $game->save();
 
-        $team->game_id = $game->id;
-        $team->save();
+          $team->game_id = $game->id;
+          $team->save();
 
-        $game->team_id = $team->id;
-        $game->save();
+          $game->team_id = $team->id;
+          $game->save();
 
-        // Ajout de l'équipe à l'utilisateur connecté
-        $user = \App\Student::where('id', Auth::user()['id'])->first();
-        $user->team_id = $team->id;
-        $user->save();
+          // Ajout de l'équipe à l'utilisateur connecté
+          $user = \App\Student::where('id', Auth::user()['id'])->first();
+          $user->team_id = $team->id;
+          $user->save();
 
-        return $team;
+          return $team;
+        } else {
+          return response()->json(['error' => "Le nombre maximal d'équipes a été atteint"], 423);
+        }
       } else {
-        return response()->json(['error' => 'Cet utilisateur a déjà une équipe'], 402);
+        return response()->json(['error' => 'Cet utilisateur a déjà une équipe'], 423);
       }
     }
 
@@ -80,7 +86,7 @@ class TeamController extends Controller
         $game->save();
         return response()->json(['success' => true], 200);
       } else {
-        return response()->json(['error' => 'Cet utilisateur n\'a pas d\'équipe'], 402);
+        return response()->json(['error' => 'Cet utilisateur n\'a pas d\'équipe'], 422);
       }
     }
 
