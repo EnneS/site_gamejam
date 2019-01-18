@@ -28,6 +28,14 @@ class StudentSeeder extends Seeder
           'team_id' => 1,
           'admin' => 0,
         ],
+        [
+          'id' => 3,
+          'login' => 'souliern',
+          'first_name' => 'Nathan',
+          'last_name' => 'Soulier',
+          'team_id' => null,
+          'admin' => 0,
+        ],
       ]);
     }
 }

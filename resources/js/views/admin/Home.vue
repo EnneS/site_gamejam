@@ -58,7 +58,23 @@ export default {
       },
       {
         name: 'Etudiants',
-        route: 'AdminStudentsList',
+        route: 'AdminListeEtudiants',
+      },
+      {
+        name: 'Equipes',
+        route: 'AdminListeEquipes',
+      },
+      {
+        name: 'Poules',
+        route: 'AdminListePoules',
+      },
+      {
+        name: 'Règlement',
+        route: 'AdminReglement',
+      },
+      {
+        name: 'Tutoriel',
+        route: 'AdminTutoriel',
       }],
     }
   },

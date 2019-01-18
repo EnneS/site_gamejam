@@ -22,15 +22,6 @@ class LoginController extends Controller
     |
     */
 
-
-
-    /**
-     * Where to redirect users after login.
-     *
-     * @var string
-     */
-    protected $redirectTo = '/';
-
     /**
      * Create a new controller instance.
      *
@@ -38,7 +29,7 @@ class LoginController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('guest')->except('logout');
+        $this->middleware('guest')->except(['logout', 'AdminLogout']);
     }
 
     public function login(){
@@ -46,16 +37,11 @@ class LoginController extends Controller
 
     	$login = $_SESSION['phpCAS']['user'];
     	$student = Student::where('login', $login)->first();
-    	if($student == null){
-    		$student = Student::create([
-    			'login' => $login,
-          'first_name' => 'null',
-          'last_name' => 'null',
-    		]);
-    	}
-     	auth()->login($student, true);
-    	session_destroy();
-    	unset($_SESSION['phpCAS']);
+      if($student){
+       	auth()->login($student, true);
+      }
+      session_destroy();
+      unset($_SESSION['phpCAS']);
       return redirect('/');
     }
 
