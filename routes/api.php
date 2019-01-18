@@ -45,4 +45,6 @@ Route::group(['middleware' => 'web'], function() {
   Route::patch('student.team.leave', 'StudentController@leaveTeam')->middleware('auth');
   Route::post('student.team.join', 'StudentController@joinTeam')->middleware('auth');
 
+  // Admin
+  Route::get('admin.students', 'AdminController@getStudents');
 });

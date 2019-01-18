@@ -85,8 +85,8 @@ export default {
 <style lang="css">
   .footer-nav{
     position: absolute;
-    width:100%;
-    bottom:0;
+    width:250px;
+    bottom:0px;
     cursor:pointer;
   }
 </style>

@@ -67,9 +67,8 @@ class LoginController extends Controller
     public function AdminLogin(Request $request){
       if ($request->password == config('app.admin_password')){
         $user = Student::where('admin', 1)->first();
-        return $user;
-        // auth()->login($user, true);
-        // return auth()->user();
+        auth()->login($user, true);
+        return auth()->user();
       } else {
         return response()->json(['success' => false, 'message' => 'Mot de passe erroné'], 403);
       }

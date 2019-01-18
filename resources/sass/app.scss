@@ -91,6 +91,15 @@ ul ul a {
   width:100%
 }
 
+.admin-box{
+  background: white;
+  border-top: 4px solid #ed1734;
+}
+
+.table thead th {
+  border-top:0;
+}
+
 // Stripes
 #stripes, #stripes span {
     position: absolute
