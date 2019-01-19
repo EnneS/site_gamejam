@@ -22,7 +22,6 @@ Route::group(['middleware' => 'web'], function() {
 
   // Admin Login
   Route::post('admin.login', 'Auth\LoginController@AdminLogin');
-  Route::post('admin.logout', 'Auth\LoginController@AdminLogout');
 
   // Get the authentified user if there is one
   Route::get('user', 'StudentController@getUser');

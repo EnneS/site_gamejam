@@ -26,7 +26,6 @@ if (isset($_REQUEST['logout'])) {
 
 // get the user login
 $login = $_SESSION["phpCAS"];
-dd(phpCAS::getUser());
 // Reform the structure of $_SESSION
 //$_SESSION["currentUser"]["login"] = $login;
 

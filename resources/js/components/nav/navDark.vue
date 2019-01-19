@@ -31,7 +31,8 @@
                   <a href="/api/cas.login" style="cursor:pointer" class="nav-link" >Se connecter</a>
                 </div>
 	              <div v-else style="display:flex">
-                  <router-link to="/mon-equipe" class="nav-link" active-class="active" exact>Mon équipe</router-link>
+                  <router-link v-if="isAdmin" to="/admin/dashboard" tag="button" class="btn btn-gamejam btn-vert" active-class="active" exact>Admin</router-link>
+                  <router-link v-else to="/mon-equipe" class="nav-link" active-class="active" exact>Mon équipe</router-link>
                   <span style="cursor:pointer" v-on:click="logout()" class="nav-link">Se déconnecter</span>
                 </div>
               </li>
@@ -54,6 +55,9 @@ export default {
   computed:{
     getUser(){
       return this.$store.state.user;
+    },
+    isAdmin(){
+        return this.$store.getters.admin;
     }
   },
 

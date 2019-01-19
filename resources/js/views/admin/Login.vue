@@ -15,6 +15,8 @@
                 </div>
                 <button type="submit" class="btn btn-primary">Se connecter</button>
               </form>
+              <hr>
+              <button type="button" class="btn btn-primary" name="button" @click="loginCAS">Se connecter avec CAS</button>
             </div>
           </div>
       </div>
@@ -37,6 +39,9 @@ export default {
   },
 
   methods:{
+    loginCAS(){
+      window.location.href="/api/cas.login";
+    },
     submit(){
       this.error = '';
       axios.post('/api/admin.login', {password: this.password})

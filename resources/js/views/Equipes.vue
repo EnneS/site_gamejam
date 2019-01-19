@@ -83,11 +83,11 @@ export default {
     },
 
     isJoinable(){
-      return this.$store.getters.check && !this.$store.getters.team;
+      return this.$store.getters.check && !this.$store.getters.admin && !this.$store.getters.team;
     },
 
     isLeavable(id){
-      return this.$store.getters.check && this.$store.getters.team_id == id;
+      return this.$store.getters.check && !this.$store.getters.admin && this.$store.getters.team_id == id;
     }
   }
 }

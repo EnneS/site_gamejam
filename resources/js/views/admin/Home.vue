@@ -4,9 +4,9 @@
     <!-- Sidebar -->
     <nav id="sidebar">
         <div class="sidebar-header">
-            <h3 class="mb-0">Panel Admin</h3>
+            <h3 >Panel Admin</h3>
+            <h4 class="mb-0" style="font-weight:700"><span class="badge badge-pill badge-light">{{ name }}</span></h4>
         </div>
-
         <ul class="list-unstyled components">
 
             <!--<li class="active">
@@ -82,16 +82,19 @@ export default {
   mounted() {
   },
 
+  computed:{
+    name(){
+      return this.$store.state.user['first_name'] + ' ' + this.$store.state.user['last_name'];
+    }
+  },
+
   methods: {
     isTabActive(route){
       return route == this.$router.currentRoute.name;
     },
     logout(){
-      axios.post('/api/admin.logout')
-      .then((response) => {
-        this.$store.commit('setUser', null);
-        this.$router.push({ path: '/' })
-      });
+      window.location.href = "/api/cas.logout";
+      this.$store.commit('setUser', null);
     }
 
   }

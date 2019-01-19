@@ -5,8 +5,10 @@ import App from './views/App.vue';
 
 router.beforeEach(async (to, from, next) => {
     if (to.meta.requiresAuth) {
-        if (!store.getters.check) {
+        if (!store.getters.check) { // Check if guest
           window.location.href ="/api/cas.login" // Force authentication
+          return next({name: 'Home'});
+        } else if(store.getters.admin) { // Check if admin
           return next({name: 'Home'});
         }
     }
