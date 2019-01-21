@@ -44,13 +44,23 @@ Route::group(['middleware' => 'web'], function() {
   Route::patch('student.team.leave', 'StudentController@leaveTeam')->middleware('student');
   Route::post('student.team.join', 'StudentController@joinTeam')->middleware('student');
 
-  // Admin
+  // ======================
+  // ======= ADMIN ========
+  // ======================
   Route::get('admin.students', 'AdminController@getStudents');
+
+  Route::get('admin.configuration', 'AdminController@getConfiguration');
+  Route::post('admin.configuration.update', 'AdminController@updateConfiguration');
+
+  Route::get('admin.admins', 'AdminController@getAdmins');
+  Route::post('admin.admin.delete', 'AdminController@deleteAdmin');
+  Route::post('admin.admin.create', 'AdminController@createAdmin');
 
   Route::get('admin.teams', 'AdminController@getTeams');
   Route::get('admin.getTeam', 'AdminController@getTeam');
 
   Route::get('admin.groups', 'AdminController@getGroups');
+  Route::get('admin.groups.generate', 'AdminController@generateGroups');
 
   Route::get('admin.steps', 'AdminController@getSteps');
   Route::get('admin.getStep', 'AdminController@getStep');

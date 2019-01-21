@@ -3,10 +3,15 @@ import Vuex from 'vuex'
 import axios from 'axios';
 import router from './routes'
 import VueRouter from 'vue-router';
+import Toasted from 'vue-toasted';
 
 window.Vue = Vue;
 window.axios = axios;
 
+// Toasted messages
+Vue.use(Toasted)
+
+// Router
 Vue.use(VueRouter);
 
 // Store

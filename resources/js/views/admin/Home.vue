@@ -1,4 +1,4 @@
-<template lang="html">
+<template>
   <div class="wrapper">
 
     <!-- Sidebar -->
@@ -75,6 +75,10 @@ export default {
       {
         name: 'Tutoriel',
         route: 'AdminTutoriel',
+      },
+      {
+        name: 'Administrateurs',
+        route: 'AdminListeAdmins',
       }],
     }
   },

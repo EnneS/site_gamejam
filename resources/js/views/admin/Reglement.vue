@@ -1,4 +1,4 @@
-<template lang="html">
+<template>
   <div class="container">
     <h3>Règlement</h3>
     <div v-for="rule in rules" class="row align-items-center">
@@ -50,6 +50,7 @@ export default {
           i++;
         }
         this.rules.splice(i, 1);
+        this.$toasted.success(response.data.message, {duration : 2000});
       });
     }
   }

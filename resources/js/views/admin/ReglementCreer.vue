@@ -1,4 +1,4 @@
-<template lang="html">
+<template>
   <div class="container">
     <button type="button" class="btn btn-primary mb-3" @click="goBack">Retour</button>
     <div class="alert alert-danger" v-if="errors.length > 0">
@@ -46,6 +46,7 @@ export default {
       this.errors = [];
       axios.post('/api/admin.rule.create', this.rule)
       .then((response) => {
+        this.$toasted.success(response.data.message, {duration : 2000});
         this.$router.push('/admin/reglement');
       })
       .catch((error) => {

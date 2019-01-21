@@ -1,4 +1,4 @@
-<template lang="html">
+<template>
   <div class="container">
     <button type="button" class="btn btn-primary mb-3" @click="goBack">Retour</button>
     <div v-if="step">
@@ -51,6 +51,7 @@ export default {
       this.errors = [];
       axios.post('/api/admin.step.update', this.step)
       .then((response) => {
+        this.$toasted.success(response.data.message, {duration : 2000});
       })
       .catch((error) => {
         this.errors = Object.values(error.response.data.errors);

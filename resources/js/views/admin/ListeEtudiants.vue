@@ -1,4 +1,4 @@
-<template lang="html">
+<template>
   <div class="container">
     <h3>Liste des étudiants</h3>
 

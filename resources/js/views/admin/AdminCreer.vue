@@ -6,15 +6,19 @@
         <li v-for="error in errors">{{ error[0] }}</li>
       </ul>
     </div>
-    <h3>Ajouter une étape au tutoriel</h3>
+    <h3>Ajouter un administrateur</h3>
     <form @submit.prevent="submit">
       <div class="form-group">
-        <label for="stepname">Nom de l'étape</label>
-        <input type="text" v-model="step.name" class="form-control" id="stepname" placeholder="Entrer un nom...">
+        <label for="rulename">Login CAS</label>
+        <input type="text" v-model="admin.login" class="form-control" id="adminlogin" placeholder="Entrer un login CAS valide...">
       </div>
       <div class="form-group">
-        <label for="ruledescription">Description de l'étape</label>
-        <textarea type="text" v-model="step.description" class="form-control" id="stepdescription" placeholder="Entrer une description" style="min-height:200px"/>
+        <label for="adminfirstname">Prénom</label>
+        <input type="text" v-model="admin.first_name" class="form-control" id="adminfirstname" placeholder="Entrer un prénom..."/>
+      </div>
+      <div class="form-group">
+        <label for="adminlastname">Nom</label>
+        <input type="text" v-model="admin.last_name" class="form-control" id="adminlastname" placeholder="Entrer un nom..." />
       </div>
       <button type="submit" class="btn btn-success">Ajouter</button>
     </form>
@@ -26,9 +30,10 @@ export default {
 
   data(){
     return {
-      step : {
-        name : '',
-        description : '',
+      admin : {
+        login : '',
+        first_name : '',
+        last_name : '',
       },
       errors : [],
     }
@@ -44,10 +49,10 @@ export default {
     },
     submit(){
       this.errors = [];
-      axios.post('/api/admin.step.create', this.step)
+      axios.post('/api/admin.admin.create', this.admin)
       .then((response) => {
         this.$toasted.success(response.data.message, {duration : 2000});
-        this.$router.push('/admin/tutoriel');
+        this.$router.push('/admin/admins');
       })
       .catch((error) => {
         this.errors = Object.values(error.response.data.errors);

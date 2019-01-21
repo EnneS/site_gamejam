@@ -1,4 +1,15 @@
 <?php return array (
+  'akaunting/setting' => 
+  array (
+    'providers' => 
+    array (
+      0 => 'Akaunting\\Setting\\Provider',
+    ),
+    'aliases' => 
+    array (
+      'Setting' => 'Akaunting\\Setting\\Facade',
+    ),
+  ),
   'beyondcode/laravel-dump-server' => 
   array (
     'providers' => 

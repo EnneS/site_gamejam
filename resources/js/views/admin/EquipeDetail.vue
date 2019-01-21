@@ -1,4 +1,4 @@
-<template lang="html">
+<template>
   <div class="container">
     <button type="button" class="btn btn-primary mb-3" @click="goBack">Retour</button>
     <div v-if="team">
@@ -61,16 +61,6 @@ export default {
     goBack(){
       this.$router.go(-1);
     },
-    submit(){
-      this.errors = [];
-      axios.post('/api/admin.rule.update', this.rule)
-      .then((response) => {
-        this.rule = response.data.rule;
-      })
-      .catch((error) => {
-        this.errors = Object.values(error.response.data.errors);
-      });
-    }
   }
 }
 </script>

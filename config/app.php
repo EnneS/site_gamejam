@@ -17,25 +17,21 @@ return [
     |--------------------------------------------------------------------------
     | Maximum number of students per team
     |--------------------------------------------------------------------------
-    |
-    | Password to access the admin dashboard
-    |
+    | Specify the value in the .env or 5 by default
+    | Can be overriden by storage/settings.json
     */
 
     'max_students' => env('MAX_STUDENTS', 5),
 
     /*
     |--------------------------------------------------------------------------
-    | Maximum number of teams possible
+    | Maximum number of teams allowed
     |--------------------------------------------------------------------------
-    |
-    | Password to access the admin dashboard
-    |
+    | Specify the value in the .env or 25 by default
+    | Can be overriden by storage/settings.json
     */
 
-    'max_teams' => env('MAX_TEAMS', 2),
-
-
+    'max_teams' => env('MAX_TEAMS', 25),
 
     /*
     |--------------------------------------------------------------------------

@@ -1,4 +1,4 @@
-<template lang="html">
+<template>
   <header id="navHome">
       <div class="container">
         <nav class="navbar navbar-expand-lg navbar-dark justify-content-between">
@@ -31,7 +31,7 @@
                   <a href="/api/cas.login" style="cursor:pointer" class="nav-link" >Se connecter</a>
                 </div>
 	              <div v-else style="display:flex">
-                  <router-link v-if="isAdmin" to="/admin/dashboard" tag="button" class="btn btn-gamejam" active-class="active" exact>Admin</router-link>
+                  <router-link v-if="isAdmin" to="/admin/dashboard" tag="button" class="btn-gamejam" active-class="active" exact>Admin</router-link>
                   <router-link v-else to="/mon-equipe" class="nav-link" active-class="active" exact>Mon équipe</router-link>
                   <span style="cursor:pointer" v-on:click="logout()" class="nav-link">Se déconnecter</span>
                 </div>

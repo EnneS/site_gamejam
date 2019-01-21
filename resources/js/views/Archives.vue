@@ -1,4 +1,4 @@
-<template lang="html">
+<template>
   <div class="">
     <div class="row bg-dark pt-5 pb-5 text-white">
       <div class="container">

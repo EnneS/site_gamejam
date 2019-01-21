@@ -1,7 +1,6 @@
-<template lang="html">
+<template>
   <div class="container">
     <h3>Liste des Poules</h3>
-
     <div class="admin-box">
       <table class="table">
         <thead>
@@ -20,6 +19,13 @@
         </tbody>
       </table>
     </div>
+    <div class="form-group w-25">
+      <label for="nbGroups">Nombre de poules</label>
+      <input type="number" v-model.number="nbGroups" value="" name="nbGroups" class="form-control" placeholder="Nombre de poule..." />
+      <label for="teampergroup">Nombre d'équipes par poule</label>
+      <input type="number" v-model.number="teamsPerGroup" value="" name="teampergroup" class="form-control" placeholder="Nombre d'équipes par poule..." />
+      <button type="button" class="mt-2 btn btn-primary" @click="generateGroups()">Générer les poules</button>
+    </div>
   </div>
 </template>
 
@@ -28,7 +34,9 @@ export default {
 
   data(){
     return {
-      groups : []
+      groups : [],
+      teamsPerGroup : 0,
+      nbGroups : 0,
     }
   },
 
@@ -40,6 +48,15 @@ export default {
   },
 
   methods:{
+    generateGroups(){
+      axios.get('/api/admin.groups.generate', {params : { teamsPerGroup : this.teamsPerGroup, nbGroups : this.nbGroups }})
+      .then((response) => {
+        this.groups = response.data.groups;
+        this.$toasted.success(response.data.message, {duration : 2000});
+      }).catch((error) => {
+        this.$toasted.error(error.response.data.message, {duration : 2000});
+      })
+    }
   }
 }
 </script>
