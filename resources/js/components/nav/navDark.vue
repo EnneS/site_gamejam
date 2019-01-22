@@ -3,10 +3,10 @@
       <div class="container">
         <nav class="navbar navbar-expand-lg navbar-light">
           <router-link to="/" class="navbar-brand mr-5" style="font-weight:700" exact>GameJam</router-link>
-          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavL" aria-controls="navbarNavL" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
           </button>
-          <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+          <div class="collapse navbar-collapse justify-content-end" id="navbarNavL">
             <ul class="navbar-nav align-items-end">
               <li class="nav-item">
                 <router-link to="/" class="nav-link" active-class="active" exact>Accueil</router-link>

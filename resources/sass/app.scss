@@ -314,3 +314,30 @@ ul ul a {
       height:760px;
     }
 }
+@media (max-width: 991px){
+  #navHome {
+    height:65px;
+    position:relative;
+    background: black;
+  }
+  #navbarNav > ul {
+    width:55%;
+    background:black;
+    position:absolute;
+    right:0;
+    padding-right:1em;
+  }
+  #navbarNav > ul > li > div {
+    display:block !important;
+    text-align: right;
+  }
+  #navbarNavL > ul {
+    background:#F8FAFC;
+    right:0;
+    padding-right:1em;
+  }
+  #navbarNavL > ul > li > div {
+    display:block !important;
+    text-align: right;
+  }
+}
