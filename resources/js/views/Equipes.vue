@@ -5,7 +5,7 @@
         <h1 class="mb-5 text-white">Equipes</h1>
 
         <div v-if="teams != []" class="row d-flex justify-content-between">
-          <div class="card mb-5" style="width: 18rem;" v-for="team in teams">
+          <div class="card mb-5" style="width: 18rem;" v-for="(team, index) in teams">
             <div class="card-header d-flex justify-content-between">
               <span>{{ team.name }}</span>
               <span v-if="alreadyRequested(team.id)" class="badge badge-pill badge-primary" style="line-height:1.6">Demande envoyée</span>
@@ -16,7 +16,7 @@
               </ul>
               <div class="mt-auto">
               <button v-if="isJoinable(team.id)" v-on:click="joinTeam(team.id)" class="btn-gamejam btn-vert w-100" type="button" name="button">Rejoindre</button>
-              <button v-if="isLeavable(team.id)" v-on:click="leaveTeam(team.id)" class="btn-gamejam btn-vert w-100" type="button" name="button">Quitter</button>
+              <button v-if="isLeavable(team.id)" v-on:click="leaveTeam(index)" class="btn-gamejam btn-vert w-100" type="button" name="button">Quitter</button>
               </div>
             </div>
           </div>
@@ -67,19 +67,23 @@ export default {
       });
     },
 
-    leaveTeam(){
-      var _this = this;
+    leaveTeam(index){
       axios.post('/api/student.team.leave')
-      .then(function(response){
-        if(response.status == 200){
-          _this.getTeams();
-          _this.$store.commit('setTeam', null);
+      .then((response) => {
+        // Remove the student from the team
+        let i = 0;
+        while(i < this.teams[index].students.length && this.$store.state.user.id != this.teams[index].students[i].id){
+          i++
         }
-      })
-      .catch(function(error){
-        if(error.response.status == 402){
-          location.reload();
+        this.teams[index].students.splice(i, 1);
+
+        // If there are no students left, delete the team
+        if(this.teams[index].students.length == 0){
+          this.teams.splice(index, 1);
         }
+
+        // Update the store
+        this.$store.commit('setTeam', null);
       });
     },
 
