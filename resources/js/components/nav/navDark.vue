@@ -32,14 +32,16 @@
                 </div>
                 <div v-else style="display:flex; position:relative">
                   <!-- notification bell -->
-                  <span class="nav-link" style="margin-top:0.1em;cursor:pointer;" @click="notificationBox = !notificationBox">
-                    <font-awesome-icon icon="bell" class="bell-icon"/>
-                    <span class="badge badge-pill badge-danger notification-badge" v-if="getNotifications.length > 0">{{ getNotifications.length }}</span>
-                  </span>
-                  <div class="notification-box" v-if="notificationBox" v-on-clickaway="toggleNotificationBox">
-                    <ul class="list-group">
-                      <li class="list-group-item" v-for="notification in getNotifications">{{ notification }}</li>
-                    </ul>
+                  <div v-if="!isAdmin">
+                    <span class="nav-link" style="margin-top:0.1em;cursor:pointer;" @click="notificationBox = !notificationBox">
+                      <font-awesome-icon icon="bell" class="bell-icon"/>
+                      <span class="badge badge-pill badge-danger notification-badge" v-if="getNotifications.length > 0">{{ getNotifications.length }}</span>
+                    </span>
+                    <div class="notification-box" v-if="notificationBox" v-on-clickaway="toggleNotificationBox">
+                      <ul class="list-group">
+                        <li class="list-group-item" v-for="notification in getNotifications">{{ notification }}</li>
+                      </ul>
+                    </div>
                   </div>
 
                   <!-- connected links -->
@@ -81,7 +83,8 @@ export default {
         return this.$store.getters.admin;
     },
     getNotifications(){
-      return this.$store.state.notifications;
+      let notifications = this.$store.state.notifications;
+      if(notifications) return notifications; else return [];
     }
   },
 
