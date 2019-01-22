@@ -15,7 +15,7 @@ class StudentController extends Controller
    */
   public function getUser(){
     $user = auth()->user();
-    $user->load('joinRequests');
+    if($user) $user->load('joinRequests');
     return response()->json(['user' => $user]);
   }
 

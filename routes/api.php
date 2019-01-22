@@ -35,6 +35,9 @@ Route::group(['middleware' => 'web'], function() {
   // ======================
   // ======= STUDENT ======
   // ======================
+  // Notifications
+  Route::get('student.notifications', 'NotificationController@getNotifications')->middleware('student');
+
   // Teams
   Route::get('student.team', 'StudentController@getTeam')->middleware('student');
   Route::post('team.create', 'TeamController@createTeam')->middleware('student');

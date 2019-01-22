@@ -4,6 +4,7 @@ import Cookies from 'js-cookie'
 
 let state = {
   user : null,
+  notifications: [],
 }
 
 // getters
@@ -28,6 +29,9 @@ export default new Vuex.Store({
     },
     deleteJoinRequests(state){
       state.user.join_requests = [];
+    },
+    setNotifications(state, notifications){
+      state.notifications = notifications;
     }
   },
   plugins: [

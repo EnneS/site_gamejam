@@ -20,12 +20,27 @@ export default {
   el: '#app',
 
   mounted(){
-    if (this.$store.state.user == null){
-      axios.get('/api/user')
-      .then( response => {
-        this.$store.commit('setUser', response.data.user);
-      }).catch( error => {
-      })
+    this.getUser();
+    this.getNotifications();
+  },
+
+  methods:{
+    getUser(){
+      if (!this.$store.getters.check){
+        axios.get('/api/user')
+        .then( response => {
+          this.$store.commit('setUser', response.data.user);
+        }).catch( error => {
+        })
+      }
+    },
+    getNotifications(){
+      if(this.$store.getters.check){
+        axios.get('/api/student.notifications')
+        .then((response) => {
+          this.$store.commit('setNotifications', response.data);
+        });
+      }
     }
   }
 }

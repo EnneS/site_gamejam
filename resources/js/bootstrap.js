@@ -13,9 +13,9 @@ import Toasted from 'vue-toasted';
 
 // ICONS
 import { library } from '@fortawesome/fontawesome-svg-core';
-import { faCheck, faTimes } from '@fortawesome/free-solid-svg-icons';
+import { faCheck, faTimes, faBell } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
-library.add(faCheck, faTimes);
+library.add(faCheck, faTimes, faBell);
 Vue.component('font-awesome-icon', FontAwesomeIcon);
 
 // ===============
@@ -31,6 +31,21 @@ Vue.use(VueRouter);
 // Store
 Vue.use(Vuex);
 
+Vue.directive('click-outside', {
+  bind: function (el, binding, vnode) {
+    el.clickOutsideEvent = function (event) {
+      // here I check that click was outside the el and his childrens
+      if (!(el == event.target || el.contains(event.target))) {
+        // and if it did, call method provided in attribute value
+        vnode.context[binding.expression](event);
+      }
+    };
+    document.body.addEventListener('click', el.clickOutsideEvent)
+  },
+  unbind: function (el) {
+    document.body.removeEventListener('click', el.clickOutsideEvent)
+  },
+});
 window.Popper = require('popper.js').default;
 
 /**

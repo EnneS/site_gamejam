@@ -30,7 +30,19 @@
                 <div v-if="getUser == null">
                   <a href="/api/cas.login" style="cursor:pointer" class="nav-link" >Se connecter</a>
                 </div>
-	              <div v-else style="display:flex">
+                <div v-else style="display:flex; position:relative">
+                  <!-- notification bell -->
+                  <span class="nav-link" style="margin-top:0.1em;cursor:pointer;" @click="notificationBox = !notificationBox">
+                    <font-awesome-icon icon="bell" class="bell-icon"/>
+                    <span class="badge badge-pill badge-primary notification-badge" v-if="getNotifications.length > 0">{{ getNotifications.length }}</span>
+                  </span>
+                  <div class="notification-box" v-if="notificationBox" v-on-clickaway="toggleNotificationBox">
+                    <ul class="list-group">
+                      <li class="list-group-item" v-for="notification in getNotifications">{{ notification }}</li>
+                    </ul>
+                  </div>
+
+                  <!-- connected links -->
                   <router-link v-if="isAdmin" to="/admin/dashboard" tag="button" class="btn-gamejam btn-vert" active-class="active" exact>Admin</router-link>
                   <router-link v-else to="/mon-equipe" class="nav-link" active-class="active" exact>Mon équipe</router-link>
                   <span style="cursor:pointer" v-on:click="logout()" class="nav-link">Se déconnecter</span>
@@ -44,12 +56,21 @@
 </template>
 
 <script>
+import { mixin as clickaway } from 'vue-clickaway';
+
 export default {
+  mixins: [ clickaway ],
+
   name: 'navDark',
 
   data(){
     return{
+      notificationBox: false,
+      notifications:[],
     }
+  },
+
+  mounted(){
   },
 
   computed:{
@@ -58,6 +79,9 @@ export default {
     },
     isAdmin(){
         return this.$store.getters.admin;
+    },
+    getNotifications(){
+      return this.$store.state.notifications;
     }
   },
 
@@ -65,6 +89,9 @@ export default {
     logout(){
       window.location.href = '/api/cas.logout';
       this.$store.commit('setUser', null);
+    },
+    toggleNotificationBox(){
+      this.notificationBox = false;
     }
   }
 }
