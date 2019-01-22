@@ -46,6 +46,11 @@ class TeamController extends Controller
         $countTeam = count(Team::all());
         // Vérifier que le nombre maximale d'équipe déjà créées n'est pas atteint
         if($countTeam+1 <= config('app.max_teams')){
+          // Delete the join requests of the student creating the team
+          $user->joinRequests->each(function($joinRequest) {
+            $joinRequest->delete();
+          });
+
           // Création de l'équipe et du jeu
           $team = new Team;
           $team->name = $request['teamName'];

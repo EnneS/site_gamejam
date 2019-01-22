@@ -25,6 +25,9 @@ export default new Vuex.Store({
     },
     addJoinRequest(state, joinRequest){
       state.user.join_requests.splice(1, 0, joinRequest);
+    },
+    deleteJoinRequests(state){
+      state.user.join_requests = [];
     }
   },
   plugins: [

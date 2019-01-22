@@ -56,6 +56,8 @@ export default {
         .then(function(response){
             _this.$router.push('/mon-equipe');
             _this.$store.commit('setTeam', response.data.id);
+            _this.$store.commit('deleteJoinRequests');
+
         });
     },
   }
