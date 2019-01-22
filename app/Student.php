@@ -7,18 +7,22 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 class Student extends Authenticatable
 {
 
-  /**
-   * The attributes that should be hidden for arrays.
-   *
-   * @var array
-   */
-  protected $hidden = [
-      'remember_token',
-  ];
+    /**
+     * The attributes that should be hidden for arrays.
+     *
+     * @var array
+     */
+    protected $hidden = [
+        'remember_token',
+    ];
 
-  protected $guarded = [];
+    protected $guarded = [];
 
     public function team(){
         return $this->belongsTo('App\Team');
+    }
+
+    public function joinRequests(){
+      return $this->hasMany('App\JoinRequest');
     }
 }

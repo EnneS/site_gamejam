@@ -22,6 +22,9 @@ export default new Vuex.Store({
     },
     setTeam(state, team) {
       state.user.team_id = team;
+    },
+    addJoinRequest(state, joinRequest){
+      state.user.join_requests.splice(1, 0, joinRequest);
     }
   },
   plugins: [

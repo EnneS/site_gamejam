@@ -17,4 +17,8 @@ class Team extends Model
     public function game(){
         return $this->hasOne('App\Game');
     }
+
+    public function joinRequests(){
+      return $this->hasMany('App\JoinRequest')->with('student');
+    }
 }

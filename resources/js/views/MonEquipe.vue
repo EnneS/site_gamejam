@@ -8,11 +8,26 @@
           <div class="row mb-4">
             <div class="col">
               <h2> {{ team.name }}</h2>
+
+              <div v-if="team.join_requests.length > 0">
+              <h5>Demandes d'adhésion</h5>
+                <ul class="list-group text-dark mb-2">
+                  <li class="list-group-item d-flex justify-content-between align-items-center" v-for="joinRequest in team.join_requests">
+                    <span>{{ joinRequest.student.first_name }} {{ joinRequest.student.last_name }}</span>
+                    <span>
+                      <font-awesome-icon icon="check" class="text-success mr-3" @click="acceptJoinRequest(joinRequest.id)" style="cursor:pointer;"/>
+                      <font-awesome-icon icon="times" class="text-danger" @click="declineJoinRequest(joinRequest.id)" style="cursor:pointer;"/>
+                    </span>
+                  </li>
+                </ul>
+              </div>
+
               <h5>Membres</h5>
               <ul class="list-group text-dark">
                 <li class="list-group-item" v-for="student in team.students">{{ student.first_name }} {{ student.last_name}}</li>
               </ul>
             </div>
+
             <!-- le jeu -->
             <div class="col-sm d-flex align-items-end flex-column">
               <div>
@@ -65,15 +80,44 @@ export default {
     },
     leaveTeam(){
       var _this = this;
-      axios.patch('/api/student.team.leave')
+      axios.post('/api/student.team.leave')
       .then(function(response){
           _this.team = null;
           _this.$store.commit('setTeam', null);
-      })
-      .catch(function(error){
-        if(error.response.status == 402){
-          location.reload();
+      });
+    },
+    acceptJoinRequest(id){
+      axios.post('/api/student.team.acceptRequest', {id : id})
+      .then((response) => {
+        let i = 0;
+        while(i < this.team.join_requests.length && this.team.join_requests[i].id != id){
+          i++;
         }
+        // Add the student to the team students list
+        this.team.students.push(this.team.join_requests[i].student);
+        // Delete the join request
+        this.team.join_requests.splice(i, 1);
+
+        // Display success message
+        this.$toasted.success(response.data.message, {duration : 2000});
+      })
+      .catch((error) => {
+        // Display error message
+        this.$toasted.error(error.response.data.message, {duration : 2000});
+      });
+    },
+    declineJoinRequest(id){
+      axios.post('/api/student.team.declineRequest', {id : id})
+      .then((response) => {
+        let i = 0;
+        while(i < this.team.join_requests.length && this.team.join_requests[i].id != id){
+          i++;
+        }
+        // Delete the join request
+        this.team.join_requests.splice(i, 1);
+
+        // Display success message
+        this.$toasted.success(response.data.message, {duration : 2000});
       });
     }
   }

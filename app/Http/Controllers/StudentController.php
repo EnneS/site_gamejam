@@ -14,7 +14,9 @@ class StudentController extends Controller
    * @return \App\User
    */
   public function getUser(){
-    return response()->json(['user' => auth()->user()]);
+    $user = auth()->user();
+    $user->load('joinRequests');
+    return response()->json(['user' => $user]);
   }
 
   /**
@@ -24,7 +26,7 @@ class StudentController extends Controller
    */
   public function getTeam(){
     $user = Auth::user();
-    $team = \App\Team::with(['students', 'game'])->where('id', $user->team_id)->first();
+    $team = \App\Team::with(['students', 'game', 'joinRequests'])->where('id', $user->team_id)->first();
     return response()->json(['success' => true, 'team' => $team], 200);
   }
 
@@ -46,16 +48,21 @@ class StudentController extends Controller
     return response()->json(['success' => true], 200);
   }
 
+  // Send a join request
   public function joinTeam(Request $request){
     $user = Auth::user();
     $team = \App\Team::find($request['teamId']);
     // On vérifie que la team peut encore accepter des membres
-    if(count($team->students) <= config('app.max_students')){
-      $user->team_id = $request['teamId'];
-      $user->save();
-      return $user->team_id;
+    if(count($team->students)+1 <= config('app.max_students')){
+      // Create a join request
+      $joinRequest = new \App\JoinRequest;
+      $joinRequest->team_id = $request['teamId'];
+      $joinRequest->student_id = $user->id;
+      $joinRequest->save();
+
+      return response()->json(['success' => true, "message" => "Demande d'adhésion envoyée", "joinRequest" => $joinRequest], 200);
     } else {
-      return response()->json(['error' => "Cette équipe a atteint le nombre maximum d'élèves"], 423);
+      return response()->json(['success' => false, "message" => "Cette équipe a atteint le nombre maximum d'élèves"], 423);
     }
   }
 }

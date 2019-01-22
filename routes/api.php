@@ -41,8 +41,11 @@ Route::group(['middleware' => 'web'], function() {
   Route::post('team.edit', 'TeamController@editTeam')->middleware('student');
 
   // Join / Leave a team
-  Route::patch('student.team.leave', 'StudentController@leaveTeam')->middleware('student');
+  Route::post('student.team.leave', 'StudentController@leaveTeam')->middleware('student');
   Route::post('student.team.join', 'StudentController@joinTeam')->middleware('student');
+  Route::post('student.team.acceptRequest', 'TeamController@acceptRequest')->middleware('student');
+  Route::post('student.team.declineRequest', 'TeamController@declineRequest')->middleware('student');
+
 
   // ======================
   // ======= ADMIN ========

@@ -1,10 +1,24 @@
 import Vue from 'vue';
 import Vuex from 'vuex'
 import axios from 'axios';
+
+//ROUTES
 import router from './routes'
+
+// ROUTER
 import VueRouter from 'vue-router';
+
+// TOASTS
 import Toasted from 'vue-toasted';
 
+// ICONS
+import { library } from '@fortawesome/fontawesome-svg-core';
+import { faCheck, faTimes } from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
+library.add(faCheck, faTimes);
+Vue.component('font-awesome-icon', FontAwesomeIcon);
+
+// ===============
 window.Vue = Vue;
 window.axios = axios;
 

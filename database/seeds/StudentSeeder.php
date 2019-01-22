@@ -41,13 +41,7 @@ class StudentSeeder extends Seeder
           'last_name' => 'Gilet',
           'admin' => 1,
         ],
-        [
-          'id' => 5,
-          'login' => 'souliern',
-          'first_name' => 'Nathan',
-          'last_name' => 'Soulier',
-          'admin' => 1,
-        ],
+
 
         [
           'id' => 6,
@@ -67,11 +61,19 @@ class StudentSeeder extends Seeder
       // STUDENTS
       DB::table('students')->insert([
         [
+          'id' => 5,
+          'login' => 'souliern',
+          'first_name' => 'Nathan',
+          'last_name' => 'Soulier',
+          'admin' => 0,
+          'team_id' => 1
+        ],
+        [
           'id' => 8,
           'login' => 'dupontje',
           'first_name' => 'Jean',
           'last_name' => 'Dupont',
-          'team_id' => 1,
+          'team_id' => null,
           'admin' => 0,
         ],
         [
@@ -89,6 +91,13 @@ class StudentSeeder extends Seeder
           'last_name' => 'Doe',
           'team_id' => 1,
           'admin' => 0,
+        ],
+      ]);
+
+      DB::table('join_requests')->insert([
+        [
+          'team_id' => 1,
+          'student_id' => 8,
         ],
       ]);
     }

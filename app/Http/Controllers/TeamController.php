@@ -10,6 +10,34 @@ use Illuminate\Support\Facades\Auth;
 
 class TeamController extends Controller
 {
+    public function acceptRequest(Request $request){
+      // Retrieve the models
+      $joinRequest = \App\JoinRequest::where('id', $request->id)->first();
+      $student = $joinRequest->student;
+      $team = $joinRequest->team;
+
+      // Check if there is still a place for the student to be accepted
+      if(count($team->students)+1 <= config('app.max_students')){
+        // Delete the other students join requests
+        $student->joinRequests->each(function($joinRequest) {
+          $joinRequest->delete();
+        });
+
+        // Add the student to the team;
+        $student->team_id = $team->id;
+        $student->save();
+        return response()->json(['success' => true, "message" => "Demande d'adhésion acceptée"], 200);
+      } else {
+        return response()->json(['success' => false, "message" => "Cette équipe a atteint le nombre maximum d'élèves"], 423);
+      }
+    }
+
+    public function declineRequest(Request $request){
+      $joinRequest = \App\JoinRequest::where('id', $request->id)->first();
+      $joinRequest->delete();
+      return response()->json(['success' => true, "message" => "Demande d'adhésion refusée"], 200);
+    }
+
     public function createTeam(Request $request){
       $user = \App\Student::where('id', Auth::user()['id'])->first();
 
