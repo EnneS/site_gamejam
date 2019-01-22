@@ -13,10 +13,11 @@ import Toasted from 'vue-toasted';
 
 // ICONS
 import { library } from '@fortawesome/fontawesome-svg-core';
-import { faCheck, faTimes, faBell } from '@fortawesome/free-solid-svg-icons';
-import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
-library.add(faCheck, faTimes, faBell);
+import { faCheck, faTimes, faBell, faCircle } from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeIcon, FontAwesomeLayers } from '@fortawesome/vue-fontawesome';
+library.add(faCheck, faTimes, faBell, faCircle);
 Vue.component('font-awesome-icon', FontAwesomeIcon);
+Vue.component('font-awesome-layers', FontAwesomeLayers)
 
 // ===============
 window.Vue = Vue;

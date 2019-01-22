@@ -20,14 +20,17 @@ export default {
   el: '#app',
 
   mounted(){
-    this.getUser();
-    this.getNotifications();
+    this.init();
   },
 
   methods:{
-    getUser(){
+    async init(){
+      await this.getUser();
+      this.getNotifications();
+    },
+    async getUser(){
       if (!this.$store.getters.check){
-        axios.get('/api/user')
+        await axios.get('/api/user')
         .then( response => {
           this.$store.commit('setUser', response.data.user);
         }).catch( error => {

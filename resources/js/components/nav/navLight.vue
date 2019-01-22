@@ -33,8 +33,8 @@
 	              <div v-else style="display:flex; position:relative">
                   <!-- notification bell -->
                   <span class="nav-link" style="margin-top:0.1em;cursor:pointer;" @click="notificationBox = !notificationBox">
-                    <font-awesome-icon icon="bell" class="bell-icon"/>
-                    <span class="badge badge-pill badge-primary notification-badge" v-if="getNotifications.length > 0">{{ getNotifications.length }}</span>
+                      <font-awesome-icon icon="bell" class="bell-icon"/>
+                      <span class="badge badge-pill badge-danger notification-badge" v-if="getNotifications.length > 0">{{ getNotifications.length }}</span>
                   </span>
                   <div class="notification-box" v-if="notificationBox" v-on-clickaway="toggleNotificationBox">
                     <ul class="list-group">

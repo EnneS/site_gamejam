@@ -164,8 +164,8 @@ ul ul a {
   z-index: 500;
   left:0;
   right:0;
-  height:50px;
   perspective: 2000px;
+  background:#222222;
 }
 
 .navbar-brand{
@@ -197,7 +197,7 @@ ul ul a {
   margin-top: -14%;
 }
 
-// Boutonss
+// Boutons
 .btn-gamejam{
   cursor:pointer;
   border-radius: 0.25rem;
@@ -338,16 +338,10 @@ ul ul a {
 }
 @media (max-width: 991px){
   #navHome {
-    height:65px;
     position:relative;
-    background: black;
   }
   #navbarNav > ul {
-    width:55%;
-    background:black;
-    position:absolute;
-    right:0;
-    padding-right:1em;
+    background:#222222;
   }
   #navbarNav > ul > li > div {
     display:block !important;
@@ -365,8 +359,10 @@ ul ul a {
   .bell-icon{
     display:none;
   }
-
   .notification-box{
+    display:none;
+  }
+  .notification-badge{
     display:none;
   }
 }
