@@ -88,12 +88,16 @@ export default {
     },
 
     alreadyRequested(id){
-      let i = 0;
-      let joinRequests = this.$store.state.user.join_requests;
-      while(i < joinRequests.length && joinRequests[i].team_id != id){
-        i++;
+      if(this.$store.getters.check){
+        let i = 0;
+        let joinRequests = this.$store.state.user.join_requests;
+        if(joinRequests){
+          while(i < joinRequests.length && joinRequests[i].team_id != id){
+            i++;
+          }
+          return i != joinRequests.length;
+        }
       }
-      return i != joinRequests.length;
     },
 
     isJoinable(id){
@@ -102,7 +106,6 @@ export default {
       // is not an admin
       // has no team
       // has not already sent a join request
-
       return this.$store.getters.check && !this.$store.getters.admin && !this.$store.getters.team && !this.alreadyRequested(id);
     },
 

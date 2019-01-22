@@ -1,3 +1,4 @@
+
 <template>
   <header id="navHome">
       <div class="container">
@@ -83,9 +84,10 @@ export default {
   },
 
   methods:{
-    logout(){
-      window.location.href = '/api/cas.logout';
-      this.$store.commit('setUser', null);
+    async logout(){
+      await this.$store.dispatch('logout').then(()=> {
+        window.location.href = '/api/cas.logout';
+      });
     },
     toggleNotificationBox(){
       this.notificationBox = false;

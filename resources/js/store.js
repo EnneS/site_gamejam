@@ -18,6 +18,10 @@ const getters = {
 export default new Vuex.Store({
   state, getters,
   mutations:{
+    logout(state){
+      state.user = null;
+      state.notifications = null;
+    },
     setUser (state, user) {
       state.user = user;
     },
@@ -32,6 +36,14 @@ export default new Vuex.Store({
     },
     setNotifications(state, notifications){
       state.notifications = notifications;
+    }
+  },
+  actions: {
+    logout ({ commit }) {
+      return new Promise((resolve, reject) => {
+          commit('logout')
+          resolve()
+      });
     }
   },
   plugins: [

@@ -96,9 +96,10 @@ export default {
     isTabActive(route){
       return route == this.$router.currentRoute.name;
     },
-    logout(){
-      window.location.href = "/api/cas.logout";
-      this.$store.commit('setUser', null);
+    async logout(){
+      await this.$store.dispatch('logout').then(()=> {
+        window.location.href = '/api/cas.logout';
+      });
     }
 
   }
