@@ -71,6 +71,8 @@ export default {
     axios.get('/api/student.team')
     .then(function(response){
         _this.team = response.data.team;
+        if(!_this.$store.getters.team)
+        _this.$store.commit('setTeam', response.data.team.id);
     });
   },
 
@@ -84,6 +86,7 @@ export default {
       .then(function(response){
           _this.team = null;
           _this.$store.commit('setTeam', null);
+          _this.$store.commit('deleteJoinRequests');
       });
     },
     acceptJoinRequest(id){

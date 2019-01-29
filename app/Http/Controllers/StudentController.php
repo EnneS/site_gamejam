@@ -64,4 +64,34 @@ class StudentController extends Controller
       return response()->json(['success' => false, "message" => "Cette équipe a atteint le nombre maximum d'élèves"], 423);
     }
   }
+
+  public function readStudentList(){
+    $students = Student::where('admin', 0)->delete();
+    $file_lines = file(storage_path('app/studentlist.dat'));
+    foreach ($file_lines as $line) {
+      $inputs = explode(":", $line);
+      $name = explode(" ", $inputs[1]);
+
+      $i = 0;
+      $last_name = '';
+      $first_name = '';
+      while(isset($name[$i]) && $name[$i] == strtoupper($name[$i])){
+        $last_name .= $name[$i] . ' ';
+        $i++;
+      }
+      while(isset($name[$i]) && $name[$i] != strtoupper($name[$i])){
+        $first_name .= $name[$i] . ' ';
+        $i++;
+      }
+      $login = $inputs[0];
+
+      if(Student::where('login', $login)->first() == null){
+        $student = new Student;
+        $student->first_name = rtrim($first_name);
+        $student->last_name = rtrim($last_name);
+        $student->login = $login;
+        $student->save();
+      }
+    }
+  }
 }

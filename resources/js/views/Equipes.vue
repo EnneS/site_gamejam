@@ -8,7 +8,7 @@
           <div class="card mb-5" style="width: 18rem;" v-for="(team, index) in teams">
             <div class="card-header d-flex justify-content-between">
               <span>{{ team.name }}</span>
-              <span v-if="alreadyRequested(team.id)" class="badge badge-pill badge-primary" style="line-height:1.6">Demande envoyée</span>
+              <span v-if="alreadyRequested(team.id) && !isInATeam" class="badge badge-pill badge-primary" style="line-height:1.6">Demande envoyée</span>
             </div>
             <div class="card-body p-0 d-flex flex-column">
               <ul class="list-group list-group-flush">
@@ -42,6 +42,24 @@ export default {
     .then(function(response){
       _this.teams = response.data;
     });
+  },
+
+  computed:{
+    isInATeam(){
+      let i = 0;
+      let found = false;
+      while(!found && i < this.teams.length){
+        let j = 0;
+        while(j < this.teams[i].students.length && this.$store.state.user.id != this.teams[i].students[j].id){
+          j++;
+        }
+        if (j < this.teams[i].students.length){
+          found = true;
+        }
+        i++;
+      }
+      return found;
+    }
   },
 
   methods:{
