@@ -1,5 +1,5 @@
 <template>
-  <main>
+  <main style="margin-right:-15px;margin-left:-15px;">
     <!-- Nav -->
 
     <!-- Stripes -->
