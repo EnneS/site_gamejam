@@ -11,6 +11,7 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
+        $this->call(HallOfFameSeeder::class);
         $this->call(RuleSeeder::class);
         $this->call(StepSeeder::class);
         $this->call(GroupSeeder::class);

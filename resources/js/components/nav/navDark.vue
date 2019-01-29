@@ -23,9 +23,11 @@
               <li class="nav-item">
                 <router-link to="/tutoriel" class="nav-link" active-class="active" exact>Tutoriel</router-link>
               </li>
+              <!--
               <li class="nav-item">
                 <router-link to="/archives" class="nav-link" active-class="active" exact>Archives</router-link>
               </li>
+              -->
               <li class="nav-item ml-5">
                 <div v-if="getUser == null">
                   <a href="/api/cas.login" style="cursor:pointer" class="nav-link" >Se connecter</a>

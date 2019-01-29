@@ -17,9 +17,16 @@ class CreateGamesTable extends Migration
             $table->increments('id')->comment('The game id');
             $table->string('name')->comment('The game name');
             $table->text('description')->comment('The game description');
-            $table->integer('team_id')->unsigned()->nullable();
+            $table->string('hash')->nullable();
 
+            $table->integer('hall_of_fame_id')->unsigned()->nullable();
             $table->timestamps();
+
+
+        });
+
+        Schema::table('games', function($table) {
+          $table->foreign('hall_of_fame_id')->references('id')->on('hall_of_fame');
         });
     }
 

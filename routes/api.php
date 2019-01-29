@@ -31,6 +31,7 @@ Route::group(['middleware' => 'web'], function() {
   Route::get('rules', 'RuleController@allRules');
   Route::get('steps', 'StepController@allSteps');
   Route::get('groups', 'GroupController@allGroups');
+  Route::get('halloffame', 'HallOfFameController@getYears');
 
   // ======================
   // ======= STUDENT ======

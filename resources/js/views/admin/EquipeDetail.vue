@@ -27,7 +27,7 @@
             <h2>Nom du jeu : {{ team.game.name }}</h2>
             <!-- jaquette du jeu -->
             <div v-if="team.game.jaquette_uploaded">
-                <img :src="'/storage/games/' + team.game.id + '/jaquette.png'" alt="" class="game-jaquette">
+                <img :src="'/storage/games/' + team.game.hash + '/jaquette.png'" alt="" class="game-jaquette">
             </div>
             <h4>Description du jeu : {{ team.game.description }}</h4>
           </div>

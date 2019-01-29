@@ -37,11 +37,10 @@ class StudentController extends Controller
     $user->team_id = null; // On enlève l'équipe à l'utilisateur
     $user->save();
     if($team->students->count() == 1){ // Il s'agit du dernier membre de l'équipe
-      // On supprime l'équipe et son jeu.
+      // On supprime l'équipe.
       // Storage (dossier de l'équipe contenant jaquette & zip)
-      File::deleteDirectory(storage_path('app/public/games/' . $team->id));
+      // File::deleteDirectory(storage_path('app/public/games/' . $team->id));
       // Data
-      $team->game->delete();
       $team->delete();
     }
 

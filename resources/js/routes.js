@@ -96,7 +96,7 @@ let routes = [
 
   {
     path: '/admin/',
-    component: require('./views/admin/Home.vue').default,
+    component: AdminHome,
     children: [
       { path: '', name:'AdminHome', redirect: {name: 'AdminDashboard'}},
       { path: '/admin/dashboard', name:'AdminDashboard', component : AdminDashboard, meta: {requiresAdmin : true}},

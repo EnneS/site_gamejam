@@ -15,7 +15,7 @@ class Team extends Model
     }
 
     public function game(){
-        return $this->hasOne('App\Game');
+        return $this->belongsTo('App\Game');
     }
 
     public function joinRequests(){

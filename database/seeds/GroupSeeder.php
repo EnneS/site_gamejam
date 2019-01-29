@@ -11,6 +11,7 @@ class GroupSeeder extends Seeder
      */
     public function run()
     {
+      /*
       DB::table('groups')->insert([
         [
           'id' => 1,
@@ -33,5 +34,6 @@ class GroupSeeder extends Seeder
           'name' => '215',
         ],
       ]);
+      */
     }
 }

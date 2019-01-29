@@ -59,13 +59,21 @@ class TeamController extends Controller
           $game = new Game;
           $game->name = $request['gameName'];
           $game->description = $request['gameDesc'];
+
+          // HASH GENERATOR
+          $seed = str_split('abcdefghijklmnopqrstuvwxyz'
+                 .'ABCDEFGHIJKLMNOPQRSTUVWXYZ'
+                 .'0123456789');
+          do{
+            $rand = '';
+            foreach (array_rand($seed, 4) as $k) $rand .= $seed[$k];
+          } while(count(Game::where('hash', $rand)->get()) > 0);
+          $game->hash = $rand;
           $game->save();
 
+          // SAVE THE GAME
           $team->game_id = $game->id;
           $team->save();
-
-          $game->team_id = $team->id;
-          $game->save();
 
           // Ajout de l'équipe à l'utilisateur connecté
           $user = \App\Student::where('id', Auth::user()['id'])->first();
@@ -98,7 +106,7 @@ class TeamController extends Controller
           // On upload
           $extension = $request->jaquette->guessExtension();
           $fileName = 'jaquette.' . $extension;
-          $request->jaquette->storeAs('public/games/' . $user->team_id . '/', $fileName);
+          $request->jaquette->storeAs('public/games/' . $game->hash . '/', $fileName);
           $game->jaquette_uploaded = true;
         }
 
@@ -108,7 +116,7 @@ class TeamController extends Controller
           ]);
 
           // On upload
-          $request->zip->storeAs('public/games/' . $user_team_id . '/', 'zip.zip');
+          $request->zip->storeAs('public/games/' . $game->hash . '/', 'zip.zip');
           $game->zip_uploaded = true;
         }
 

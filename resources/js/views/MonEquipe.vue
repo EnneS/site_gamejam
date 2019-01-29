@@ -37,7 +37,7 @@
                   Ajouter une jaquette
                 </div>
                 <div v-else>
-                    <img :src="'storage/games/' + team.game.id + '/jaquette.png'" alt="" class="game-jaquette">
+                    <img :src="'storage/games/' + team.game.hash + '/jaquette.png'" alt="" class="game-jaquette">
                 </div>
                 <h4> {{ team.game.description }}</h4>
               </div>
