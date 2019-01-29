@@ -28,17 +28,19 @@
             <div class="form-row form-group">
               <div class="col">
                 <label for="file-upload">Jaquette du jeu (jpeg, png | 300px * 300px)</label>
-                <div class="custom-file" id="file-upload">
+                <div class="custom-file mb-2" id="file-upload">
                   <input v-on:change="handleFileUpload('jaquette')" ref='jaquette' type="file" class="custom-file-input" id="inputGroupFile04">
                   <label class="custom-file-label" for="inputGroupFile04" style="line-height:2;">{{ files['jaquette'].name }}</label>
                 </div>
+                <button type="button" class="btn-gamejam btn-sm float-right" style="height:35px" name="button" @click="clearJaquette">Vider la jaquette</button>
               </div>
               <div class="col">
                 <label for="file-upload">ZIP du jeu</label>
-                <div class="custom-file" id="file-upload">
+                <div class="custom-file mb-2" id="file-upload">
                   <input v-on:change="handleFileUpload('zip')" ref='zip' type="file" class="custom-file-input" id="inputGroupFile04">
                   <label class="custom-file-label" for="inputGroupFile04" style="line-height:2;">{{ files['zip'].name }}</label>
                 </div>
+                <button type="button" class="btn-gamejam btn-sm float-right" style="height:35px" name="button" @click="clearZip">Vider le ZIP</button>
               </div>
             </div>
             <button type="submit" class="btn-gamejam">Valider</button>
@@ -106,6 +108,14 @@ export default {
           }
         });
     },
+    clearJaquette(){
+      this.files['jaquette'].file = null;
+      this.files['jaquette'].name = 'Sélectionner une jaquette..';
+    },
+    clearZip(){
+      this.files['zip'].file = null;
+      this.files['zip'].name = 'Sélectionner un .zip..';
+    }
   }
 }
 </script>
