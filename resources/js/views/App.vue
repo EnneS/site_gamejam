@@ -4,9 +4,11 @@
         <navLight v-if="$route.name == 'Home'"/>
         <navDark v-else/>
       </div>
-      <transition name="fade" mode="out-in">
-        <router-view/>
-      </transition>
+      <div class="container-fluid">
+        <transition name="fade" mode="out-in">
+          <router-view/>
+        </transition>
+      </div>
     </div>
 </template>
 

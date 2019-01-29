@@ -1,12 +1,10 @@
 <template>
-  <div class="">
-    <div class="row bg-dark pt-5 pb-5 text-white">
-      <div class="container">
-        <h1 class="mb-5">Règlement</h1>
-        <div class="container mt-4" v-for="rule in rules">
-          <h2>{{ rule.name }}</h2>
-          <span v-html="rule.description"></span>
-        </div>
+  <div class="row bg-dark pt-5 pb-5 text-white">
+    <div class="container">
+      <h1 class="mb-5">Règlement</h1>
+      <div class="container mt-4" v-for="rule in rules">
+        <h2>{{ rule.name }}</h2>
+        <span v-html="rule.description"></span>
       </div>
     </div>
   </div>
