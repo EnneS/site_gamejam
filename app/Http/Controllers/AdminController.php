@@ -45,11 +45,11 @@ class AdminController extends Controller
     $student = Student::find($request->id);
     // Check if the student has a team
     if($student->team_id != null){
-      $student->team_id = null;
-
       $team = $student->team;
+
+      $student->team_id = null;
       // If he is the last student in the team, delete it
-      if($team->students->count() == 0){
+      if($team->students->count() == 1){
         $team->delete();
       }
     }
