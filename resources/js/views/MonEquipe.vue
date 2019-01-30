@@ -30,15 +30,17 @@
           <!-- le jeu -->
           <div class="col-sm d-flex align-items-end flex-column">
             <div>
-              <h2> {{ team.game.name }}</h2>
+              <h2 v-if="team.game.name"> {{ team.game.name }}</h2>
+              <div v-else class="alert alert-info p-1 mb-2">Pensez à ajouter un nom pour votre jeu !</div>
               <!-- jaquette du jeu -->
               <div v-if="!team.game.jaquette_uploaded" class="upload-zip" @click="goToEdit()">
                 Ajouter une jaquette
               </div>
               <div v-else>
-                  <img :src="'storage/games/' + team.game.hash + '/jaquette.png'" alt="" class="game-jaquette">
+                  <img :src="'storage/games/' + gameYear() + '/' + team.game.hash + '/jaquette.png'" alt="" class="game-jaquette">
               </div>
-              <h4> {{ team.game.description }}</h4>
+              <h4 v-if="team.game.description"> {{ team.game.description }}</h4>
+              <div v-else class="alert alert-info p-1 mb-0">Pensez à ajouter une description du jeu !</div>
             </div>
           </div>
         </div>
@@ -72,6 +74,19 @@ export default {
         if(!_this.$store.getters.team)
         _this.$store.commit('setTeam', response.data.team.id);
     });
+  },
+
+  computed: {
+    gameYear(){
+      let date;
+      if(this.team != null){
+        let splittedDate = this.team.created_at.split('-');
+        date = splittedDate[0];
+      } else {
+        date = new Date().getFullYear();
+      }
+      return date;
+    }
   },
 
   methods:{

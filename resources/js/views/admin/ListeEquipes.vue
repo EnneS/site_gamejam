@@ -1,6 +1,10 @@
 <template>
   <div class="container">
-    <h3>Liste des équipes</h3>
+    <h3>
+      Liste des équipes
+      <span class="ml-2 badge badge-primary badge-pill" style="font-size:0.5em">{{teams.length}} équipes</span>
+      <button type="button" name="button" class="btn btn-danger float-right" @click="deleteTeams">Supprimer les équipes</button>
+    </h3>
 
     <div class="admin-box">
       <table class="table">
@@ -11,6 +15,8 @@
             <th scope="col">Poule</th>
             <th scope="col">Zip</th>
             <th scope="col">Jaquette</th>
+            <th scope="col">Nombre de membres</th>
+            <th></th>
           </tr>
         </thead>
         <tbody>
@@ -26,6 +32,7 @@
               <span v-if="team.game.jaquette_uploaded == 1" class="text-success">Oui</span>
               <span v-else class="text-danger">Non</span>
             </td>
+            <td>{{ team.students_count }}</td>
             <td><button type="button" class="btn btn-sm btn-primary" @click="seeMore(team.id)">Plus d'info</button></td>
            </tr>
         </tbody>
@@ -53,6 +60,13 @@ export default {
   methods:{
     seeMore(id){
       this.$router.push({path :'/admin/equipes/' + id});
+    },
+    deleteTeams(){
+      axios.post('/api/admin.teams.delete')
+      .then((response) => {
+        this.teams = [];
+        this.$toasted.success(response.data.message, {duration : 2000});
+      });
     }
   }
 }

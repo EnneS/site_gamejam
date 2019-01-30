@@ -104,9 +104,8 @@ class TeamController extends Controller
           ]);
 
           // On upload
-          $extension = $request->jaquette->guessExtension();
-          $fileName = 'jaquette.' . $extension;
-          $request->jaquette->storeAs('public/games/' . $game->hash . '/', $fileName);
+          $fileName = 'jaquette.png';
+          $request->jaquette->storeAs('public/games/' . date("Y") . '/' . $game->hash . '/', $fileName);
           $game->jaquette_uploaded = true;
         }
 
@@ -116,7 +115,7 @@ class TeamController extends Controller
           ]);
 
           // On upload
-          $request->zip->storeAs('public/games/' . $game->hash . '/', 'zip.zip');
+          $request->zip->storeAs('public/games/' . date("Y") . '/' . $game->hash . '/', 'zip.zip');
           $game->zip_uploaded = true;
         }
 

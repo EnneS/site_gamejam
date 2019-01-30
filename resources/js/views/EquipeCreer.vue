@@ -11,12 +11,12 @@
           </div>
           <div class="form-group">
             <label>Nom du jeu</label>
-            <input v-model="form.gameName" type="text" class="form-control" placeholder="Le nom que vous avez choisi pour votre jeu..." required>
+            <input v-model="form.gameName" type="text" class="form-control" placeholder="Le nom que vous avez choisi pour votre jeu...">
             <small class="form-text text-white">Vous pourrez le modifier par la suite.</small>
           </div>
           <div class="form-group">
             <label>Description du jeu</label>
-            <input v-model="form.gameDesc" type="text" class="form-control" placeholder="Une courte description de votre jeu..." required>
+            <input v-model="form.gameDesc" type="text" class="form-control" placeholder="Une courte description de votre jeu...">
             <small class="form-text text-white">Vous pourrez la modifier par la suite.</small>
           </div>
           <button type="submit" class="btn-gamejam">Créer votre équipe</button>

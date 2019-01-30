@@ -18,11 +18,11 @@
           </div>
           <div class="form-group">
             <label for="exampleInputPassword1">Nom du jeu</label>
-            <input v-model="team.game.name" type="text" class="form-control" placeholder="Le nom que vous avez choisi pour votre jeu..." required>
+            <input v-model="team.game.name" type="text" class="form-control" placeholder="Le nom que vous avez choisi pour votre jeu...">
           </div>
           <div class="form-group">
             <label for="exampleInputPassword1">Description du jeu</label>
-            <input v-model="team.game.description" type="text" class="form-control" placeholder="Une courte description de votre jeu..." required>
+            <input v-model="team.game.description" type="text" class="form-control" placeholder="Une courte description de votre jeu...">
           </div>
           <div class="form-row form-group">
             <div class="col">
@@ -54,7 +54,13 @@ export default {
 
   data(){
     return{
-      team: null,
+      team: {
+        name: '',
+        game: {
+          name: '',
+          description: '',
+        }
+      },
       files:{
         'jaquette': {
           name: 'Sélectionner une jaquette..',
@@ -87,8 +93,8 @@ export default {
     onSubmit(){
       let formData = new FormData();
       formData.append('teamName', this.team.name);
-      formData.append('gameName', this.team.game.name);
-      formData.append('gameDesc', this.team.game.description);
+      formData.append('gameName', this.team.game.name == null ? '' : this.team.game.name);
+      formData.append('gameDesc', this.team.game.description == null ? '' : this.team.game.description);
       formData.append('jaquette', this.files['jaquette'].file);
       formData.append('zip', this.files['zip'].file);
 

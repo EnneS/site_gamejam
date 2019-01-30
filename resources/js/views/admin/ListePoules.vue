@@ -19,12 +19,18 @@
         </tbody>
       </table>
     </div>
-    <div class="form-group w-25">
-      <label for="nbGroups">Nombre de poules</label>
-      <input type="number" v-model.number="nbGroups" value="" name="nbGroups" class="form-control" placeholder="Nombre de poule..." />
-      <label for="teampergroup">Nombre d'équipes par poule</label>
-      <input type="number" v-model.number="teamsPerGroup" value="" name="teampergroup" class="form-control" placeholder="Nombre d'équipes par poule..." />
-      <button type="button" class="mt-2 btn btn-primary" @click="generateGroups()">Générer les poules</button>
+    <h3>Génération des Poules</h3>
+    <div class="form-group w-50 card p-2">
+      <label for="nbGroups" class="mb-0">Nombre de poules</label>
+      <input type="number" v-model.number="nbGroups" value="" name="nbGroups" class="form-control mb-2" placeholder="Nombre de poule..." />
+      <label for="teampergroup" class="mb-0">Nombre d'équipes par poule</label>
+      <input type="number" v-model.number="teamsPerGroup" value="" name="teampergroup" class="form-control mb-2" placeholder="Nombre d'équipes par poule..." />
+      <label for="nbGroups" class="mb-0">Noms des salles séparés par une virgule</label>
+      <input type="text" v-model="groupsNames" value="" name="nbGroups" id="groupsNames" class="form-control" placeholder="Nom des poules..." required/>
+      <small id="groupsNames" class="mb-2 mt-0 form-text text-muted float-right">Par exemple : 104,201,110,115,215</small>
+      <button type="button" class="mt-2 btn btn-success" @click="generateGroups()">Générer les poules</button>
+      <hr>
+      <button type="button" class="btn btn-danger" @click="deleteGroups()">Supprimer les poules</button>
     </div>
   </div>
 </template>
@@ -37,6 +43,7 @@ export default {
       groups : [],
       teamsPerGroup : 0,
       nbGroups : 0,
+      groupsNames : '',
     }
   },
 
@@ -49,13 +56,20 @@ export default {
 
   methods:{
     generateGroups(){
-      axios.get('/api/admin.groups.generate', {params : { teamsPerGroup : this.teamsPerGroup, nbGroups : this.nbGroups }})
+      axios.get('/api/admin.groups.generate', {params : { teamsPerGroup : this.teamsPerGroup, nbGroups : this.nbGroups, groupsNames : this.groupsNames }})
       .then((response) => {
         this.groups = response.data.groups;
         this.$toasted.success(response.data.message, {duration : 2000});
       }).catch((error) => {
         this.$toasted.error(error.response.data.message, {duration : 2000});
       })
+    },
+    deleteGroups(){
+      axios.post('/api/admin.groups.delete')
+      .then((response) => {
+        this.groups = [];
+        this.$toasted.success(response.data.message, {duration : 2000});
+      });
     }
   }
 }

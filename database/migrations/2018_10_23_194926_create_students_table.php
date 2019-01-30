@@ -27,7 +27,7 @@ class CreateStudentsTable extends Migration
         });
 
         Schema::table('students', function($table) {
-          $table->foreign('team_id')->references('id')->on('teams')->onDelete('cascade');;
+          $table->foreign('team_id')->references('id')->on('teams');
         });
     }
 

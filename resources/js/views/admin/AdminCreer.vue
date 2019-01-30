@@ -10,7 +10,7 @@
     <form @submit.prevent="submit">
       <div class="form-group">
         <label for="rulename">Login CAS</label>
-        <input type="text" v-model="admin.login" class="form-control" id="adminlogin" placeholder="Entrer un login CAS valide...">
+        <input type="text" v-model="admin.login" class="form-control" id="adminlogin" placeholder="Entrer un login CAS valide..." required>
       </div>
       <div class="form-group">
         <label for="adminfirstname">Prénom</label>

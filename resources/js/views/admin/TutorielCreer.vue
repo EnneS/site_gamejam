@@ -10,11 +10,11 @@
     <form @submit.prevent="submit">
       <div class="form-group">
         <label for="stepname">Nom de l'étape</label>
-        <input type="text" v-model="step.name" class="form-control" id="stepname" placeholder="Entrer un nom...">
+        <input type="text" v-model="step.name" class="form-control" id="stepname" placeholder="Entrer un nom..." required>
       </div>
       <div class="form-group">
         <label for="ruledescription">Description de l'étape</label>
-        <textarea type="text" v-model="step.description" class="form-control" id="stepdescription" placeholder="Entrer une description" style="min-height:200px"/>
+        <textarea type="text" v-model="step.description" class="form-control" id="stepdescription" placeholder="Entrer une description" style="min-height:200px" required/>
       </div>
       <button type="submit" class="btn btn-success">Ajouter</button>
     </form>

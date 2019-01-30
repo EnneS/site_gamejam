@@ -15,8 +15,8 @@ class CreateGamesTable extends Migration
     {
         Schema::create('games', function (Blueprint $table) {
             $table->increments('id')->comment('The game id');
-            $table->string('name')->comment('The game name');
-            $table->text('description')->comment('The game description');
+            $table->string('name')->nullable()->comment('The game name');
+            $table->text('description')->nullable()->comment('The game description');
             $table->string('hash')->nullable();
 
             $table->integer('hall_of_fame_id')->unsigned()->nullable();

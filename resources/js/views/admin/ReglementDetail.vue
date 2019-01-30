@@ -11,11 +11,11 @@
       <form @submit.prevent="submit">
         <div class="form-group">
           <label for="rulename">Nom de la règle</label>
-          <input type="text" v-model="rule.name" class="form-control" id="rulename" placeholder="Entrer un nom...">
+          <input type="text" v-model="rule.name" class="form-control" id="rulename" placeholder="Entrer un nom..." required>
         </div>
         <div class="form-group">
           <label for="ruledescription">Description de la règle</label>
-          <textarea type="text" v-model="rule.description" class="form-control" id="ruledescription" placeholder="Entrer une description" style="min-height:200px"/>
+          <textarea type="text" v-model="rule.description" class="form-control" id="ruledescription" placeholder="Entrer une description" style="min-height:200px" required/>
         </div>
         <button type="submit" class="btn btn-success">Sauvegarder</button>
       </form>

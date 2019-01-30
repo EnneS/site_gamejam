@@ -55,6 +55,8 @@ Route::group(['middleware' => 'web'], function() {
   // ======= ADMIN ========
   // ======================
   Route::get('admin.students', 'AdminController@getStudents');
+  Route::get('admin.students.generate', 'AdminController@readStudentList');
+  Route::post('admin.student.delete', 'AdminController@deleteStudent');
 
   Route::get('admin.configuration', 'AdminController@getConfiguration');
   Route::post('admin.configuration.update', 'AdminController@updateConfiguration');
@@ -64,10 +66,12 @@ Route::group(['middleware' => 'web'], function() {
   Route::post('admin.admin.create', 'AdminController@createAdmin');
 
   Route::get('admin.teams', 'AdminController@getTeams');
+  Route::post('admin.teams.delete', 'AdminController@deleteTeams');
   Route::get('admin.getTeam', 'AdminController@getTeam');
 
   Route::get('admin.groups', 'AdminController@getGroups');
   Route::get('admin.groups.generate', 'AdminController@generateGroups');
+  Route::post('admin.groups.delete', 'AdminController@deleteGroups');
 
   Route::get('admin.steps', 'AdminController@getSteps');
   Route::get('admin.getStep', 'AdminController@getStep');
