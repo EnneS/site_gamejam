@@ -3,7 +3,7 @@
     <div class="container">
       <h1 class="mb-5 text-white">Equipes</h1>
 
-      <div v-if="teams != []" class="row d-flex justify-content-between">
+      <div v-if="teams.length > 0" class="row d-flex justify-content-between">
         <div class="card mb-5" style="width: 18rem;" v-for="(team, index) in teams">
           <div class="card-header d-flex justify-content-between">
             <span>{{ team.name }}</span>
@@ -19,6 +19,9 @@
             </div>
           </div>
         </div>
+      </div>
+      <div v-else class="alert alert-info">
+        Il n'y a pas encore d'équipes.
       </div>
     </div>
   </div>
