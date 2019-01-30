@@ -15,7 +15,7 @@
             </ul>
             <div class="mt-auto">
             <button v-if="isJoinable(team.id)" v-on:click="joinTeam(team.id)" class="btn-gamejam btn-vert w-100" type="button" name="button">Rejoindre</button>
-            <button v-if="isLeavable(team.id)" v-on:click="leaveTeam(index)" class="btn-gamejam btn-vert w-100" type="button" name="button">Quitter</button>
+            <button v-if="isLeavable(team.id)" v-on:click="leaveTeam(index)" class="btn-gamejam btn-vert w-100" type="button" name="button">Quitter l'équipe</button>
             </div>
           </div>
         </div>

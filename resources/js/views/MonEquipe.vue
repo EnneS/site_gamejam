@@ -37,7 +37,7 @@
                 Ajouter une jaquette
               </div>
               <div v-else>
-                  <img :src="'storage/games/' + gameYear() + '/' + team.game.hash + '/jaquette.png'" alt="" class="game-jaquette">
+                  <img :src="'storage/games/' + gameYear + '/' + team.game.hash + '/jaquette.png'" alt="" class="game-jaquette">
               </div>
               <h4 v-if="team.game.description"> {{ team.game.description }}</h4>
               <div v-else class="alert alert-info p-1 mb-0">Pensez à ajouter une description du jeu !</div>
