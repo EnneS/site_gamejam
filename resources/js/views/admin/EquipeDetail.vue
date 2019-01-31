@@ -1,7 +1,13 @@
 <template>
   <div class="container">
     <button type="button" class="btn btn-primary mb-3" @click="goBack">Retour</button>
+    <button type="submit" class="btn btn-success mb-3" @click="updateTeam">Sauvegarder</button>
     <div v-if="team">
+      <div class="alert alert-danger" v-if="errors.length > 0">
+        <ul class="mb-0">
+          <li v-for="error in errors">{{ error[0] }}</li>
+        </ul>
+      </div>
       <div v-if="!team.game.jaquette_uploaded || !team.game.zip_uploaded" class="row alert alert-danger">
         <ul class="mb-0">
           <li v-if="!team.game.jaquette_uploaded">Cette équipe n'a pas encore de jaquette.</li>
@@ -14,24 +20,27 @@
       </div>
       <!-- l'équipe, ses membres -->
       <div class="row mb-4">
-        <div class="col-sm card p-4 mr-3">
-          <h2>Nom de l'équipe : {{ team.name }}</h2>
-          <h5>Membres</h5>
-          <ul class="list-group text-dark">
-            <li class="list-group-item" v-for="student in team.students">{{ student.first_name }} {{ student.last_name}}</li>
-          </ul>
-        </div>
-        <!-- le jeu -->
-        <div class="col-sm card p-4">
-          <div>
-            <h2>Nom du jeu : {{ team.game.name }}</h2>
-            <!-- jaquette du jeu -->
-            <div v-if="team.game.jaquette_uploaded">
-                <img :src="'/storage/games/' + gameYear + '/' + team.game.hash + '/jaquette.png'" alt="" class="game-jaquette">
-            </div>
-            <h4>Description du jeu : {{ team.game.description }}</h4>
+          <div class="col-sm card p-4 mr-3">
+            <label for="teamname" class="mb-0">Nom de l'équipe</label>
+            <input type="text" v-model="team.name" class="form-control mb-2 form-control-lg" id="teamname" placeholder="Nom de léquipe..." required>
+            <h5>Membres</h5>
+            <ul class="list-group text-dark">
+              <li class="list-group-item" v-for="student in team.students">{{ student.first_name }} {{ student.last_name}}</li>
+            </ul>
           </div>
-        </div>
+          <!-- le jeu -->
+          <div class="col-sm card p-4">
+            <div>
+              <label for="gamename" class="mb-0">Nom du jeu</label>
+              <input type="text" v-model="team.game.name" class="form-control mb-2 form-control-lg" id="gamename" placeholder="Nom du jeu...">
+              <!-- jaquette du jeu -->
+              <div v-if="team.game.jaquette_uploaded">
+                  <img :src="'/storage/games/' + gameYear + '/' + team.game.hash + '/jaquette.png'" alt="" class="game-jaquette">
+              </div>
+              <label for="gamedesc" class="mb-0">Description du jeu</label>
+              <textarea type="text" v-model="team.game.description" class="form-control mb-2" id="gamedesc" placeholder="Description du jeu..."/>
+            </div>
+          </div>
       </div>
     </div>
     <div v-else class="alert alert-danger">
@@ -74,6 +83,15 @@ export default {
     goBack(){
       this.$router.go(-1);
     },
+    updateTeam(){
+      axios.post('/api/admin.team.update', this.team)
+      .then((response) => {
+        this.$toasted.success(response.data.message, {duration : 2000});
+      })
+      .catch((error) => {
+        this.errors = Object.values(error.response.data.errors);
+      });
+    }
   }
 }
 </script>

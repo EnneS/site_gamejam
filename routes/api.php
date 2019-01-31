@@ -68,6 +68,7 @@ Route::group(['middleware' => 'web'], function() {
   Route::get('admin.teams', 'AdminController@getTeams');
   Route::post('admin.teams.delete', 'AdminController@deleteTeams');
   Route::get('admin.getTeam', 'AdminController@getTeam');
+  Route::post('admin.team.update', 'AdminController@updateTeam');
 
   Route::get('admin.groups', 'AdminController@getGroups');
   Route::get('admin.groups.generate', 'AdminController@generateGroups');

@@ -2,7 +2,8 @@
   <div class="container">
     <h3>
       Liste des équipes
-      <span class="ml-2 badge badge-primary badge-pill" style="font-size:0.5em">{{teams.length}} équipes</span>
+      <span class="ml-2 badge badge-primary badge-pill" style="font-size:0.5em">{{ teams.length }} équipes</span>
+      <span class="ml-2 badge badge-primary badge-pill" style="font-size:0.5em">{{ studentsWithTeamCount }} étudiants dans une équipe</span>
       <button type="button" name="button" class="btn btn-danger float-right" @click="deleteTeams">Supprimer les équipes</button>
     </h3>
 
@@ -46,14 +47,16 @@ export default {
 
   data(){
     return {
-      teams : []
+      teams : [],
+      studentsWithTeamCount : 0,
     }
   },
 
   mounted() {
     axios.get('/api/admin.teams')
     .then((response) => {
-      this.teams = response.data;
+      this.teams = response.data.teams;
+      this.studentsWithTeamCount = response.data.studentsCount;
     });
   },
 

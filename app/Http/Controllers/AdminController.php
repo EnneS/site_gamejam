@@ -202,7 +202,9 @@ class AdminController extends Controller
   // ==================
   // TEAMS
   public function getTeams(){
-    return Team::with('game')->withCount('students')->get();
+    $teams = Team::with('game')->withCount('students')->get();
+    $studentsCount = Student::has('team')->count();
+    return response()->json(['success' => true, 'teams' => $teams, 'studentsCount' => $studentsCount], 200);
   }
 
   public function getTeam(Request $request){
@@ -221,6 +223,27 @@ class AdminController extends Controller
       $team->delete();
     });
     return response()->json(['success' => true, 'message' => 'Equipes supprimées'], 200);
+  }
+
+  public function updateTeam(Request $request){
+    $request->validate([
+        'name' => 'required',
+    ]);
+
+    // Get the corresponding team
+    $team = Team::find($request->id);
+
+    // Update Team Info
+    $team->name = $request->name;
+    $team->save();
+
+    // Update Game Info
+    $game = $team->game;
+    $game->name = $request->game['name'];
+    $game->description = $request->game['description'];
+    $game->save();
+
+    return response()->json(['success' => true, 'message' => 'Equipe mise à jour'], 200);
   }
 
   // ==================
