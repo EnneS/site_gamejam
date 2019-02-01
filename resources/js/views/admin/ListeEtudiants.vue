@@ -3,7 +3,7 @@
     <h3>
       Liste des étudiants
       <span class="ml-2 badge badge-primary badge-pill" style="font-size:0.5em">{{students.length}} étudiants</span>
-      <button type="button" name="button" class="btn btn-success float-right" @click="generateStudents">Récupérer les étudiants</button>
+      <button type="button" name="button" class="btn btn-success float-right" data-toggle="modal" data-target="#confirmationModal">Récupérer les étudiants</button>
     </h3>
     <div class="admin-box">
       <table class="table">
@@ -29,6 +29,28 @@
           </tr>
         </tbody>
       </table>
+    </div>
+
+    <!-- Modal -->
+    <div class="modal fade" id="confirmationModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">Attention</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Non">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            Récupérer les étudiants entrainera la suppression de ceux déjà existants et de leurs équipes respectives.<br>
+            Etes-vous sûr?
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-danger" data-dismiss="modal">Non</button>
+            <button type="button" class="btn btn-success" @click="generateStudents">Oui, récupérer les étudiants</button>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 </template>
@@ -63,6 +85,9 @@ export default {
       });
     },
     generateStudents(){
+      $('#confirmationModal').modal("hide");
+      this.$toasted.info("Récupération des étudiants...", {duration : 2000});
+
       axios.get('/api/admin.students.generate')
       .then((response) => {
         this.students = response.data.students;

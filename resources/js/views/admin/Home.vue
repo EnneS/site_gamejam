@@ -88,7 +88,11 @@ export default {
 
   computed:{
     name(){
-      return this.$store.state.user['first_name'] + ' ' + this.$store.state.user['last_name'];
+      if(this.$store.getters.admin){
+        return this.$store.getters.user['first_name'] + ' ' + this.$store.getters.user['last_name'];
+      } else {
+        this.$router.push('/');
+      }
     }
   },
 

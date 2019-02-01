@@ -9,6 +9,8 @@ let state = {
 
 // getters
 const getters = {
+  user : state => state.user,
+  notifications : state => state.notifications,
   check: state => state.user !== null,
   team: state => state.user !== null && state.user.team_id !== null,
   team_id: state => state.user.team_id,

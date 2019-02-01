@@ -4,7 +4,7 @@
       Liste des équipes
       <span class="ml-2 badge badge-primary badge-pill" style="font-size:0.5em">{{ teams.length }} équipes</span>
       <span class="ml-2 badge badge-primary badge-pill" style="font-size:0.5em">{{ studentsWithTeamCount }} étudiants dans une équipe</span>
-      <button type="button" name="button" class="btn btn-danger float-right" @click="deleteTeams">Supprimer les équipes</button>
+      <button type="button" name="button" class="btn btn-danger float-right" data-toggle="modal" data-target="#confirmationModal">Supprimer les équipes</button>
     </h3>
 
     <div class="admin-box">
@@ -39,6 +39,27 @@
         </tbody>
       </table>
     </div>
+
+    <!-- Modal -->
+    <div class="modal fade" id="confirmationModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">Attention</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Non">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            Etes-vous sûr de vouloir supprimer la totalité des équipes ?
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-danger" data-dismiss="modal">Non</button>
+            <button type="button" class="btn btn-success" @click="deleteTeams">Oui, supprimer les équipes</button>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
 </template>
 
@@ -65,6 +86,7 @@ export default {
       this.$router.push({path :'/admin/equipes/' + id});
     },
     deleteTeams(){
+      $('#confirmationModal').modal("hide");
       axios.post('/api/admin.teams.delete')
       .then((response) => {
         this.teams = [];

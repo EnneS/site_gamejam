@@ -225,6 +225,16 @@ class AdminController extends Controller
     return response()->json(['success' => true, 'message' => 'Equipes supprimées'], 200);
   }
 
+  public function deleteTeam(Request $request){
+    $team = Team::find($request->id);
+    $team->students()->each(function($student){
+      $student->team_id = null;
+      $student->save();
+    });
+    $team->delete();
+    return response()->json(['success' => true, 'message' => 'Equipe supprimée'], 200);
+  }
+
   public function updateTeam(Request $request){
     $request->validate([
         'name' => 'required',

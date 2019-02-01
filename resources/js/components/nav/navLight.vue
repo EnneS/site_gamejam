@@ -77,13 +77,13 @@ export default {
 
   computed:{
     getUser(){
-      return this.$store.state.user;
+      return this.$store.getters.user;
     },
     isAdmin(){
         return this.$store.getters.admin;
     },
     getNotifications(){
-      let notifications = this.$store.state.notifications;
+      let notifications = this.$store.getters.notifications;
       if(notifications) return notifications; else return [];
     }
   },

@@ -21,26 +21,27 @@ export default {
 
   el: '#app',
 
+  async beforeCreate(){
+    await axios.get('/api/user')
+    .then( response => {
+      this.$store.commit('setUser', response.data.user);
+    }).catch( error => {
+    })
+  },
+
   mounted(){
     this.init();
   },
 
   methods:{
     async init(){
-      await this.getUser();
       this.getNotifications();
     },
     async getUser(){
-      if (!this.$store.getters.check){
-        await axios.get('/api/user')
-        .then( response => {
-          this.$store.commit('setUser', response.data.user);
-        }).catch( error => {
-        })
-      }
+
     },
     getNotifications(){
-      if(this.$store.getters.check){
+      if(this.$store.getters.check && !this.$store.getters.admin){
         axios.get('/api/student.notifications')
         .then((response) => {
           this.$store.commit('setNotifications', response.data);

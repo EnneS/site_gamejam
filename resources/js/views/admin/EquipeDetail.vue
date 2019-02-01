@@ -1,7 +1,8 @@
 <template>
   <div class="container">
     <button type="button" class="btn btn-primary mb-3" @click="goBack">Retour</button>
-    <button type="submit" class="btn btn-success mb-3" @click="updateTeam">Sauvegarder</button>
+    <button type="button" class="btn btn-success mb-3" @click="updateTeam">Sauvegarder</button>
+    <button type="button" name="button" class="btn btn-danger float-right" data-toggle="modal" data-target="#confirmationModal">Supprimer l'équipe</button>
     <div v-if="team">
       <div class="alert alert-danger" v-if="errors.length > 0">
         <ul class="mb-0">
@@ -45,6 +46,27 @@
     </div>
     <div v-else class="alert alert-danger">
       Cette équipe n'existe pas.
+    </div>
+
+    <!-- Modal -->
+    <div class="modal fade" id="confirmationModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">Attention</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Non">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            Etes-vous sûr de vouloir supprimer cette équipe ?
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-danger" data-dismiss="modal">Non</button>
+            <button type="button" class="btn btn-success" @click="deleteTeam">Oui, supprimer l'équipe</button>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 </template>
@@ -91,6 +113,13 @@ export default {
       .catch((error) => {
         this.errors = Object.values(error.response.data.errors);
       });
+    },
+    deleteTeam(){
+      axios.post('/api/admin.team.delete', this.team)
+      .then((response) => {
+        this.$router.go(-1);
+        this.$toasted.success(response.data.message, {duration : 2000});
+      })
     }
   }
 }

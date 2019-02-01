@@ -51,7 +51,7 @@ export default {
       let found = false;
       while(!found && i < this.teams.length){
         let j = 0;
-        while(j < this.teams[i].students.length && this.$store.state.user.id != this.teams[i].students[j].id){
+        while(j < this.teams[i].students.length && this.$store.getters.user.id != this.teams[i].students[j].id){
           j++;
         }
         if (j < this.teams[i].students.length){
@@ -91,7 +91,7 @@ export default {
       .then((response) => {
         // Remove the student from the team
         let i = 0;
-        while(i < this.teams[index].students.length && this.$store.state.user.id != this.teams[index].students[i].id){
+        while(i < this.teams[index].students.length && this.$store.getters.user.id != this.teams[index].students[i].id){
           i++
         }
         this.teams[index].students.splice(i, 1);
@@ -109,7 +109,7 @@ export default {
     alreadyRequested(id){
       if(this.$store.getters.check){
         let i = 0;
-        let joinRequests = this.$store.state.user.join_requests;
+        let joinRequests = this.$store.getters.user.join_requests;
         if(joinRequests){
           while(i < joinRequests.length && joinRequests[i].team_id != id){
             i++;
