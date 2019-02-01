@@ -47,7 +47,7 @@ axios.interceptors.response.use(response => {
 }, async (error) => {
   const { status } = error.response
   if (status === 401 && store.getters.check) {
-      Vue.toasted.error('Votre session a expirée, veuillez vous reconnecter.');
+      Vue.toasted.error('Votre session a expirée, veuillez vous reconnecter.', {duration:3000});
       await store.dispatch('logout');
       router.push('/');
   }
