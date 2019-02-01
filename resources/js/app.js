@@ -40,6 +40,20 @@ router.beforeEach(async (to, from, next) => {
     next();
 });
 
+// Response interceptor
+// For instance : logout the user when receiving a 401 error code (= Unauthorized)
+axios.interceptors.response.use(response => {
+  return response
+}, async (error) => {
+  const { status } = error.response
+  if (status === 401 && store.getters.check) {
+      Vue.toasted.error('Votre session a expirée, veuillez vous reconnecter.');
+      await store.dispatch('logout');
+      router.push('/');
+  }
+  return Promise.reject(error)
+});
+
 new Vue({
     store,
     router,

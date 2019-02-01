@@ -13,7 +13,7 @@ const getters = {
   notifications : state => state.notifications,
   check: state => state.user !== null,
   team: state => state.user !== null && state.user.team_id !== null,
-  team_id: state => state.user.team_id,
+  team_id: state => {if(state.user) state.user.team_id},
   admin: state => state.user !== null && state.user.admin === 1,
 }
 
