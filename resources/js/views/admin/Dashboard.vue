@@ -1,7 +1,7 @@
 <template>
   <div class="container">
     <h3>Dashboard</h3>
-    <div class="row">
+    <div class="row mb-4">
       <div class="col-sm-4">
         <h5>Configuration</h5>
         <div class="card">
@@ -31,6 +31,24 @@
       </div>
     </div>
 
+    <div class="row">
+      <div class="col-sm-4">
+        <h5>Barême</h5>
+        <div class="card">
+          <div class="card-body">
+            <form @submit.prevent="uploadBareme()">
+              <label for="file-upload">Fichier PDF du barême</label>
+              <div class="custom-file mb-2" id="file-upload">
+                <input v-on:change="handleFileUpload"  ref='pdf' type="file" class="custom-file-input" id="inputGroupFile04" required>
+                <label class="custom-file-label" for="inputGroupFile04" style="line-height:2;">{{ pdf.name }}</label>
+              </div>
+              <button type="submit" class="btn btn-success" name="button">Envoyer</button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+
   </div>
 </template>
 
@@ -42,6 +60,10 @@ export default {
       configuration:{
         studentsPerTeam : 0,
         maxTeamCount : 0,
+      },
+      pdf: {
+        name: 'Sélectionner un fichier...',
+        file : null,
       }
     }
   },
@@ -60,8 +82,23 @@ export default {
       .then((response) => {
         this.$toasted.success(response.data.message, {duration : 2000});
       })
+    },
+    handleFileUpload(){
+      this.pdf.file = this.$refs['pdf'].files[0];
+      this.pdf.name = this.$refs['pdf'].files[0].name;
+    },
+    uploadBareme(){
+      let formData = new FormData();
+      formData.append('bareme', this.pdf.file);
+
+      axios.post('/api/admin.uploadBareme', formData)
+      .then((response) => {
+        this.$toasted.success(response.data.message, {duration : 2000});
+        this.pdf.file = null;
+        this.pdf.name = "Sélectionner un fichier...";
+      })
       .catch((error) => {
-        console.log(error.response);
+        this.$toasted.error(error.response.data.errors.bareme[0], {duration : 2000});
       });
     }
   }

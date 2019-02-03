@@ -9,6 +9,7 @@ import Equipes from './views/Equipes';
 import Poules from './views/Poules';
 import Tutoriel from './views/Tutoriel';
 import Archives from './views/Archives';
+import Bareme from './views/Bareme';
 
 // ========
 // Student Views
@@ -65,6 +66,11 @@ let routes = [
   {
     path: '/archives',
     component: Archives
+  },
+
+  {
+    path: '/bareme',
+    component: Bareme
   },
 
   {

@@ -16,6 +16,9 @@
                 <router-link to="/reglement" class="nav-link" active-class="active" exact>Règlement</router-link>
               </li>
               <li class="nav-item">
+                <router-link to="/bareme" class="nav-link" active-class="active" exact>Barême</router-link>
+              </li>
+              <li class="nav-item">
                 <router-link to="/equipes" class="nav-link" active-class="active" exact>Équipes</router-link>
               </li>
               <li class="nav-item">

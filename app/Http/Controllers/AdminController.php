@@ -36,6 +36,17 @@ class AdminController extends Controller
   }
 
   // ==================
+  // BAREME UPLOAD
+  public function uploadBareme(Request $request){
+    $this->validate($request, [
+      'bareme' => 'mimes:pdf|required',
+    ]);
+
+    $request->bareme->storeAs('public/bareme/bareme.pdf', $request['pdf']);
+    return response()->json(['success' => true, 'message' => 'Barême mis à jour'], 200);
+  }
+
+  // ==================
   // STUDENTS
   public function getStudents(){
     return Student::where('admin', 0)->orderBy('team_id')->get();
