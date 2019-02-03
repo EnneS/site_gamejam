@@ -59,6 +59,7 @@ Route::group(['middleware' => 'web'], function() {
   Route::get('admin.students', 'AdminController@getStudents');
   Route::get('admin.students.generate', 'AdminController@readStudentList');
   Route::post('admin.student.delete', 'AdminController@deleteStudent');
+  Route::post('admin.student.create', 'AdminController@createStudent');
 
   Route::get('admin.configuration', 'AdminController@getConfiguration');
   Route::post('admin.configuration.update', 'AdminController@updateConfiguration');

@@ -69,6 +69,18 @@ class AdminController extends Controller
     return response()->json(['success' => true, 'message' => 'Etudiant supprimé'], 200);
   }
 
+  public function createStudent(Request $request){
+    $request->validate([
+        'login' => 'unique:students',
+        'first_name' => 'required',
+        'last_name' => 'required',
+    ]);
+    $student = new Student;
+    $student->fill($request->all());
+    $student->save();
+    return response()->json(['success' => true, 'message' => 'Etudiant créé'], 200);
+  }
+
   public function readStudentList(){
     $students = Student::where('admin', 0)->delete();
     try {

@@ -23,6 +23,7 @@ import AdminLogin from './views/admin/Login';
 import AdminHome from './views/admin/Home';
 import AdminDashboard from './views/admin/Dashboard';
 import AdminListeEtudiants from './views/admin/ListeEtudiants';
+import AdminEtudiantCreer from './views/admin/EtudiantCreer';
 import AdminListeEquipes from './views/admin/ListeEquipes';
 import AdminEquipeDetail from './views/admin/EquipeDetail';
 import AdminListePoules from './views/admin/ListePoules';
@@ -107,7 +108,9 @@ let routes = [
       { path: '', name:'AdminHome', redirect: {name: 'AdminDashboard'}},
       { path: '/admin/dashboard', name:'AdminDashboard', component : AdminDashboard, meta: {requiresAdmin : true}},
       { path: '/admin/etudiants', name:'AdminListeEtudiants', component : AdminListeEtudiants, meta: {requiresAdmin : true}},
+      { path: '/admin/new/etudiant', name:'AdminEtudiantCreer', component : AdminEtudiantCreer, meta: {requiresAdmin : true}},
       { path: '/admin/equipes', name:'AdminListeEquipes', component : AdminListeEquipes, meta: {requiresAdmin : true}},
+      { path: '/admin/reglement/:id', name:'AdminReglementDetail', component : AdminReglementDetail, meta: {requiresAdmin : true}},
       { path: '/admin/equipes/:id', name:'AdminEquipeDetail', component : AdminEquipeDetail, meta: {requiresAdmin : true}},
       { path: '/admin/poules', name:'AdminListePoules', component : AdminListePoules, meta: {requiresAdmin : true}},
       { path: '/admin/reglement', name:'AdminReglement', component : AdminReglement, meta: {requiresAdmin : true}},
