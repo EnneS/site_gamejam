@@ -22,10 +22,25 @@
       </div>
 
       <div class="col-sm">
-        <h5>Notification</h5>
+        <h5>Notifications</h5>
         <div class="card">
           <div class="card-body">
-
+            <form @submit.prevent="sendNotification">
+              <div class="input-group">
+                <input type="text" v-model="notificationText" class="form-control input-notification" placeholder="Entrer un message...">
+                <div class="input-group-append">
+                  <button class="btn btn-success button-notification" type="submit">Envoyer la notification</button>
+                </div>
+              </div>
+            </form>
+            <ul class="list-group list-notifications text-dark" v-if="notifications.length > 0">
+              <li class="list-group-item d-flex justify-content-between align-items-center" v-for="notification in this.notifications">
+                <span>{{ notification.body }}</span>
+                <span>
+                  <font-awesome-icon icon="times" class="text-danger" @click="deleteNotification(notification.id)" style="cursor:pointer;"/>
+                </span>
+              </li>
+            </ul>
           </div>
         </div>
       </div>
@@ -64,25 +79,61 @@ export default {
       pdf: {
         name: 'Sélectionner un fichier...',
         file : null,
-      }
+      },
+      notifications:[],
+      notificationText : '',
     }
   },
 
   mounted() {
-    axios.get('/api/admin.configuration')
-    .then((response) => {
-      this.configuration.studentsPerTeam = response.data.studentsPerTeam;
-      this.configuration.maxTeamCount = response.data.maxTeamCount;
-    });
+    this.getConfiguration();
+    this.getNotifications();
   },
 
   methods:{
+    // Notifications methods
+    getNotifications(){
+      axios.get('/api/admin.notifications')
+      .then((response) => {
+        this.notifications = response.data;
+      });
+    },
+    sendNotification(){
+      axios.post('/api/admin.notification.create', {text : this.notificationText})
+      .then((response) => {
+        this.notifications.push(response.data.notification);
+        this.$toasted.success(response.data.message, {duration : 2000});
+      });
+    },
+    deleteNotification(id){
+      axios.post('/api/admin.notification.delete', {id : id})
+      .then((response) => {
+        // Delete from array
+        let i = 0;
+        while(i < this.notifications.length && this.notifications[i].id != id){
+          i++;
+        }
+        this.notifications.splice(i, 1);
+        this.$toasted.success(response.data.message, {duration : 2000});
+      });
+    },
+    
+    // Configuration methods
+    getConfiguration(){
+      axios.get('/api/admin.configuration')
+      .then((response) => {
+        this.configuration.studentsPerTeam = response.data.studentsPerTeam;
+        this.configuration.maxTeamCount = response.data.maxTeamCount;
+      });
+    },
     submitConfiguration(){
       axios.post('/api/admin.configuration.update', this.configuration)
       .then((response) => {
         this.$toasted.success(response.data.message, {duration : 2000});
       })
     },
+
+    // Bareme upload methods
     handleFileUpload(){
       this.pdf.file = this.$refs['pdf'].files[0];
       this.pdf.name = this.$refs['pdf'].files[0].name;
@@ -106,4 +157,16 @@ export default {
 </script>
 
 <style lang="css">
+.list-notifications .list-group-item:first-child {
+  border-top-right-radius: 0px !important;
+  border-top-left-radius: 0px !important;
+  border-top:0;
+}
+.button-notification {
+  border-bottom-right-radius: 0px !important;
+  border-bottom-left-radius: 0px !important;
+}
+.input-notification {
+  border-bottom-left-radius: 0px !important;
+}
 </style>

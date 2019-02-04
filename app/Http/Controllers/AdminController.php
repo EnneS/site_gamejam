@@ -11,6 +11,7 @@ use App\Student;
 use App\Step;
 use App\Team;
 use App\Rule;
+use App\Notification;
 
 class AdminController extends Controller
 {
@@ -33,6 +34,24 @@ class AdminController extends Controller
     setting(['app.max_teams' => $request->maxTeamCount]);
     setting(['app.max_students' => $request->studentsPerTeam]);
     return response()->json(['success' => true, 'message' => 'Configuration mise à jour'], 200);
+  }
+
+  // ==================
+  // NOTIFICATIONS
+  public function getNotifications(){
+    return Notification::all();
+  }
+
+  public function deleteNotification(Request $request){
+    Notification::find($request->id)->delete();
+    return response()->json(['success' => true, 'message' => 'Notification supprimée'], 200);
+  }
+
+  public function createNotification(Request $request){
+    $notification = new Notification;
+    $notification->body = $request->text;
+    $notification->save();
+    return response()->json(['success' => true, 'message' => 'Notification envoyée', 'notification' => $notification], 200);
   }
 
   // ==================

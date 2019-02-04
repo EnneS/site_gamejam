@@ -110,7 +110,6 @@ let routes = [
       { path: '/admin/etudiants', name:'AdminListeEtudiants', component : AdminListeEtudiants, meta: {requiresAdmin : true}},
       { path: '/admin/new/etudiant', name:'AdminEtudiantCreer', component : AdminEtudiantCreer, meta: {requiresAdmin : true}},
       { path: '/admin/equipes', name:'AdminListeEquipes', component : AdminListeEquipes, meta: {requiresAdmin : true}},
-      { path: '/admin/reglement/:id', name:'AdminReglementDetail', component : AdminReglementDetail, meta: {requiresAdmin : true}},
       { path: '/admin/equipes/:id', name:'AdminEquipeDetail', component : AdminEquipeDetail, meta: {requiresAdmin : true}},
       { path: '/admin/poules', name:'AdminListePoules', component : AdminListePoules, meta: {requiresAdmin : true}},
       { path: '/admin/reglement', name:'AdminReglement', component : AdminReglement, meta: {requiresAdmin : true}},

@@ -56,6 +56,10 @@ Route::group(['middleware' => 'web'], function() {
   // ======================
   Route::post('admin.uploadBareme', 'AdminController@uploadBareme');
 
+  Route::get('admin.notifications', 'AdminController@getNotifications');
+  Route::post('admin.notification.create', 'AdminController@createNotification');
+  Route::post('admin.notification.delete', 'AdminController@deleteNotification');
+
   Route::get('admin.students', 'AdminController@getStudents');
   Route::get('admin.students.generate', 'AdminController@readStudentList');
   Route::post('admin.student.delete', 'AdminController@deleteStudent');
