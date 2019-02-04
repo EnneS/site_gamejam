@@ -30,8 +30,9 @@
               </router-link>
             </li>
 
-            <li class="footer-nav" @click="logout">
-              <a>Déconnexion</a>
+            <li class="footer-nav">
+              <a @click.prevent="$router.push('/')">Retourner sur le site</a>
+              <a @click="logout">Déconnexion</a>
             </li>
         </ul>
 

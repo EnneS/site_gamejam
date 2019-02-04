@@ -45,7 +45,7 @@
                     </span>
                     <div class="notification-box" v-if="notificationBox" v-on-clickaway="toggleNotificationBox">
                       <ul class="list-group">
-                        <li class="list-group-item" v-for="notification in getNotifications">{{ notification }}</li>
+                        <li class="list-group-item" v-for="notification in getNotifications" v-html="notification"></li>
                       </ul>
                     </div>
                   </div>

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Notification;
 
 class NotificationController extends Controller
 {
@@ -12,12 +13,17 @@ class NotificationController extends Controller
 
       // First, get the join requests notification
       $team = $user->team;
-      $joinRequests = count($team->joinRequests);
-      if($joinRequests > 0){
-        array_push($notifications, "Votre équipe a " . $joinRequests . " demande(s) d'adhésion.");
+      if($team){
+        $joinRequests = count($team->joinRequests);
+        if($joinRequests > 0){
+          array_push($notifications, "Votre équipe a " . $joinRequests . " demande(s) d'adhésion.");
+        }
       }
 
-      // TODO:  Then get the global notifications
+      $n = Notification::all();
+      foreach($n as $notif){
+        array_push($notifications, $notif->body);
+      }
 
       return $notifications;
     }
