@@ -16,6 +16,7 @@
             <th scope="col">Poule</th>
             <th scope="col">Zip</th>
             <th scope="col">Jaquette</th>
+            <th scope="col">PDF</th>
             <th scope="col">Nombre de membres</th>
             <th></th>
           </tr>
@@ -26,12 +27,16 @@
             <td>{{ team.name }}</td>
             <td>{{ team.group_id }}</td>
             <td>
-              <span v-if="team.game.zip_uploaded == 1" class="text-success">Oui</span>
-              <span v-else class="text-danger">Non</span>
+              <font-awesome-icon v-if="team.game.zip_uploaded == 1"  icon="check" class="text-success"/>
+              <font-awesome-icon v-else icon="times" class="text-danger"/>
             </td>
             <td>
-              <span v-if="team.game.jaquette_uploaded == 1" class="text-success">Oui</span>
-              <span v-else class="text-danger">Non</span>
+              <font-awesome-icon v-if="team.game.jaquette_uploaded == 1"  icon="check" class="text-success"/>
+              <font-awesome-icon v-else icon="times" class="text-danger"/>
+            </td>
+            <td>
+              <font-awesome-icon v-if="team.game.pdf_uploaded == 1"  icon="check" class="text-success"/>
+              <font-awesome-icon v-else icon="times" class="text-danger"/>
             </td>
             <td>{{ team.students_count }}</td>
             <td><button type="button" class="btn btn-sm btn-primary" @click="seeMore(team.id)">Plus d'info</button></td>

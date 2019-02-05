@@ -5,7 +5,7 @@
       <div v-if="this.team != null">
         <!-- l'équipe, ses membres -->
         <div class="row mb-4">
-          <div class="col">
+          <div class="col-sm-6">
             <h2> {{ team.name }}</h2>
 
             <div v-if="team.join_requests.length > 0">
@@ -28,7 +28,7 @@
           </div>
 
           <!-- le jeu -->
-          <div class="col-sm d-flex align-items-end flex-column">
+          <div class="col-sm-4 d-flex align-items-end flex-column">
             <div>
               <h2 v-if="team.game.name"> {{ team.game.name }}</h2>
               <div v-else class="alert alert-info p-1 mb-2">Pensez à ajouter un nom pour votre jeu !</div>
@@ -42,6 +42,18 @@
               <h4 v-if="team.game.description"> {{ team.game.description }}</h4>
               <div v-else class="alert alert-info p-1 mb-0">Pensez à ajouter une description du jeu !</div>
             </div>
+          </div>
+          <div class="col-sm">
+            <h2 v-if="team.game.name">Livrables</h2>
+            <ul class="list-group text-dark mb-2">
+              <li class="list-group-item d-flex justify-content-between align-items-center" v-for="livrable in livrables">
+                <span>{{ livrable.name }} </span>
+                <span>
+                  <font-awesome-icon v-if="livrable.status == 1"  icon="check" class="text-success"/>
+                  <font-awesome-icon v-else icon="times" class="text-danger"/>
+                </span>
+              </li>
+            </ul>
           </div>
         </div>
         <router-link to="/mon-equipe/edit" tag="button" class="btn-gamejam mr-4" exact>Modifier votre équipe</router-link>
@@ -86,6 +98,26 @@ export default {
         date = new Date().getFullYear();
       }
       return date;
+    },
+    livrables(){
+      let livrables = [
+        {
+          name:'ZIP',
+          status:0,
+        },
+        {
+          name:'Jaquette',
+          status: 0,
+        },
+        {
+          name:'PDF',
+          status: 0,
+        }
+      ];
+      if(this.team.game.jaquette_uploaded) livrables[1].status = 1;
+      if(this.team.game.zip_uploaded) livrables[0].status = 1;
+      if(this.team.game.pdf_uploaded) livrables[2].status = 1;
+      return livrables;
     }
   },
 

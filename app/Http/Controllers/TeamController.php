@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 use App\Team;
 use App\Game;
@@ -117,6 +118,16 @@ class TeamController extends Controller
           // On upload
           $request->zip->storeAs('public/games/' . date("Y") . '/' . $game->hash . '/', 'zip.zip');
           $game->zip_uploaded = true;
+        }
+
+        if($request['pdf'] != "null"){
+          $isValid = $this->validate($request, [
+            'pdf' => 'mimes:pdf|max:6144', // 50 Mo
+          ]);
+
+          // On upload
+          $request->pdf->storeAs('public/games/' . date("Y") . '/' . $game->hash . '/', 'presentation.pdf');
+          $game->pdf_uploaded = true;
         }
 
         $team->name = $request['teamName'];

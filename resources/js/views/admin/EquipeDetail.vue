@@ -1,8 +1,13 @@
 <template>
   <div class="container">
-    <button type="button" class="btn btn-primary mb-3" @click="goBack">Retour</button>
-    <button type="button" class="btn btn-success mb-3" @click="updateTeam">Sauvegarder</button>
-    <button type="button" name="button" class="btn btn-danger float-right" data-toggle="modal" data-target="#confirmationModal">Supprimer l'équipe</button>
+    <div class="row ">
+      <div class="col-sm p-0">
+        <button type="button" class="btn btn-primary mb-3" @click="goBack">Retour</button>
+        <button type="button" v-if="team" class="btn btn-success mb-3" @click="updateTeam">Sauvegarder</button>
+        <button type="button" v-if="team" name="button" class="btn btn-danger float-right" data-toggle="modal" data-target="#confirmationModal">Supprimer l'équipe</button>
+      </div>
+
+    </div>
     <div v-if="team">
       <div class="alert alert-danger" v-if="errors.length > 0">
         <ul class="mb-0">
@@ -13,6 +18,7 @@
         <ul class="mb-0">
           <li v-if="!team.game.jaquette_uploaded">Cette équipe n'a pas encore de jaquette.</li>
           <li v-if="!team.game.zip_uploaded">Cette équipe n'a pas encore envoyé son ZIP.</li>
+          <li v-if="!team.game.pdf_uploaded">Cette équipe n'a pas encore envoyé son PDF.</li>
         </ul>
       </div>
       <div class="row d-block" v-if="team.group_id != null">
@@ -20,7 +26,7 @@
         <h4><span class="badge badge-pill badge-success">Salle {{ team.group.name }}</span></h4>
       </div>
       <!-- l'équipe, ses membres -->
-      <div class="row mb-4">
+      <div class="row mb-3">
           <div class="col-sm card p-4 mr-3">
             <label for="teamname" class="mb-0">Nom de l'équipe</label>
             <input type="text" v-model="team.name" class="form-control mb-2 form-control-lg" id="teamname" placeholder="Nom de léquipe..." required>
@@ -43,6 +49,11 @@
             </div>
           </div>
       </div>
+      <div class="row">
+        <a v-if="team.game.zip_uploaded" class="text-white btn btn-primary mr-1" :href="'/storage/games/' + gameYear + '/' + team.game.hash + '/zip.zip'">Télécharger le .zip</a>
+        <a v-if="team.game.pdf_uploaded" class="text-white btn btn-primary" :href="'/storage/games/' + gameYear + '/' + team.game.hash + '/presentation.pdf'">Télécharger le PDF</a>
+      </div>
+
     </div>
     <div v-else class="alert alert-danger">
       Cette équipe n'existe pas.
