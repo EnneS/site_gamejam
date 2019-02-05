@@ -217,6 +217,7 @@ class AdminController extends Controller
         $i = 1;
         $counter = 1;
         $teams = Team::all();
+        $teams = $teams->shuffle();
         foreach($teams as $team){
           if($counter-1 == $request->nbGroups) {
             $counter = 1;

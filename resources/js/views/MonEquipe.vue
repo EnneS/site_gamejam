@@ -1,7 +1,7 @@
 <template>
   <div class="row bg-dark pt-5 pb-5 text-white">
     <div class="container">
-      <h1 class="mb-3">Mon équipe</h1>
+      <h1 class="mb-3 d-inline">Mon équipe <span v-if="team.group_id != null" class="badge badge-pill badge-primary align-middle ml-2" style="font-size:1rem;">Salle {{ team.group.name }}</span></h1>
       <div v-if="this.team != null">
         <!-- l'équipe, ses membres -->
         <div class="row mb-4">

@@ -13,10 +13,10 @@
           {{error}}
         </div>
       </div>
-      <div class="container mt-4" v-if="team != null">
+      <div class="container mt-4 p-0" v-if="team != null">
         <form v-on:submit.prevent="onSubmit">
           <div class="row">
-            <div class="col">
+            <div class="col-sm">
               <h2>Informations</h2>
               <div class="form-group">
                 <label for="exampleInputEmail1">Nom de l'équipe</label>
@@ -31,7 +31,7 @@
                 <input v-model="team.game.description" type="text" class="form-control" placeholder="Une courte description de votre jeu...">
               </div>
             </div>
-            <div class="col">
+            <div class="col-sm">
               <h2>Livrables</h2>
               <div class="form-group">
                 <label for="file-upload">Jaquette du jeu (jpeg, png | 300px * 300px)</label>

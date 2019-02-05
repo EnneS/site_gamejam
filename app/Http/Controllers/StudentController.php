@@ -26,7 +26,7 @@ class StudentController extends Controller
    */
   public function getTeam(){
     $user = Auth::user();
-    $team = \App\Team::with(['students', 'game', 'joinRequests'])->where('id', $user->team_id)->first();
+    $team = \App\Team::with(['students', 'game', 'joinRequests', 'group'])->where('id', $user->team_id)->first();
     return response()->json(['success' => true, 'team' => $team], 200);
   }
 
