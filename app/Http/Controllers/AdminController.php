@@ -215,13 +215,16 @@ class AdminController extends Controller
 
         // Put the teams in the groups
         $i = 1;
-        $counter = 0;
-        Team::all()->shuffle()->each(function($team) use ($request, $counter, $i){
-          if($counter == $request->teamsPerGroup) $i++;
-          $team->group_id = $i;
+        $counter = 1;
+        $teams = Team::all();
+        foreach($teams as $team){
+          if($counter-1 == $request->nbGroups) {
+            $counter = 1;
+          }
+          $team->group_id = $counter;
           $team->save();
           $counter++;
-        });
+        }
 
         // Return the new groups
         return response()->json(['success' => true, 'message' => 'Poules générées', 'groups' => Group::withCount('teams')->get()], 200);
@@ -234,6 +237,12 @@ class AdminController extends Controller
   }
 
   public function deleteGroups(){
+    // Remove the teams from the groups
+    Team::all()->each(function($team){
+      $team->group_id = null;
+      $team->save();
+    });
+    // Delete the groups
     Group::all()->each(function($group){
       $group->delete();
     });
